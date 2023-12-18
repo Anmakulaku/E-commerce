@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-family-titles);
+}
+
+body, p, span {
+  font-family: var(--font-family);
+}
+
+.section__margin {
+  padding: 2rem 1rem;
+}
+
+.section__padding {
+  padding: 1rem 0.5rem;
+}
