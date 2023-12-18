@@ -14,9 +14,18 @@ body, p, span {
 }
 
 .section__margin {
-  padding: 2rem 1rem;
+  padding: 2rem 0;
 }
 
 .section__padding {
   padding: 1rem 0.5rem;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
 }
