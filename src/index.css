@@ -11,6 +11,9 @@
   color-scheme: light dark;
   --color-bg: #F5F5F5;
   --color-text: #484848;
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-red: #f63138;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

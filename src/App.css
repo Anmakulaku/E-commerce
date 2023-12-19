@@ -14,11 +14,11 @@ body, p, span {
 }
 
 .section__margin {
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 
 .section__padding {
-  padding: 1rem 0.5rem;
+  padding: 1rem;
 }
 
 body {
@@ -28,4 +28,5 @@ body {
 .App {
   max-width: 1200px;
   margin: 0 auto;
+  overflow: hidden;
 }

@@ -1,0 +1,33 @@
+.header {
+    margin-top: 6.5rem;
+}
+.header__container{
+    max-width: 1200px;
+    width: 100%;
+}
+
+.header__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.header__grid-1,
+.header__grid-4 {
+    grid-row: span 1;
+    background-color: blue;
+}
+
+.header__grid-middle {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5px;
+    grid-row: span 1;
+}
+
+.header__grid-2,
+.header__grid-3,
+.header__grid-text {
+    grid-row: span 1;
+    background-color: rosybrown;
+}
