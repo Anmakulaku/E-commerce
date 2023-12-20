@@ -1,0 +1,38 @@
+.brand {
+    height: 10rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    margin: 1rem 0;
+}
+.brand img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+}
+
+.brand__img1{
+    width: 200px;
+    height: 33px;
+}
+.brand__img2{
+    width: 200px;
+    height: 25px;
+}
+.brand__img3{
+    width: 200px;
+    height: 33px;
+}
+.brand__img4{
+    width: 200px;
+    height: 33px;
+    transform: scale(2);
+}
+.brand__img5{
+    width: 180px;
+    height: 27px;
+    transform: scale(5);
+}
+
