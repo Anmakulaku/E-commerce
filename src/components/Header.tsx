@@ -19,7 +19,10 @@ export function Header() {
                         <img src={header2} alt="img2" className='img2'/>
                     </div>
                     <div className="header__grid-text">
-                        <span>ULTIMATE SALE</span>
+                        <span className='text1'>ULTIMATE</span>
+                        <span className='text2'>SALE</span>
+                        <span className='text3'>NEW COLLECTION</span>
+                        <button className='button header__btn' type="button">SHOP NOW </button>
                     </div>
                     <div className="header__grid-3 header__img-small">
                         <img src={header3} alt="img3" className='img3'/>
