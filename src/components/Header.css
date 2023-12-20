@@ -1,79 +1,82 @@
 .header {
-    margin-top: 6.5rem;
+    margin-top: 7rem;
 }
 .header__container{
-    max-width: 75rem;
-    width: 100%;
-    height: auto;
+    max-height: 800px;
 }
 
 .header__grid {
+    width: 100%;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 30% 40% 30%;
     gap: 1.5rem;
 }
 
 .header__grid-1,
 .header__grid-4 {
-    grid-row: span 1;
+    grid-column: 800px;
+    background-color: var(--color-primary);
     border-radius: 10px;
-    background-color: var(--color-primary);
-}
-
-.header__grid-text {
-    max-width: 32rem;
-    background-color: var(--color-primary);
 }
 
 .header__grid-middle {
     display: grid;
-    grid-template-rows: 1fr 2fr 1fr;
-    gap: 2rem;
-    border-radius: 10px;
+    grid-template-rows: 180px auto 180px;
+    gap: 1.5rem;
+    grid-column: span 1;
 }
 
 .header__img-small {
-    max-width: 32rem;
-    max-height: 9rem;
-    border-radius: 10px;
-    background-color: var(--color-primary);
-    position: relative;
     overflow: hidden;
+    border-radius: 10px;
+    aspect-ratio: 3 / 1.25;
+    object-fit: cover;
+}
+
+.img1,
+.img2,
+.img3,
+.img4 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    
 }
 
 .img2 {
-    width: 100%;
-    object-fit: cover;
-    position: relative;
-    top: -0.6rem;
+    object-position: 0% 5%;
 }
+
 .img3 {
+    object-position: 0% 30%;
+    transform: scale(1.3);
+}
+
+.header__grid-2,
+.header__grid-3 {
+    grid-row: span 1;
+    background-color: var(--color-primary);
+}
+
+.header__grid-text {
     width: 100%;
-    object-position: center;
-    object-fit: cover;
-    position: relative;
-    top: -8rem;
-    
+    grid-row: span 2;
+    background-color: var(--color-primary);
 }
 
 .header__img-big {
-    max-width: 25rem;
+    overflow: hidden;
     border-radius: 10px;
-    display: flex;
-    justify-content: center;
-}
-
-.img4 {
-    position: relative;
-    bottom: -2rem;
-    max-width: 20rem;
-    transform: scale(1.2);
+    aspect-ratio: 1 / 1.55;
+    object-fit: cover;
 }
 
 .img1 {
-    position: relative;
-    bottom: -4rem;
-    max-height: 30rem;
-    transform: scale(1.1);
+    padding: 10rem 0 0 3rem;
+    transform: scale(1.2);
 }
+
+.img4 {
+    padding: 10rem 0 0 0;
+}
+
 
