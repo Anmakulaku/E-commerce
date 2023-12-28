@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "category": "accessories",
+        "img": "/images/bag1.jpg",
+        "name": "Blue-cream bag",
+        "price": 49.99
+    },
+    {
+        "id": 2,
+        "category": "accessories",
+        "img": "/images/bag2.jpg",
+        "name": "Blue hand bag",
+        "price": 69.99
+    },
+    {
+        "id": 3,
+        "category": "accessories",
+        "img": "/images/bag3.jpg",
+        "name": "Cammel XL bag",
+        "price": 99.99
+    },
+    {
+        "id": 4,
+        "category": "clothes",
+        "img": "/images/dress1.jpg",
+        "name": "White boho dress",
+        "price": 129.99
+    }
+]

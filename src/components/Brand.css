@@ -1,16 +1,25 @@
 .brand {
-    height: 10rem;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-around;
+    height: 10rem;
     background: transparent;
     margin: 1rem 0;
+    overflow: hidden;
+}
+.brand__container{
+    display: flex;
+    align-items: center;
+    /* animation: slideLeft 20s linear infinite; */
+}
+.brand__item {
+    display: flex;
+    align-items: center;
+
 }
 .brand img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     object-fit: contain;
+    padding: 0 2rem;
 }
 
 .brand__img1{
@@ -31,8 +40,17 @@
     transform: scale(2);
 }
 .brand__img5{
+    margin-left: 0.8rem;
     width: 180px;
     height: 27px;
     transform: scale(5);
 }
 
+/* @keyframes slideLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+} */
