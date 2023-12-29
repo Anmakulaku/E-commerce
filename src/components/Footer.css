@@ -1,9 +1,6 @@
 .footer {
-    position: fixed;
-    bottom: 0;
     width: 100%;
     max-width: 1200px;
-    z-index: 50;
     background: transparent;
     /* background-color: var(--color-bg); */
 }

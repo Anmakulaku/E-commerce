@@ -2,6 +2,7 @@ import { StoreItem } from "../components/StoreItem"
 import { Footer } from "../components/Footer"
 import storeItems from "../data/itemsAll.json"
 import './Store.css'
+import { Subscribe } from "../components/Subscribe"
 
 
 export function Store() {
@@ -15,6 +16,7 @@ export function Store() {
                             <StoreItem key={item.id} {...item} />
                     ))}
                 </div>
+                <Subscribe />
                 <Footer />
         </div>
     )

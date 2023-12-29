@@ -4,8 +4,7 @@
     width: 100%;
     max-width: 1200px;
     z-index: 50;
-    background: transparent;
-    /* background-color: var(--color-bg); */
+    background-color: var(--color-bg);
 }
 
 .nav__container {
