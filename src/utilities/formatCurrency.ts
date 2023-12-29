@@ -1,6 +1,7 @@
 const CURRENCY_FORMATER = new Intl.NumberFormat (undefined, {
     currency: "USD",
     style: "currency",
+    currencyDisplay: "symbol",
 })
 
 export function formatCurrency (number: number) {

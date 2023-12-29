@@ -1,4 +1,5 @@
 import { formatCurrency } from "../utilities/formatCurrency";
+import './StoreItem.css'
 
 type StoreItemProps = {
     id: number;
@@ -9,13 +10,12 @@ type StoreItemProps = {
 
 export function StoreItem ({ id, name, price, img}: StoreItemProps) {
     return (
-        <>
             <div key={id} className="storeItem__container">
                 <div className="storeItem__img">
                     <img src={img} alt="product-image" />
                 </div>
                 <div className="storeItem__text">
-                    <span className="storeItem__title">{name}</span>
+                    <h1 className="storeItem__title">{name}</h1>
                     <span className="storeItem__price">{formatCurrency(price)}</span>
                     {/* <div className="cart-btns">
                         <button onClick={decrease}>-</button>
@@ -28,6 +28,5 @@ export function StoreItem ({ id, name, price, img}: StoreItemProps) {
                 <IconX onClick={() => removeFromCart(item.id)} />
                 </div> */}
             </div>
-        </>
     );
 }
