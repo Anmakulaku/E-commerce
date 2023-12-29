@@ -91,13 +91,7 @@
 }
 
 .header__btn{
-    position: relative;
-    background-color: var(--color-black);
-    color: var(--color-white);
-    border: none;
-    border-radius: 10px;
     padding: 1rem 4rem;
-    cursor: pointer;
 }
 
 .header__img-big {

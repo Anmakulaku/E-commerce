@@ -1,6 +1,8 @@
 import { StoreItem } from "../components/StoreItem"
+import { Footer } from "../components/Footer"
 import storeItems from "../data/itemsAll.json"
 import './Store.css'
+
 
 export function Store() {
     return(
@@ -13,6 +15,7 @@ export function Store() {
                             <StoreItem key={item.id} {...item} />
                     ))}
                 </div>
+                <Footer />
         </div>
     )
 }
