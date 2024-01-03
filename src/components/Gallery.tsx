@@ -11,7 +11,7 @@ export function Gallery() {
     return(
         <div className='gallery section__margin'>
             <span className='gallery__title'> Follow Us On Instagram</span>
-            <p className='gallery__text'>Dołącz do naszej społeczności na Instagramie! Udostępniaj swoje stylizacje, oznaczaj zdjęcia hashtagiem <span>#FascoStars</span>, obserwuj nasz profil @FascoStars i bądź częścią modowego świata! Dołącz do naszych obserwowanych i dziel się modowymi inspiracjami!</p>
+            <p className='gallery__text'>Join our Instagram community! Share your fashion moments, tag your photos with the hashtag <span>#FascoStars</span>, follow our profile @FascoStars, and be a part of the fashion world! Join our followers and share your stylish inspirations!</p>
             <div className='gallery__box'>
                 <img src={gallery1} alt="man in coat" className='gallery__small'/>
                 <img src={gallery2} alt="woman in turtleneck" className='gallery__big'/>

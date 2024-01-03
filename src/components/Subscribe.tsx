@@ -11,7 +11,7 @@ export function Subscribe() {
                 </div>
                 <div className='subscribe__text'>
                     <span className='subscribe__title'>Subscribe To Our Newsletter</span>
-                    <p className='subscribe__info'>Bądź na bieżąco z najnowszymi rabatami, ekskluzywnymi ofertami i nie przegap żadnych okazji! Zapisz się do naszego newslettera i ciesz się dostępem do wyjątkowych promocji.</p>
+                    <p className='subscribe__info'>Stay up-to-date with the latest discounts, exclusive offers, and never miss out on any opportunities! Subscribe to our newsletter and enjoy access to exclusive promotions.</p>
                     <div className='subscribe__buttonBox section__margin'>
                         <input className='subscribe__inputField' placeholder='Enter your name...'/>
                         <div className='subscribe__btnBg'>
