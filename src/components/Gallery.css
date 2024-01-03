@@ -4,7 +4,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: aquamarine;
 }
 
 .gallery__title {
@@ -23,28 +22,26 @@
 
 .gallery__box {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, minmax(auto, 320px));
     justify-content: center;
     align-items: center;
     margin: 2rem 0;
 }
 
 .gallery__box img {
-    max-width: 256px;
-    /* transform: translateY(-10px); 
-    transition: transform 0.3s ease-in-out;  */
+    width: 100%; 
+    height: auto; 
+    object-fit: fill; 
+    object-position: center;
+    transition: transform 0.1s ease-in-out;
 }
+
 .gallery__box img:nth-child(even) {
-    
-    max-height: 380px;
     object-fit: cover;
 }
 .gallery__box img:nth-child(odd) {
-    /* transform: translateY(10px); */
-    height: 300px;
     object-fit: cover;
 }
-
 .gallery__box img:hover {
-    transform: scale(1.1);
-}
+    transform: scale(1.01);
+} 
