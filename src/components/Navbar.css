@@ -1,7 +1,4 @@
 .nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
     max-width: 1200px;
     z-index: 50;
     background-color: var(--color-bg);
@@ -11,15 +8,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
-
+.nav__logo{
+    margin-left: 0;
+}
 .nav__links {
+    margin-right: 0;
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
 }
 
 .nav__links-items {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     font-size: var(--font-size);
 }
 

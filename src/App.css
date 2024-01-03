@@ -1,5 +1,5 @@
 * {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -14,7 +14,7 @@ body, p, span {
 }
 
 .section__margin {
-  padding: 1rem 0;
+  padding: 2rem 0;
 }
 
 .section__padding {
@@ -24,11 +24,6 @@ body, p, span {
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
-}
-.App {
-  max-width: 1200px;
-  margin: 0 auto;
-  overflow: hidden;
 }
 .button {
   position: relative;

@@ -4,7 +4,7 @@ import './Navbar.css'
 export function Navbar() {
     return(
         <div className="nav section__margin">
-            <div className="nav__container section__padding"> 
+            <div className="nav__container"> 
                 <div className="nav__logo">
                     <h1>FASCO</h1>
                 </div>

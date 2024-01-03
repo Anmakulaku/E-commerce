@@ -1,8 +1,6 @@
-.header {
-    margin-top: 7rem;
-}
 .header__container{
-    max-height: 800px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .header__grid {
