@@ -51,7 +51,6 @@
     position: relative;
     background-color: var(--color-bg);
     border: none;
-    border-radius: 50%;
     cursor: pointer;
 }
 

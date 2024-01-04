@@ -4,6 +4,7 @@ import storeItems from "../data/itemsAll.json"
 import './Store.css'
 import { Subscribe } from "../components/Subscribe"
 import { Gallery } from "../components/Gallery"
+import { Slider } from "../components/Slider"
 
 
 export function Store() {
@@ -17,6 +18,7 @@ export function Store() {
                             <StoreItem key={item.id} {...item} />
                     ))}
                 </div>
+                <Slider />
                 <Gallery />
                 <Subscribe />
                 <Footer />

@@ -1,9 +1,6 @@
 .slider {
     width: 100%;
 }
-.slider__content{
-   
-}
 .slider__grid {
     display: grid;
     grid-template-columns: 1fr 0.2fr 1fr;
@@ -46,5 +43,7 @@
 .slider__btn{
     padding: 1rem 4rem;
     margin: 1.5rem 0 0 0;
-
+}
+.slider__btn:hover{
+    background-color: var(--color-primary);
 }
