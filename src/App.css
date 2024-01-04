@@ -1,15 +1,15 @@
 * {
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
 
-h1, h2, h3 {
+h1, h2 {
   font-family: var(--font-family-titles);
 }
 
-body, p, span {
+body, p, span, h3 {
   font-family: var(--font-family);
 }
 
@@ -27,6 +27,7 @@ body {
 }
 .App{
   max-width: 2000px;
+  margin: 0 auto;
 }
 .button {
   position: relative;

@@ -1,5 +1,9 @@
 import './Slider.css'
 import slider1 from "../img/slider1.png"
+import highQualityIcon from "../img/highQualityicon.svg"
+import warrantyicon from "../img/warrantyicon.svg"
+import freeShippingicon from "../img/freeShippingicon.svg"
+import supporticon from "../img/supporticon.svg"
 
 export function Slider() {
     return(
@@ -16,5 +20,37 @@ export function Slider() {
                     <button className='button slider__btn'> Shop Now </button>
                 </div>
             </div>
+            <div className='features section__margin'>
+            <div className='features__content'>
+                <div className='features__item'>
+                    <img src={highQualityIcon} alt="icon"/>
+                    <div className='features__text'>
+                        <h3 className='features__title'>High Quality</h3>
+                        <p className='feature__description'>Crafted from top materials</p>
+                    </div>
+                </div>
+                <div className='features__item'>
+                    <img src={warrantyicon} alt="icon"/>
+                    <div className='features__text'>
+                        <h3 className='features__title'>Warranty Protection</h3>
+                        <p className='feature__description'>Over 2 years</p>
+                    </div>
+                </div>
+                <div className='features__item'>
+                    <img src={freeShippingicon} alt="icon"/>
+                    <div className='features__text'>
+                        <h3 className='features__title'>Free Shipping</h3>
+                        <p className='feature__description'>Order over 150$</p>
+                    </div>
+                </div>
+                <div className='features__item'>
+                    <img src={supporticon} alt="icon"/>
+                    <div className='features__text'>
+                        <h3 className='features__title'>24/7 Support</h3>
+                        <p className='feature__description'>Dedicated support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div> 
     )}
