@@ -1,0 +1,24 @@
+.testimonials {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.testimonials__title {
+    font-family: var(--font-family-titles);
+    font-size: 1.8em;
+    line-height: 3.75rem;
+}
+
+.testimonials__text {
+    font-size: var(--font-size);
+    margin-bottom: 20px;
+    max-width: 40rem;
+    text-align:center;
+    text-indent: 20px;
+}
+.testimonials__items{
+    background-color: aquamarine;
+}
