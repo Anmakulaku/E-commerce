@@ -1,21 +1,21 @@
 [
     {
         "id": 1,
-        "img": "/imgCustomers/testimonialsImg1.png",
+        "img": "/imgCustomers/testimonials1.png",
         "text": "You won't regret it. I would like to personally thank you for your outstanding product. Absolutely wonderful!",
         "name": "James K.",
         "profession": "Traveler"
     },
     {
         "id": 2,
-        "img": "/imgCustomers/testimonialsImg2.png",
+        "img": "/imgCustomers/testimonials2.png",
         "text": "Items That I ordered were the best investment I ever made. I can't say enough about your quality service.",
         "name": "Suzan B.",
         "profession": "UI Designer"
     },
     {
         "id": 3,
-        "img": "/imgCustomers/testimonialsImg3.png",
+        "img": "/imgCustomers/testimonials3.png",
         "text": "Just what I was looking for. Thank you for making it painless, pleasant and most of all hassle free! All products are great.",
         "name": "Megen W.",
         "profession": "Seller"
