@@ -1,5 +1,6 @@
 .testimonialsItem{
     max-width: 800px;
+    background-color: var(--color-bg);
 }
 .testimonialsItem__container{
     display: flex;
@@ -55,4 +56,11 @@
     border-top: 1px solid var(--color-black);
     margin: 1rem 0;
     padding-top: 1rem;
+}
+.hidden {
+    display: none;
+}
+
+.visible {
+    /* opcjonalne style dla widocznego elementu, np. opacity: 1; transition: opacity 0.5s; */
 }

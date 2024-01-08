@@ -20,5 +20,31 @@
     text-indent: 20px;
 }
 .testimonials__items{
-    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    
+}
+.testimonials__arrowBox{
+    width: 7.5rem;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.testimonials__arrow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    aspect-ratio: 1/1;
+    padding: 0.5rem;
+    background-color: var(--color-white);
+    box-shadow: 0px 8px 40px -2px rgba(182, 182, 182, 1);
+    color: var(--color-black);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.testimonials__arrow:hover {
+    color: var(--color-primary); 
 }

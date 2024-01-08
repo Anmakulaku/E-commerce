@@ -6,11 +6,12 @@ type TestimonialsItemProps = {
     name: string;
     profession: string;
     img: string;
+    isVisible: boolean;
 }
 
-export function TestimonialsItem ({ id, img, text, name, profession }: TestimonialsItemProps) {
+export function TestimonialsItem ({ id, img, text, name, profession, isVisible }: TestimonialsItemProps) {
     return (
-        <div className="testimonialsItem section__margin">
+        <div className={`testimonialsItem section__margin ${isVisible ? "visible" : "hidden"}`}>
             <div key={id} className="testimonialsItem__container">
                 <div className="testimonialsItem__img">
                     <div className="testimonialsItem__imgBg"></div>
