@@ -26,12 +26,12 @@ export function Testimonials() {
             us.
         </p>
         <div className="testimonials__items">
-            {TestimonialsItems.map((item, index) => (
-            <TestimonialsItem
-                key={item.id}
-                {...item}
-                isVisible={index === currentSlide}
-            />
+            {[currentSlide - 1, currentSlide, currentSlide + 1].map((index) => (
+                <TestimonialsItem
+                    key={index}
+                    {...TestimonialsItems[(index + TestimonialsItems.length) % TestimonialsItems.length]}
+                    isMain={index === currentSlide}
+                />
             ))}
         </div>
         <div className="testimonials__arrowBox">

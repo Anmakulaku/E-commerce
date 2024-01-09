@@ -20,11 +20,13 @@
     text-indent: 20px;
 }
 .testimonials__items{
+    margin-top: 2rem;
     display: flex;
     flex-direction: row;
-    
+    position: relative;
 }
 .testimonials__arrowBox{
+    margin-top: 3rem;
     width: 7.5rem;
     height: auto;
     display: flex;
@@ -44,7 +46,5 @@
     border-radius: 50%;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-.testimonials__arrow:hover {
-    color: var(--color-primary); 
+    user-select: none;
 }
