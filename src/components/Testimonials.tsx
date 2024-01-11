@@ -26,13 +26,13 @@ export function Testimonials() {
             us.
         </p>
         <div className="testimonials__items">
-            {[currentSlide - 1, currentSlide, currentSlide + 1].map((index) => (
-                <TestimonialsItem
-                    key={index}
-                    {...TestimonialsItems[(index + TestimonialsItems.length) % TestimonialsItems.length]}
-                    isMain={index === currentSlide}
-                />
-            ))}
+        {[-1, 0, 1].map(offset => (
+            <TestimonialsItem
+                key={currentSlide + offset}
+                {...TestimonialsItems[(currentSlide + offset + TestimonialsItems.length) % TestimonialsItems.length]}
+                isMain={offset === 0}
+            />
+        ))}
         </div>
         <div className="testimonials__arrowBox">
             <div className="testimonials__arrow testimonials__prevArrow" onClick={prevSlide}>
