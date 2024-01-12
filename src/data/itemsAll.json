@@ -25,6 +25,7 @@
         "id": 4,
         "category": "dress",
         "img": "/images/dress1.jpg",
+        "imgOther": ["/images/dress1O1.jpg", "/images/dress1O2.jpg", "/images/dress1O3.jpg"],
         "name": "White boho dress",
         "price": 59.99
     },

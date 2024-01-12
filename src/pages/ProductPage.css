@@ -44,5 +44,28 @@
     border: 1px solid #333; 
     padding: 1rem;
 }
-
-
+.productPage__info{
+    max-width: 38rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.productPage__titleStyle{
+    font-family: var(--font-family-titles);
+}
+.productPage__companyName{
+    font-size: 1rem;
+}
+.productPage__sizeBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.productPage__sizeLabels{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}

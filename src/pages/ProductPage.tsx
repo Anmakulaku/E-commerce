@@ -19,6 +19,8 @@ export function ProductPage() {
         return <div>Produkt nie został znaleziony</div>;
     }
 
+    const isAccessories = product.category === 'accessories';
+
     return (
         <div className="productPage">
             <div className='productPage__content'>
@@ -31,9 +33,34 @@ export function ProductPage() {
                     </div>
                 </div>
                 <div className='productPage__info'>
-                    <h2 className='productPage__companyName'>FASCO</h2>
-                    <span className='productPage__title'>{product.name}</span>
-                    <span className='productPage__price'>{product.price}</span>
+                    <h2 className='productPage__titleStyle productPage__companyName'>FASCO</h2>
+                    <span className='productPage__titleStyle productPage__title'>{product.name}</span>
+                    <span className='productPage__titleStyle productPage__price'>{product.price}</span>
+                    <div className='productPage__titleStyle productPage__sizeBox'>
+                        <span className='productPage__titleStyle productPage__sizeTitle'>Size:</span>
+                    {isAccessories ? 'One Size' : (
+                        <div className='productPage__sizeLabels'>
+                            <label>
+                            <input type="radio" name="size" value="XS" /> XS
+                            </label>
+                            <label>
+                            <input type="radio" name="size" value="S" /> S
+                            </label>
+                            <label>
+                            <input type="radio" name="size" value="M" /> M
+                            </label>
+                            <label>
+                            <input type="radio" name="size" value="L" /> L
+                            </label>
+                            <label>
+                            <input type="radio" name="size" value="XL" /> XL
+                            </label>
+                            <label>
+                            <input type="radio" name="size" value="XXL" /> XXL
+                            </label>
+                        </div>
+                    )}    
+                    </div>
                 </div>
             </div>
         <Slider />
