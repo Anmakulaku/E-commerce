@@ -1,4 +1,5 @@
 import { formatCurrency } from "../utilities/formatCurrency";
+import { Link } from "react-router-dom"
 import './StoreItem.css'
 
 type StoreItemProps = {
@@ -6,12 +7,13 @@ type StoreItemProps = {
     name: string;
     price: number;
     img: string;
-}
+    imgOther?: string[];
+};
 
 export function StoreItem ({ id, name, price, img}: StoreItemProps) {
     const quantity = 0;
     return (
-            <div key={id} className="storeItem__container">
+            <Link to={`/product/${id}`} key={id} className="storeItem__container">
                 <div className="storeItem__img">
                     <img src={img} alt="product-image" />
                 </div>
@@ -27,6 +29,6 @@ export function StoreItem ({ id, name, price, img}: StoreItemProps) {
                 <p className="cart-price">{calcPrice(quantity, item.price)}.00$</p>
                 <IconX onClick={() => removeFromCart(item.id)} />
                 </div> */}
-            </div>
-    );
+            </Link>
+    )
 }

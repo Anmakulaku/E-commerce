@@ -3,6 +3,7 @@
         "id": 1,
         "category": "accessories",
         "img": "/images/bag1.jpg",
+        "imgOther": ["/images/bag1O1.jpg", "/images/bag1O2.jpg"],
         "name": "Blue-cream bag",
         "price": 29.99
     },
