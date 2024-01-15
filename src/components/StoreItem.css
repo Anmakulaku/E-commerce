@@ -42,7 +42,7 @@
 }
 
 .storeItem__price {
-    color: #007bff;
+    font-family: var(--font-family);
 }
 
 .storeItem__btn {
@@ -54,7 +54,7 @@
     margin: 0 8px;
 }
 
-/* Dodaj stylizację dla prawego bloku karty, jeśli jest używany */
+/* Dodaj stylizację dla prawego bloku karty, jeśli jest używany
 .cart-right {
     display: flex;
     flex-direction: column;
@@ -71,11 +71,11 @@
 }
 
 /* Dodaj ikonę zamykania (przykładowa ikona) */
-.cart-right .icon-x {
+/* .cart-right .icon-x {
     color: #007bff;
     cursor: pointer;
 }
 
 .cart-right .icon-x:hover {
     color: #0056b3;
-}
+} */ 

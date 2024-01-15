@@ -39,10 +39,11 @@
     overflow: hidden;
     border: 1px solid #ddd;
     cursor: pointer;
+    transition: all 0.1s ease;
 }
 .productPage__imgOthers img:hover {
-    border: 1px solid #333; 
-    padding: 1rem;
+    box-shadow: 0px 5px 40px -20px rgb(124, 124, 130);
+    transform: scale(1.1);
 }
 .productPage__info{
     max-width: 38rem;
@@ -57,15 +58,50 @@
 .productPage__companyName{
     font-size: 1rem;
 }
+.productPage__title{
+    font-size: 2em;
+    line-height: 2.6rem;
+    margin: 1rem 0;
+}
+.productPage__price{
+    font-size: 1.5em;
+    line-height: 2rem;
+}
 .productPage__sizeBox{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
 }
+.productPage__sizeTitle{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 2rem 0 1rem 0;
+    font-family: var(--font-family-titles);
+    font-size: 1.2em;
+}
+.productPage__sizeSelected{
+    margin: 0 2rem;
+    font-weight: 700;
+}
 .productPage__sizeLabels{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
+    gap: 0.5rem;
+}
+.productPage__sizeLabelsItem{
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+    border: 1px solid var(--color-primary);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.productPage__sizeLabelsItem:hover,
+.productPage__sizeLabelsItem.selected{
+    background-color: var(--color-black);
+    color: var(--color-bg);
 }

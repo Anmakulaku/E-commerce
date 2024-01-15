@@ -4,8 +4,17 @@ import { Footer } from '../components/Footer';
 import { Slider } from '../components/Slider';
 import { Subscribe } from '../components/Subscribe';
 import './ProductPage.css';
+import { formatCurrency } from '../utilities/formatCurrency';
+import { useState } from 'react';
 
 export function ProductPage() {
+
+    const [selectedSize, setSelectedSize] = useState<string | null>(null);
+
+    const handleSizeSelection = (size: string) => {
+        setSelectedSize(size);
+    };
+
     const { id } = useParams<{ id?: string }>();
     if (!id) {
         return <div>Brak identyfikatora produktu</div>;
@@ -21,6 +30,8 @@ export function ProductPage() {
 
     const isAccessories = product.category === 'accessories';
 
+    
+
     return (
         <div className="productPage">
             <div className='productPage__content'>
@@ -35,31 +46,21 @@ export function ProductPage() {
                 <div className='productPage__info'>
                     <h2 className='productPage__titleStyle productPage__companyName'>FASCO</h2>
                     <span className='productPage__titleStyle productPage__title'>{product.name}</span>
-                    <span className='productPage__titleStyle productPage__price'>{product.price}</span>
-                    <div className='productPage__titleStyle productPage__sizeBox'>
-                        <span className='productPage__titleStyle productPage__sizeTitle'>Size:</span>
-                    {isAccessories ? 'One Size' : (
-                        <div className='productPage__sizeLabels'>
-                            <label>
-                            <input type="radio" name="size" value="XS" /> XS
-                            </label>
-                            <label>
-                            <input type="radio" name="size" value="S" /> S
-                            </label>
-                            <label>
-                            <input type="radio" name="size" value="M" /> M
-                            </label>
-                            <label>
-                            <input type="radio" name="size" value="L" /> L
-                            </label>
-                            <label>
-                            <input type="radio" name="size" value="XL" /> XL
-                            </label>
-                            <label>
-                            <input type="radio" name="size" value="XXL" /> XXL
-                            </label>
-                        </div>
-                    )}    
+                    <span className="productPage__titleStyle productPage__price">{formatCurrency(product.price)}</span>
+                    <div className= 'productPage__sizeBox'>
+                        <span className='productPage__sizeTitle'>Size: {selectedSize && <div className='productPage__sizeSelected'> {selectedSize}</div>}</span>
+                        {isAccessories ? (
+                            <button className={`productPage__sizeLabelsItem ${selectedSize === 'oneSize' && 'selected'}`} onClick={() => handleSizeSelection('One Size')}>One Size</button>
+                        ) : (
+                            <div className='productPage__sizeLabels'>
+                                <button className={`productPage__sizeLabelsItem ${selectedSize === 'XS' && 'selected'}`} onClick={() => handleSizeSelection('XS')}>XS</button>
+                                <button className={`productPage__sizeLabelsItem ${selectedSize === 'S' && 'selected'}`} onClick={() => handleSizeSelection('S')}>S</button>
+                                <button className={`productPage__sizeLabelsItem ${selectedSize === 'M' && 'selected'}`} onClick={() => handleSizeSelection('M')}>M</button>
+                                <button className={`productPage__sizeLabelsItem ${selectedSize === 'L' && 'selected'}`} onClick={() => handleSizeSelection('L')}>L</button>
+                                <button className={`productPage__sizeLabelsItem ${selectedSize === 'XL' && 'selected'}`} onClick={() => handleSizeSelection('XL')}>XL</button>
+                                <button className={`productPage__sizeLabelsItem ${selectedSize === 'XXL' && 'selected'}`} onClick={() => handleSizeSelection('XXL')}>XXL</button>
+                            </div>
+                        )}   
                     </div>
                 </div>
             </div>
