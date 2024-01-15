@@ -44,38 +44,3 @@
 .storeItem__price {
     font-family: var(--font-family);
 }
-
-.storeItem__btn {
-    padding: 1rem 2rem;
-    margin: 0 auto;
-}
-
-.quantity {
-    margin: 0 8px;
-}
-
-/* Dodaj stylizację dla prawego bloku karty, jeśli jest używany
-.cart-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    padding: 16px;
-    background-color: #f8f9fa;
-}
-
-.cart-price {
-    font-size: 18px;
-    font-weight: bold;
-    color: #007bff;
-    margin-bottom: 8px;
-}
-
-/* Dodaj ikonę zamykania (przykładowa ikona) */
-/* .cart-right .icon-x {
-    color: #007bff;
-    cursor: pointer;
-}
-
-.cart-right .icon-x:hover {
-    color: #0056b3;
-} */ 

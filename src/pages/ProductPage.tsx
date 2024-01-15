@@ -9,6 +9,8 @@ import { useState } from 'react';
 
 export function ProductPage() {
 
+
+    const quantity = 0;
     const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
     const handleSizeSelection = (size: string) => {
@@ -60,7 +62,22 @@ export function ProductPage() {
                                 <button className={`productPage__sizeLabelsItem ${selectedSize === 'XL' && 'selected'}`} onClick={() => handleSizeSelection('XL')}>XL</button>
                                 <button className={`productPage__sizeLabelsItem ${selectedSize === 'XXL' && 'selected'}`} onClick={() => handleSizeSelection('XXL')}>XXL</button>
                             </div>
-                        )}   
+                        )} 
+                        
+                    <div className="productPage__quantity">
+                        <div className='productPage__sizeTitle'> Quantity:</div>
+                            <div className='productPage__quantityContent'>
+                                <div className='productPage__changeQuantity'>
+                                    <button className='button productPage__btn'>-</button>
+                                        {quantity}
+                                    <button className='button productPage__btn'>+</button>
+                                </div>
+                                {quantity === 0 ? 
+                                    <button className='button productPage__btnAdd'>
+                                        <span className='productPage__titleStyle'>Add to Cart</span> 
+                                    </button> : null}
+                                        </div>
+                            </div>
                     </div>
                 </div>
             </div>
