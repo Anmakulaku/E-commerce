@@ -6,13 +6,13 @@ import { Subscribe } from '../components/Subscribe';
 import './ProductPage.css';
 import { formatCurrency } from '../utilities/formatCurrency';
 import { useState } from 'react';
+import { useShoppingCart } from '../context/ShoppingCartContext';
 
 export function ProductPage() {
-
-
-    const quantity = 0;
+    
+    const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart} = useShoppingCart()
+    
     const [selectedSize, setSelectedSize] = useState<string | null>(null);
-
     const handleSizeSelection = (size: string) => {
         setSelectedSize(size);
     };
@@ -23,16 +23,13 @@ export function ProductPage() {
     }
 
     const productId = parseInt(id, 10);
-
     const product = storeItems.find(item => item.id === productId);
+    const quantity = getItemQuantity(productId);
 
     if (!product) {
         return <div>Produkt nie został znaleziony</div>;
     }
-
     const isAccessories = product.category === 'accessories';
-
-    
 
     return (
         <div className="productPage">
@@ -68,19 +65,21 @@ export function ProductPage() {
                         <div className='productPage__sizeTitle'> Quantity:</div>
                             <div className='productPage__quantityContent'>
                                 <div className='productPage__changeQuantity'>
-                                    <button className='button productPage__btn'>-</button>
-                                        {quantity}
-                                    <button className='button productPage__btn'>+</button>
+                                    <button className='button productPage__btn' onClick={() => decreaseCartQuantity(productId)}>-</button>
+                                        <span>{quantity}</span>
+                                    <button className='button productPage__btn' onClick={() => increaseCartQuantity(productId)}>+</button>
                                 </div>
-                                {quantity === 0 ? 
-                                    <button className='button productPage__btnAdd'>
+                                    <button className='button productPage__btnAdd' onClick={() => increaseCartQuantity(productId)}>
                                         <span className='productPage__titleStyle'>Add to Cart</span> 
-                                    </button> : null}
-                                        </div>
+                                    </button> 
+                                <button className='button productPage__btnAdd' onClick={() => removeFromCart(productId)}>
+                                    <span className='productPage__titleStyle'>Remove</span> 
+                                </button> 
                             </div>
-                    </div>
+                        </div>
                 </div>
             </div>
+        </div>
         <Slider />
         <Subscribe />
         <Footer />

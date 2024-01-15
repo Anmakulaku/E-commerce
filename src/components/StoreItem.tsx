@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import './StoreItem.css'
 
 type StoreItemProps = {
-    id: number;
+    id: number | string;
     name: string;
     price: number;
     img: string;
