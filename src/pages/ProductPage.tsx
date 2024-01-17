@@ -11,7 +11,6 @@ import { useShoppingCart } from '../context/ShoppingCartContext';
 export function ProductPage() {
     
     const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart} = useShoppingCart()
-    
     const [selectedSize, setSelectedSize] = useState<string | null>(null);
     const handleSizeSelection = (size: string) => {
         setSelectedSize(size);

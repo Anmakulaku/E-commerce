@@ -5,7 +5,6 @@ import { useShoppingCart } from "../context/ShoppingCartContext";
 export function Navbar() {
 
     const { openCart, cartQuantity } = useShoppingCart();
-    console.log(cartQuantity);
     return(
         <div className="nav section__margin">
             <div className="nav__container"> 
@@ -16,7 +15,6 @@ export function Navbar() {
                     <div className="nav__links-items">
                         <NavLink to='/'> Home </NavLink>
                         <NavLink to='/store'> Store </NavLink>
-                        <NavLink to='/productPage'> Product Page </NavLink>
                     </div>
                     {/* <div className='nav__signup'>
                         <button className='button nav__btn' type="button">

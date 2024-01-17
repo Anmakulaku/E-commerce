@@ -13,6 +13,7 @@ export function ShoppingCart() {
         <div className='shoppingCart__content'>
             <div className='shoppingCart__header'>
                 <h2>Shopping Cart</h2>
+                <p>Your Shopping Cart</p>
                 <button className='shoppingCart__closeButton' onClick={closeCart}>
                     &times;
                 </button>
@@ -22,11 +23,10 @@ export function ShoppingCart() {
             ))}
             <div className="shoppingCart__priceBox">
                 <div className="shoppingCart__totalPrice">
-                    <span className="shoppingCart__totalPriceTitle">Total: {formatCurrency(cartItems.reduce((total, cartItem) => {
+                    <span className="shoppingCart__totalPriceTitle">Total sum: {formatCurrency(cartItems.reduce((total, cartItem) => {
                         const item = storeItems.find(item=> item.id == cartItem.id)
                         return total + (item?.price || 0) * cartItem.quantity
-                    }, 0)
-                    )}
+                    }, 0))}
                     </span>
                 </div>
             </div>
