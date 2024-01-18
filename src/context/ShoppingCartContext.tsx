@@ -17,6 +17,9 @@ type ShoppingCartContext = {
     increaseCartQuantity: (id: number) => void
     decreaseCartQuantity: (id: number) => void
     removeFromCart: (id: number) => void
+    addGiftWrap: () => void;
+    isGiftWrapSelected: boolean;
+    toggleGiftWrap: () => void;
     cartQuantity: number 
     cartItems: CartItem[]
 }
@@ -30,6 +33,7 @@ export function useShoppingCart() {
 export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
     const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("shoppingCart", [])
     const [isOpen, setIsOpen] = useState(false)
+    const [isGiftWrapSelected, setIsGiftWrapSelected] = useState(false);
 
     const cartQuantity = cartItems.reduce((quantity, item) => {
         return item.quantity ? item.quantity + quantity : quantity;
@@ -76,9 +80,21 @@ export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
             return currItems.filter(item => item.id !== id)
         })
     }
+    function addGiftWrap() {
+        setCartItems((currItems) => {
+            const giftWrapItem: CartItem = {
+                id: -1, 
+                quantity: 1,
+            };
 
+            return [...currItems, giftWrapItem];
+        });
+    }
+    function toggleGiftWrap() {
+        setIsGiftWrapSelected((prev) => !prev);
+    }
     return (
-        <ShoppingCartContext.Provider value={{ getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart, openCart, closeCart, cartItems, cartQuantity}}>
+        <ShoppingCartContext.Provider value={{ getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart, openCart, closeCart, addGiftWrap, isGiftWrapSelected, toggleGiftWrap, cartItems, cartQuantity}}>
             {children}
             {isOpen && <ShoppingCart />} 
         </ShoppingCartContext.Provider>
