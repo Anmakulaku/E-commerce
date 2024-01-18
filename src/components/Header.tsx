@@ -3,6 +3,7 @@ import header1 from '../img/header1.png'
 import header2 from '../img/header2.png'
 import header3 from '../img/header3.jpg'
 import header4 from '../img/header4.png'
+import { Link } from 'react-router-dom'
 
 export function Header() {
 
@@ -22,7 +23,7 @@ export function Header() {
                         <span className='text1'>ULTIMATE</span>
                         <span className='text2'>SALE</span>
                         <span className='text3'>NEW COLLECTION</span>
-                        <button className='button header__btn' type="button">SHOP NOW </button>
+                        <Link to="/store" className="button header__btn"><span>SHOP NOW</span></Link>
                     </div>
                     <div className="header__grid-3 header__img-small">
                         <img src={header3} alt="img3" className='img3'/>

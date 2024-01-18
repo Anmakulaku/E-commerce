@@ -36,7 +36,11 @@ export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
     const [isGiftWrapSelected, setIsGiftWrapSelected] = useState(false);
 
     const cartQuantity = cartItems.reduce((quantity, item) => {
-        return item.quantity ? item.quantity + quantity : quantity;
+        if (item.id !== -1) {
+            return item.quantity ? item.quantity + quantity : quantity;
+        } else {
+            return quantity;
+        }
     }, 0);
 
     const openCart = () => setIsOpen(true);
@@ -84,7 +88,7 @@ export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
         setCartItems((currItems) => {
             const giftWrapItem: CartItem = {
                 id: -1, 
-                quantity: 1,
+                quantity: 0,
             };
 
             return [...currItems, giftWrapItem];

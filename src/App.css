@@ -38,8 +38,3 @@ body {
   cursor: pointer;
   transition: all 0.2s ease;
 }
-.button:hover {
-  background-color: var(--color-bg);
-  box-shadow: 0 0 0 1px var(--color-black);
-  color: var(--color-black);
-}

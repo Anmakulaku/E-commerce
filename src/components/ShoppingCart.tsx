@@ -3,6 +3,7 @@ import { formatCurrency } from "../utilities/formatCurrency";
 import { CartItem } from "./CartItem";
 import './ShoppingCart.css';
 import storeItems from "../data/itemsAll.json"
+import { Link } from "react-router-dom";
 
 
 export function ShoppingCart() {
@@ -18,37 +19,37 @@ export function ShoppingCart() {
 
     return (
         <div className="shoppingCartOverlay">
-        <div className="shoppingCart">
-            <div className='shoppingCart__content'>
-                <div className='shoppingCart__header'>
-                    <h2 className='shoppingCart__title'>Shopping Cart</h2>
-                    <span className='shoppingCart__shippingInfo'>Free shipping over $150</span>
-                    <button className='shoppingCart__closeButton' onClick={closeCart}>
-                        &times;
-                    </button>
-                </div>
-                {cartItems.map(item=> (
-                    <CartItem key={item.id} {...item} />
-                ))}
-                <div className="shoppingCart__footer">
-                    <div className="shoppingCart__totalPrice">
-                        <span className="shoppingCart__totalPriceTitle">Subtotal 
-                        <p>{formatCurrency(totalSumWithGiftWrap)}</p>
-                        </span>
+            <div className="shoppingCart">
+                <div className='shoppingCart__content'>
+                    <div className='shoppingCart__header'>
+                        <h2 className='shoppingCart__title'>Shopping Cart</h2>
+                        <span className='shoppingCart__shippingInfo'>Free shipping over $150</span>
+                        <button className='shoppingCart__closeButton' onClick={closeCart}>
+                            &times;
+                        </button>
                     </div>
-                    <div className="shoppingCart__giftWrap">
-                        <input
-                            type="checkbox"
-                            id="giftWrapCheckbox"
-                            checked={isGiftWrapSelected}
-                            onChange={toggleGiftWrap}
-                        />
-                        <label htmlFor="giftWrapCheckbox">Add Gift Wrap ($10)</label>
+                    {cartItems.map(item=> (
+                        <CartItem key={item.id} {...item} />
+                    ))}
+                    <div className="shoppingCart__footer">
+                        <div className="shoppingCart__totalPrice">
+                            <span className="shoppingCart__totalPriceTitle">Subtotal 
+                            <p>{formatCurrency(totalSumWithGiftWrap)}</p>
+                            </span>
+                        </div>
+                        <div className="shoppingCart__giftWrap">
+                            <input
+                                type="checkbox"
+                                id="giftWrapCheckbox"
+                                checked={isGiftWrapSelected}
+                                onChange={toggleGiftWrap}
+                            />
+                            <label htmlFor="giftWrapCheckbox">Add Gift Wrap ($10)</label>
+                        </div>
+                        <Link to="/cart" className="button shoppingCart__btn" onClick={closeCart}><span>View Cart</span></Link>
                     </div>
-                    <button className="button shoppingCart__btn">View Cart</button>
                 </div>
             </div>
-        </div>
         </div>
     );
 }
