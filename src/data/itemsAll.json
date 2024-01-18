@@ -1,6 +1,7 @@
 [
     {
         "id": 1,
+        "gender": "female",
         "category": "accessories",
         "img": "/images/bag1.jpg",
         "imgOther": ["/images/bag1O1.jpg", "/images/bag1O2.jpg"],
@@ -9,20 +10,25 @@
     },
     {
         "id": 2,
+        "gender": "female",
         "category": "accessories",
         "img": "/images/bag2.jpg",
+        "imgOther": ["/images/bag2O1.jpg", "/images/bag2O2.jpg"],
         "name": "Blue hand bag",
         "price": 39.99
     },
     {
         "id": 3,
+        "gender": "female",
         "category": "accessories",
         "img": "/images/bag3.jpg",
+        "imgOther": ["/images/bag3O1.jpg", "/images/bag3O2.jpg"],
         "name": "Cammel XL bag",
         "price": 49.99
     },
     {
         "id": 4,
+        "gender": "female",
         "category": "dress",
         "img": "/images/dress1.jpg",
         "imgOther": ["/images/dress1O1.jpg", "/images/dress1O2.jpg", "/images/dress1O3.jpg"],
@@ -31,30 +37,245 @@
     },
     {
         "id": 5,
+        "gender": "female",
         "category": "dress",
         "img": "/images/dress2.jpg",
+        "imgOther": ["/images/dress2O1.jpg", "/images/dress2O2.jpg"],
         "name": "Black summer dress",
         "price": 49.99
     },
     {
         "id": 6,
+        "gender": "female",
         "category": "dress",
         "img": "/images/dress3.jpg",
+        "imgOther": ["/images/dress3O1.jpg", "/images/dress3O2.jpg"],
         "name": "Green Christmass dress",
         "price": 49.99
     },
     {
         "id": 7,
+        "gender": "female",
         "category": "dress",
         "img": "/images/dress4.jpg",
+        "imgOther": ["/images/dress4O1.jpg", "/images/dress4O2.jpg"],
         "name": "Red dress",
         "price": 59.99
     },
     {
         "id": 8,
+        "gender": "female",
         "category": "dress",
-        "img": "/images/dress5O1.jpg",
+        "img": "/images/dress5.jpg",
+        "imgOther": ["/images/dress5O1.jpg", "/images/dress5O2.jpg", "/images/dress5O4.jpg"],
         "name": "Checked dress",
         "price": 59.99
+    },
+    {
+        "id": 9,
+        "gender": "female",
+        "category": "accessories",
+        "img": "/images/earrings1.jpg",
+        "imgOther": ["/images/earrings1O1.jpg", "/images/earrings1O2.png"],
+        "name": "Blue hearts",
+        "price": 19.99
+    },
+    {
+        "id": 10,
+        "gender": "female",
+        "category": "accessories",
+        "img": "/images/hat1.jpg",
+        "imgOther": ["/images/hat1O1.jpg", "/images/hat1O3.jpg"],
+        "name": "Autumn hat",
+        "price": 34.99
+    },
+    {
+        "id": 11,
+        "gender": "female",
+        "category": "accessories",
+        "img": "/images/hat2O1.jpg",
+        "imgOther": ["/images/hat2O2.png", "/images/hat2.jpg"],
+        "name": "Large brim hat",
+        "price": 46.99
+    },
+    {
+        "id": 12,
+        "gender": "female",
+        "category": "accessories",
+        "img": "/images/hat3.jpg",
+        "imgOther": ["/images/hat3O1.jpg", "/images/hat3O2.jpg"],
+        "name": "Straw hat",
+        "price": 29.99
+    },
+    {
+        "id": 13,
+        "gender": "female",
+        "category": "clothes",
+        "img": "/images/hoodie1.jpg",
+        "imgOther": ["/images/hoodie1O1.jpg", "/images/hoodie1O2.jpg"],
+        "name": "Sweatshirt",
+        "price": 31.99
+    },
+    {
+        "id": 14,
+        "gender": "female",
+        "category": "clothes",
+        "img": "/images/Hoodie2.jpg",
+        "imgOther": ["/images/hoodie2O1.jpg", "/images/hoodie2O2.jpg"],
+        "name": "Hoodie",
+        "price": 44.99
+    },
+    {
+        "id": 15,
+        "gender": "female",
+        "category": "clothes",
+        "img": "/images/jacket1.jpg",
+        "imgOther": ["/images/jacket1O1.jpg", "/images/jacket1O2.jpg"],
+        "name": "Red jacket",
+        "price": 69.99
+    },
+    {
+        "id": 16,
+        "gender": "female",
+        "category": "clothes",
+        "img": "/images/jacket2.jpg",
+        "imgOther": ["/images/jacket2O1.jpg", "/images/jacket2O2.jpg"],
+        "name": "Coco jacket",
+        "price": 75.99
+    },
+    {
+        "id": 17,
+        "gender": "female",
+        "category": "clothes",
+        "img": "/images/jacket3.jpg",
+        "imgOther": ["/images/jacket3O1.jpg", "/images/jacket3O2.jpg", "/images/jacket3O3.jpg"],
+        "name": "Black jacket",
+        "price": 52.99
+    },
+    {
+        "id": 18,
+        "gender": "female",
+        "category": "clothes",
+        "img": "/images/jacket4.jpg",
+        "imgOther": ["/images/jacket4O1.jpg", "/images/jacket4O2.jpg"],
+        "name": "Grey jacket",
+        "price": 52.99
+    },
+    {
+        "id": 19,
+        "gender": "female",
+        "category": "clothes",
+        "img": "/images/jacket5.jpg",
+        "imgOther": ["/images/jacket5O1.jpg", "/images/jacket5O2.jpg"],
+        "name": "Bisquit coat",
+        "price": 77.99
+    },
+    {
+        "id": 20,
+        "gender": "female",
+        "category": "accessories",
+        "img": "/images/sunGl1.jpg",
+        "imgOther": ["/images/sunGl1O1.jpg", "/images/sunGl1O2.jpg", "/images/sunGl1O3.png"],
+        "name": "Sunglasses",
+        "price": 29.99
+    },
+    {
+        "id": 21,
+        "gender": "female",
+        "category": "accessories",
+        "img": "/images/sunGl2O1.jpg",
+        "imgOther": ["/images/sunGl2.jpg", "/images/sunGl2O4.jpg", "/images/sunGl2O2.jpg"],
+        "name": "Ray Ban Sunglasses",
+        "price": 55.99
+    },
+    {
+        "id": 22,
+        "gender": "female",
+        "category": "clothes",
+        "img": "/images/top1O1.jpg",
+        "imgOther": ["/images/top1.jpg", "/images/top1O2.jpg"],
+        "name": "Top",
+        "price": 23.99
+    },
+    {
+        "id": 23,
+        "gender": "female",
+        "category": "clothes",
+        "img": "/images/top2.jpg",
+        "imgOther": ["/images/top2O1.jpg", "/images/top2O2.jpg"],
+        "name": "Flowers top",
+        "price": 27.99
+    },
+    {
+        "id": 24,
+        "gender": "female",
+        "category": "clothes",
+        "img": "/images/top3.jpg",
+        "imgOther": ["/images/top3O1.jpg", "/images/top3O2.jpg", "/images/top3O3.jpg"],
+        "name": "White Shirt",
+        "price": 32.99
+    },
+    {
+        "id": 25,
+        "gender": "female",
+        "category": "clothes",
+        "img": "/images/top4.jpg",
+        "imgOther": ["/images/top4O1.jpg", "/images/top4O2.jpg", "/images/top4O3.jpg"],
+        "name": "Light shirt",
+        "price": 37.99
+    },
+    {
+        "id": 26,
+        "gender": "female",
+        "category": "clothes",
+        "img": "/images/trousers1.jpg",
+        "imgOther": ["/images/trousers1O1.jpg", "/images/trousers1O2.jpg"],
+        "name": "Blue Jeans",
+        "price": 69.99
+    },
+    {
+        "id": 27,
+        "gender": "female",
+        "category": "clothes",
+        "img": "/images/trousers2O3.jpg",
+        "imgOther": ["/images/trousers2O1.jpg", "/images/trousers2O2.jpg", "/images/trousers2.jpg"],
+        "name": "Summer Trousers",
+        "price": 49.99
+    },
+    {
+        "id": 28,
+        "gender": "female",
+        "category": "clothes",
+        "img": "/images/trousers3O3.jpg",
+        "imgOther": ["/images/trousers3O2.jpg", "/images/trousers3.jpg"],
+        "name": "Soldier Trousers",
+        "price": 62.99
+    },
+    {
+        "id": 29,
+        "gender": "female", 
+        "category": "accessories",
+        "img": "/images/wallet1.jpg",
+        "imgOther": ["/images/wallet1O1.jpg", "/images/wallet1O2.jpg"],
+        "name": "Ginger Wallet",
+        "price": 59.99
+    },
+    {
+        "id": 30,
+        "gender": "female", 
+        "category": "accessories",
+        "img": "/images/earrings2.jpg",
+        "imgOther": ["/images/earrings2O1.jpg", "/images/earrings2O2.jpg"],
+        "name": "Laurel earrings",
+        "price": 89.99
+    },
+    {
+        "id": 31,
+        "gender": "female",
+        "category": "clothes",
+        "img": "/images/trousers4O2.jpg",
+        "imgOther": ["/images/trousers4O1.jpg", "/images/trousers4.jpg"],
+        "name": "Slim Jeans",
+        "price": 62.99
     }
 ]

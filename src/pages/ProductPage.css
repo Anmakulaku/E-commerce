@@ -35,9 +35,9 @@
 .productPage__imgOthers img{
     width: 100%;
     height: auto;
-    object-fit: cover;
-    object-position: center;
     overflow: hidden;
+    display: flex;
+    align-items: center;
     border: 1px solid #ddd;
     cursor: pointer;
     transition: all 0.1s ease;
