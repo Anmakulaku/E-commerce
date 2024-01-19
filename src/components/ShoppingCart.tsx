@@ -44,7 +44,7 @@ export function ShoppingCart() {
                                 checked={isGiftWrapSelected}
                                 onChange={toggleGiftWrap}
                             />
-                            <label htmlFor="giftWrapCheckbox">Add Gift Wrap ($10)</label>
+                            <label htmlFor="giftWrapCheckbox">  Add Gift Wrap ($10)</label>
                         </div>
                         <Link to="/cart" className="button shoppingCart__btn" onClick={closeCart}><span>View Cart</span></Link>
                     </div>
