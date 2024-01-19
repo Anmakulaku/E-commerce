@@ -2,7 +2,7 @@ import { formatCurrency } from "../utilities/formatCurrency";
 import { Link } from "react-router-dom"
 import './StoreItem.css'
 
-type StoreItemProps = {
+export type StoreItemProps = {
     id: number | string;
     name: string;
     price: number;

@@ -98,9 +98,6 @@
     border-radius: 10px;
     cursor: pointer;
 }
-.subscribe__btn:hover{
-    background-color: rgba(211, 212, 213, 1);
-}
 /* .modal-overlay {
     position: fixed;
     z-index: 7;

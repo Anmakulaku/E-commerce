@@ -54,10 +54,7 @@
     padding: 1rem 4rem;
     margin: 1.5rem 0 1rem 0;
 }
-.slider__btn :hover{
-    background-color: var(--color-bg);
-    color: var(--color-black);
-}
+
 .features{
     max-width: 1200px;
     margin: 0 auto;

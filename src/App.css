@@ -32,9 +32,14 @@ body {
 .button {
   position: relative;
   background-color: var(--color-black);
+  border: 2px solid transparent;
   color: var(--color-white);
-  border: none;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s ease;
+}
+.button:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-color: var(--color-secondary); 
 }

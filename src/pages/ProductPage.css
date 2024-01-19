@@ -129,8 +129,9 @@
     color: var(--color-black);
     font-size: 2rem;
 }
-.button:hover{
-    box-shadow: none;
+.productPage__btn:hover{
+    background-color: var(--color-bg);
+    border: 1px solid transparent;
     color: var(--color-primary);
 }
 .productPage__btnAdd{

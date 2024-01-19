@@ -80,11 +80,6 @@
     padding: 1rem 4rem;
     text-decoration: none;
 }
-.header__btn:hover,
-.header__btn:focus{
-    background-color: var(--color-bg);
-    color: var(--color-red);
-}
 .header__img-big {
     overflow: hidden;
     border-radius: 10px;

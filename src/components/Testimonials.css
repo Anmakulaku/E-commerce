@@ -27,12 +27,16 @@
     position: relative;
 }
 .testimonials__arrowBox{
-    margin-top: 3rem;
+    margin-top: 4rem;
     width: 7.5rem;
     height: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: transform 0.3s ease;
+}
+.testimonials__arrowBox :hover{
+    transform: scale(1.1);
 }
 .testimonials__arrow{
     display: flex;
@@ -46,6 +50,6 @@
     color: var(--color-black);
     border-radius: 50%;
     cursor: pointer;
-    transition: background-color 0.3s ease;
     user-select: none;
 }
+
