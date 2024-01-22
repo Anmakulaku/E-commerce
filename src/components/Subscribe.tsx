@@ -32,8 +32,15 @@ export function Subscribe() {
         if (isValidEmail) {
             console.log('Subscribed with email:', email);
             setIsSubscribed(true);
+            setEmail(''); 
         } else {
             console.log('Invalid email address');
+        }
+    };
+
+    const handleEnterKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter') {
+            handleSubscribe();
         }
     };
 
@@ -56,6 +63,7 @@ export function Subscribe() {
                             placeholder='Enter your email...'
                             value={email}
                             onChange={handleInputChange}
+                            onKeyDown={handleEnterKeyPress}
                         />
                         {emailError && <p className='error-message'>{emailError}</p>}
                         <div className='subscribe__btnBg'>
