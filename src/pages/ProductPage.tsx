@@ -5,40 +5,79 @@ import { Slider } from '../components/Slider';
 import { Subscribe } from '../components/Subscribe';
 import './ProductPage.css';
 import { formatCurrency } from '../utilities/formatCurrency';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useShoppingCart } from '../context/ShoppingCartContext';
 
 export function ProductPage() {
-    
-    const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart} = useShoppingCart()
+    const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart } = useShoppingCart();
+    const { id } = useParams<{ id?: string }>();
+
     const [selectedSize, setSelectedSize] = useState<string | null>(null);
+    const [mainImage, setMainImage] = useState<string | null>(null);
+    const [product, setProduct] = useState<{
+        id: number;
+        gender: string;
+        category: string;
+        img: string;
+        imgOther: string[];
+        name: string;
+        price: number;
+    } | null>(null);
+
+    let productId = -1; 
+
+    if (id) {
+        productId = parseInt(id, 10);
+    }
+
+    useEffect(() => {
+        if (id && productId) {
+            const foundProduct = storeItems.find(item => item.id === productId);
+
+            if (foundProduct) {
+                setProduct(foundProduct);
+
+                if (foundProduct.img) {
+                    setMainImage(foundProduct.img);
+                } else if (foundProduct.imgOther && foundProduct.imgOther.length > 0) {
+                    setMainImage(foundProduct.imgOther[0]);
+                }
+            }
+        }
+    }, [id, productId]);
+
+    if (!id || !product) {
+        return <div>Brak identyfikatora produktu</div>;
+    }
+
+    const quantity = getItemQuantity(product.id);
+    const isAccessories = product.category === 'accessories';
+
+    const handleImageClick = (clickedImage: string) => {
+        setMainImage(clickedImage);
+    };
+
     const handleSizeSelection = (size: string) => {
         setSelectedSize(size);
     };
 
-    const { id } = useParams<{ id?: string }>();
-    if (!id) {
-        return <div>Brak identyfikatora produktu</div>;
-    }
-
-    const productId = parseInt(id, 10);
-    const product = storeItems.find(item => item.id === productId);
-    const quantity = getItemQuantity(productId);
-
-    if (!product) {
-        return <div>Produkt nie został znaleziony</div>;
-    }
-    const isAccessories = product.category === 'accessories';
-
     return (
         <div className="productPage">
-            <div className='productPage__content'>
-                <div className='productPage__images'>
-                    <img src={product.img} alt={product.name} className='productPage__imgMain'/>
-                    <div className='productPage__imgOthers'>
-                        {product.imgOther?.map((otherImg, index) => (
-                            <img key={index} src={otherImg} alt={`${product.name} - Additional Image ${index + 1}`} />
-                        ))}
+        <div className='productPage__content'>
+            <div className='productPage__images'>
+            {mainImage && (
+                <img src={mainImage} alt={product.name} className="productPage__imgMain" />
+            )}
+            <div className='productPage__imgOthers'>
+                {[product.img, ...product.imgOther].map((img, index) => (
+                <img
+                    key={index}
+                    src={img}
+                    alt={index === 0 ? product.name : `${product.name} - Additional Image ${index}`}
+                    onClick={() => handleImageClick(img)}
+                    className={img === mainImage ? 'selected' : ''}
+                />
+                ))}
                     </div>
                 </div>
                 <div className='productPage__info'>

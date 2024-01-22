@@ -4,6 +4,7 @@ import highQualityIcon from "../img/highQualityicon.svg"
 import warrantyicon from "../img/warrantyicon.svg"
 import freeShippingicon from "../img/freeShippingicon.svg"
 import supporticon from "../img/supporticon.svg"
+import { Link } from 'react-router-dom'
 
 export function Slider() {
     return(
@@ -17,7 +18,7 @@ export function Slider() {
                     <p className='slider__description'>Women Collection</p>
                     <h2 className='slider__title'>Peaky Blinders</h2>
                     <p className='slider__description'>Discover a unique style inspired by the world of Peaky Blinders! White shirt, suspenders, flat cap, stylish trousers - become a member of the Shelby family. Choose elegance and class to create your own distinctive look today! </p>
-                    <button className='button slider__btn'> Shop Now </button>
+                    <Link to="/store" className="button slider__btn"><span>Shop Now</span></Link>
                 </div>
             </div>
             <div className='features section__margin'>
