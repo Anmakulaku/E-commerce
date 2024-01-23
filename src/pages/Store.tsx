@@ -82,29 +82,29 @@ export function Store() {
 
     return (
         <div className="store__container">
-            <div className="category__selection">
-                <button onClick={handleShowAll}>Show All</button>
-                <button onClick={() => handleCategoryChange('accessories')}>Accessories</button>
-                <button onClick={() => handleCategoryChange('clothes')}>Clothes</button>
+            <div className="store__categorySelection">
+                <button onClick={handleShowAll} className='story__categoryItems'>Show All</button>
+                <button onClick={() => handleCategoryChange('accessories')} className='story__categoryItems'>Accessories</button>
+                <button onClick={() => handleCategoryChange('clothes')} className='story__categoryItems'>Clothes</button>
             </div>
             {selectedCategory && (
-                <div className="subcategory__selection">
+                <div className="store__subcategorySelection">
                     {selectedCategory === 'accessories' ? (
-                        <>
-                            <button onClick={() => handleSubcategoryChange('bags')}>Bags</button>
-                            <button onClick={() => handleSubcategoryChange('earrings')}>Earrings</button>
-                            <button onClick={() => handleSubcategoryChange('wallets')}>Wallets</button>
-                            <button onClick={() => handleSubcategoryChange('hats')}>Hats</button>
-                            <button onClick={() => handleSubcategoryChange('sunglasses')}>Sunglasses</button>
-                        </>
+                        <div className='store__subcategorySelection'>
+                            <button onClick={() => handleSubcategoryChange('bags')} className='story__subcategoryItems'>Bags</button>
+                            <button onClick={() => handleSubcategoryChange('earrings')} className='story__subcategoryItems'>Earrings</button>
+                            <button onClick={() => handleSubcategoryChange('wallets')} className='story__subcategoryItems'>Wallets</button>
+                            <button onClick={() => handleSubcategoryChange('hats')} className='story__subcategoryItems'>Hats</button>
+                            <button onClick={() => handleSubcategoryChange('sunglasses')} className='story__subcategoryItems'>Sunglasses</button>
+                        </div>
                     ) : selectedCategory === 'clothes' ? (
-                        <>
-                            <button onClick={() => handleSubcategoryChange('trousers')}>Trousers</button>
-                            <button onClick={() => handleSubcategoryChange('tops')}>Tops</button>
-                            <button onClick={() => handleSubcategoryChange('hoodies')}>Hoodies & Sweatshirts</button>
-                            <button onClick={() => handleSubcategoryChange('jackets')}>Jackets</button>
-                            <button onClick={() => handleSubcategoryChange('dresses')}>Dresses</button>
-                        </>
+                        <div className='store__subcategorySelection'>
+                            <button onClick={() => handleSubcategoryChange('trousers')} className='story__subcategoryItems'>Trousers</button>
+                            <button onClick={() => handleSubcategoryChange('tops')} className='story__subcategoryItems'>Tops</button>
+                            <button onClick={() => handleSubcategoryChange('hoodies')} className='story__subcategoryItems'>Hoodies & Sweatshirts</button>
+                            <button onClick={() => handleSubcategoryChange('jackets')} className='story__subcategoryItems'>Jackets</button>
+                            <button onClick={() => handleSubcategoryChange('dresses')} className='story__subcategoryItems'>Dresses</button>
+                        </div>
                     ) : null}
                 </div>
             )}
@@ -115,8 +115,8 @@ export function Store() {
                 ))}
             </div>
             <ReactPaginate
-                previousLabel={<MdChevronLeft className="pagination-arrow" />}
-                nextLabel={<MdChevronRight className="pagination-arrow" />}
+                previousLabel={<MdChevronLeft className="store__pagination-arrow" />}
+                nextLabel={<MdChevronRight className="store__pagination-arrow" />}
                 breakLabel={'...'}
                 pageCount={Math.ceil(filteredItems.length / itemsPerPage)}
                 marginPagesDisplayed={2}
