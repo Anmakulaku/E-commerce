@@ -38,10 +38,17 @@
 
 .storeItem__title,
 .storeItem__price {
-    font-size: 1.2em;
     line-height: var(--line-height);
     word-spacing: 1px;
     text-decoration: none;
+}
+.storeItem__title{
+    font-size: 1.2em;
+}
+.storeItem__price{
+    font-size: 1em;
+    font-weight: 600;
+    margin: 0.5rem 0;
 }
 
 .storeItem__price {
