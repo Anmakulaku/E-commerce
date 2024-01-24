@@ -1,7 +1,6 @@
 .footer {
     width: 100%;
     background: transparent;
-    /* background-color: var(--color-bg); */
 }
 
 .footer__container {
@@ -18,7 +17,7 @@
 }
 
 .footer__links-items {
-    font-size: var(--font-size);
+    font-size: 1em;
 }
 
 .footer__links-items a {
@@ -36,4 +35,8 @@
     justify-content: center;
     margin-top: 3rem;
 }
-
+@media screen and (max-width:1024px) {
+    .footer__copyright{
+        margin-top: 1.5rem;
+    }
+}

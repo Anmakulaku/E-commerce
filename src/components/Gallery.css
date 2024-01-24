@@ -45,3 +45,8 @@
 .gallery__box img:hover {
     transform: scale(1.01);
 } 
+@media screen and (max-width:1024px) {
+    .gallery__title {
+        font-size: 1.5em;
+    }
+}

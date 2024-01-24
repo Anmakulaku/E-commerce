@@ -52,4 +52,9 @@
     cursor: pointer;
     user-select: none;
 }
-
+@media screen and (max-width: 1024px) {
+    .testimonials__title {
+        font-size: 1.5em;
+        line-height: 3rem;
+    }
+}

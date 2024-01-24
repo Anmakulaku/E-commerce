@@ -81,3 +81,21 @@
     align-items: flex-start;
     margin: 0;
 }
+@media screen and (max-width: 1024px) {
+    .slider__title{
+        font-size: 2em;
+    }
+    .slider__description{
+        line-height: 1.5rem;
+    }
+    .slider__btn{
+        padding: 0.5rem 4rem;
+    }
+    .features__item img{
+        width: 15%;
+        margin: 0 1rem;
+    }
+    .features__text{
+        font-size: 0.8em;
+    }
+}

@@ -24,6 +24,7 @@ body, p, span, h3 {
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
+  overflow-x: hidden;
 }
 .App{
   max-width: 2000px;
@@ -42,4 +43,19 @@ body {
   background-color: var(--color-white);
   color: var(--color-black);
   border-color: var(--color-secondary); 
+}
+
+@media screen and (max-width: 1024px) {
+  .App{
+    max-width: 1000px;
+  }
+  .section__margin {
+    padding: 1rem 0;
+  }
+  .section__padding {
+    padding: 0.5rem;
+  }
+  .button{
+    font-size: 0.8em;
+  }
 }
