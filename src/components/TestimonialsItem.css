@@ -13,11 +13,11 @@
 }
 
 .testimonialsItem:first-child {
-    transform: translateX(60%);
+    transform: translateX(70%);
 }
 
 .testimonialsItem:last-child {
-    transform: translateX(-60%);
+    transform: translateX(-70%);
 }
 .testimonialsItem__container{
     display: flex;
@@ -77,10 +77,10 @@
     margin: 1rem 0;
     padding-top: 1rem;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 1024px) {
     .testimonialsItem {
-        width: 500px;
-        max-height: 200px;
+        width: 31rem;
+        max-height: 12.5rem;
         padding: 1rem;
     }
     .testimonialsItem__img{

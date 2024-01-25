@@ -1,5 +1,5 @@
 .nav {
-    max-width: 1200px;
+    max-width: 2000px;
     margin: 0 auto;
     z-index: 50;
     background-color: var(--color-bg);
@@ -10,7 +10,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 .nav__logo{
     margin-left: 0;

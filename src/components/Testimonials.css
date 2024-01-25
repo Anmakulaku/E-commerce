@@ -14,7 +14,7 @@
 }
 
 .testimonials__text {
-    font-size: var(--font-size);
+    font-size: 1em;
     margin-bottom: 20px;
     max-width: 40rem;
     text-align:center;
@@ -52,7 +52,7 @@
     cursor: pointer;
     user-select: none;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 1024px) {
     .testimonials__title {
         font-size: 1.5em;
         line-height: 3rem;

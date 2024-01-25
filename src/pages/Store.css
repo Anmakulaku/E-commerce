@@ -1,6 +1,10 @@
-.store__container {
+.store{
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.store__container {
+    width: 100%;
     transition: all 0.2s ease;
 }
 .store__categorySelection{
@@ -40,8 +44,9 @@
 }
 .store__products {
     display: grid;
+    justify-items: center;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1rem;
+    gap: 0.5rem;
 }
 
 .store__title {

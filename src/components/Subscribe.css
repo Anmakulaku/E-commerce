@@ -125,6 +125,8 @@
 }
 .modal.show {
     display: block;
+    width: 100%;
+    z-index: 100;
 }
 .modal-content {
     background-color: var(--color-white);
@@ -175,7 +177,8 @@
         margin-bottom: 1rem;
     }
     .subscribe__info {
-        font-size: 0.8em;
-        line-height: 1.625rem;
+        font-size: 0.9em;
+        line-height: 1.5rem;
+        text-align: justify;
     }
 }
