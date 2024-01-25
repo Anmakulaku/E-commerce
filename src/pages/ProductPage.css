@@ -5,7 +5,7 @@
 .productPage__content{
     display: grid;
     justify-items: center;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.2fr;
     margin-bottom: 2rem;
 }
 .productPage__images{
@@ -113,7 +113,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    gap: 1.5rem;
+    gap: 0.5rem;
 }
 .productPage__changeQuantity{
     border: 1px solid var(--color-primary);
@@ -170,5 +170,61 @@
     }
     .productPage__btnAdd{
         margin: 0 0.5rem;
+    }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .productPage{
+        max-width: 43rem;
+    }
+    .productPage__images{
+        max-width: 15rem;
+    }
+    .productPage__imgMain{
+        max-width: 15rem;
+        margin-bottom: 1rem;
+    }
+    .productPage__imgOthers{
+        gap: 1rem;
+    }
+    .productPage__title{
+        font-size: 1.5em;
+        line-height: 1.5rem;
+        /* margin: 0.5rem 0; */
+    }
+    .productPage__price{
+        font-size: 1em;
+        line-height: 1.2rem;
+    }
+    .productPage__sizeTitle{
+        margin: 0.5rem 0;
+        font-size: 1em;
+    }
+    .productPage__sizeLabelsItem{
+        padding: 0.6rem;
+        font-size: 0.8em;
+    }
+    .productPage__btnAdd{
+        margin: 0 0.5rem;
+    }
+    .productPage__quantity{
+        margin: 0.5rem 0;
+    }
+    .productPage__changeQuantity{
+        border: 1px solid var(--color-primary);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .productPage__btn{
+        padding: 0.2rem 0.5rem;
+        font-size: 1rem;
+    }
+    .productPage__changeQuantity span{
+        font-size: 0.8em;
+    }
+    .productPage__btnAdd{
+        margin: 0;
+        padding: 0.5rem 1rem;
     }
 }
