@@ -5,6 +5,8 @@
     top: 0;
     right: 0;
     background-color: var(--color-white);
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 .shoppingCart__content{
     width: 100%;
@@ -46,7 +48,7 @@
     margin-right: 1rem;
 }
 .shoppingCart__btn{
-    width: 100%;
+    width: 95%;
     display: flex;
     justify-content: center;
     padding: 1rem ;
@@ -56,6 +58,9 @@
 .shoppingCart__btn:hover{
     color: var(--color-secondary);
     border: 1px solid var(--color-black);
+}
+.shoppingCart__giftWrap{
+    padding-top: 0.5rem;
 }
 .shoppingCartOverlay {
     position: fixed;
@@ -74,5 +79,21 @@
     .shoppingCart__title{
         font-size: 1.8rem;
         margin: 0.5rem 0;
+    }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .shoppingCart{
+        width: 35rem;
+    }
+    .shoppingCart__title{
+        font-size: 1.2rem;
+        margin: 0.5rem 0;
+    }
+    .shoppingCart__totalPrice span,
+    .shoppingCart__totalPrice p{
+        font-size: 1em;
+    }
+    .shoppingCart__giftWrap{
+        font-size: 0.8em;
     }
 }

@@ -25,7 +25,7 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    font-size: var(--font-size);
+    font-size: 1em;
 }
 .nav__links-items a {
     text-decoration: none;
@@ -81,9 +81,27 @@
     align-items: center;
     transition: all 0.3s ease;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 1024px) {
     .nav {
         max-width: 1000px;
         padding: 1.5rem 1rem;
+    }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .nav {
+        max-width: 760px;
+        padding: 0.7rem 1rem;
+    }
+    .nav__logo h1{
+        font-size: 1.5em;
+    }
+    .nav__cartIcon {
+        width: 2rem;
+        height: 2rem;
+    }
+    .nav__numCircle {
+        width: 1.2rem;
+        height: 1.2rem;
+        font-size: 0.8em;
     }
 }

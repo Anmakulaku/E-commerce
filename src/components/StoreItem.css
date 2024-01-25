@@ -15,11 +15,12 @@
 }
 
 .storeItem__img {
-    max-width: 280px;
-    height: 20rem;
+    max-width: 17.5rem;
+    aspect-ratio: 1/1.25;
     overflow: hidden;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .storeItem__img img {
@@ -38,7 +39,6 @@
 
 .storeItem__title,
 .storeItem__price {
-    line-height: var(--line-height);
     word-spacing: 1px;
     text-decoration: none;
 }
@@ -53,4 +53,16 @@
 
 .storeItem__price {
     font-family: var(--font-family);
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .storeItem__img {
+        max-width: 11rem;
+    }
+    .storeItem__title{
+        font-size: 1em;
+    }
+    .storeItem__price{
+        font-size: 0.8em;
+        margin: 0.3rem 0;
+    }
 }

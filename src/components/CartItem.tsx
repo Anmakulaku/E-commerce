@@ -16,7 +16,7 @@ export function CartItem ({id, quantity}: CartItemProps) {
     return(
         <div className="cartItem__content">
             <div className="cartItem__item">
-                <img src={item.img} alt="product image"/>
+                <img className="cartItem__itemImg" src={item.img} alt="product image"/>
                 <div className="cartItem__text">
                     <h3 className="cartItem__title">{item.name}</h3> 
                     <div className="cartItem__quantity">

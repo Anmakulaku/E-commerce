@@ -10,11 +10,12 @@
     gap: 2rem;
     border-bottom: 2px solid var(--color-primary);
 }
-
-.cartItem__item img{
+.cartItem__itemImg{
     width: 7rem;
-    max-height: 9rem;
     height: auto;
+    margin-bottom: 1rem;
+}
+.cartItem__item img{
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -43,7 +44,7 @@
     font-weight: 600;
 }
 .cartItem__btnRemove{
-    padding: 1rem 2rem;
+    padding: 0.5rem 2rem;
     margin: 0 2rem;
 }
 .cartItem__btnRemove:hover{
@@ -54,4 +55,16 @@
 }
 .cartItem__price span{
     font-weight: 600;
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .cartItem__item{
+        gap: 1rem;
+    }
+    .cartItem__quantity{
+        min-width: 25rem;
+    }
+    .cartItem__btn{
+        padding: 0.4rem 0.8rem;
+        font-size: 1.2em;
+    }
 }
