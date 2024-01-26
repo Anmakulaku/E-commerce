@@ -105,3 +105,27 @@
         text-align: justify;
     }
 }
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .slider__textBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 1rem 2rem;
+    }
+    .slider__title{
+        font-size: 1.5em;
+        line-height: 1.5rem;
+    }
+    .slider__description{
+        font-size: 0.8em;
+        line-height: 1.2rem;
+    }
+    .features__item img{
+        width: 15%;
+        margin: 0 1rem;
+    }
+    .features__text{
+        font-size: 0.6em;
+    }
+}

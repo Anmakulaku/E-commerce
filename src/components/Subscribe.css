@@ -1,24 +1,21 @@
 .subscribe {
-    width: 1200px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .subscribe__grid {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: 1fr 1.2fr 1fr;
     align-items: center;
     justify-content: center;
 }
 
 .subscribe__img {
-    max-width: 22rem;
+    max-width: 10rem;
     height: auto;
     position: relative;
-    right: 0;
-    display: flex;
-    justify-content: center;
+    right: -15%;
 }
 .subscribe__img img {
     width: auto;
@@ -169,7 +166,7 @@
         max-width: 1000px;
     }
     .subscribe__img img {
-        height: 500px;
+        height: 31rem;
     }
     .subscribe__title {
         font-size: 1.5em;
@@ -182,3 +179,23 @@
         text-align: justify;
     }
 }
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .subscribe{
+        max-width: 760px;
+    }
+    .subscribe__img img {
+        height: 18rem;
+    }
+    .subscribe__title {
+        font-size: 1em;
+        line-height: 1.5rem;
+    }
+    .subscribe__info {
+        font-size: 0.8em;
+        line-height: 1rem;
+    }
+    .subscribe__inputField {
+        height: 2.5rem;
+    }
+}
+

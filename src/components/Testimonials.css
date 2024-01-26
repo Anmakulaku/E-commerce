@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0 1rem;
+    margin: 0 1rem 1rem 1rem;
 }
 
 .testimonials__title {
@@ -56,5 +56,22 @@
     .testimonials__title {
         font-size: 1.5em;
         line-height: 3rem;
+    }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .testimonials__title {
+        font-size: 1.3em;
+        line-height: 2.5rem;
+    }
+    .testimonials__text {
+        font-size: 0.8em;
+        text-align: justify;
+        margin-bottom: 0;
+    }
+    .testimonials__arrowBox{
+        margin-top: 1.8rem;
+    }
+    .testimonials__arrow{
+        font-size: 1.5em;
     }
 }

@@ -40,3 +40,14 @@
         margin-top: 1.5rem;
     }
 }
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .footer__links-items {
+        font-size: 0.8em;
+    }
+    .footer__logo h1{
+        font-size: 1.5em;
+    }
+    .footer__copyright{
+        font-size: 0.8em;
+    }
+}
