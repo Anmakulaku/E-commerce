@@ -52,7 +52,7 @@ export function Subscribe() {
         <div className='subscribe section__margin'>
             <div className='subscribe__grid'>
                 <div className='subscribe__img'>
-                    <img src={subscribe1} alt="man photo" />
+                    <img src={subscribe1} alt="man photo" className='subscribe__imgMan' />
                 </div>
                 <div className='subscribe__text'>
                     <span className='subscribe__title'>Subscribe To Our Newsletter</span>
@@ -74,7 +74,7 @@ export function Subscribe() {
                     </div>
                 </div>
                 <div className='subscribe__img'>
-                    <img src={subscribe2} alt="woman photo" />
+                    <img src={subscribe2} alt="woman photo" className='subscribe__imgWoman'/>
                 </div>
             </div>
             {isSubscribed && (

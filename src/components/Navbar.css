@@ -105,3 +105,21 @@
         font-size: 0.8em;
     }
 }
+@media screen and (max-width: 480px) {
+    .nav {
+        max-width: 480px;
+        padding: 0.7rem 0.2rem;
+    }
+    .nav__logo h1{
+        font-size: 1.2em;
+    }
+    .nav__cartIcon {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+    .nav__numCircle {
+        width: 1rem;
+        height: 1rem;
+        font-size: 0.8em;
+    }
+}

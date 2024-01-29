@@ -110,9 +110,6 @@
     .header__btn{
         padding: 0.6rem 4rem;
     }
-    .img1 {
-        transform: scale(1.1);
-    }
     .header__btn span{
         font-size: 14px;
     }
@@ -138,11 +135,8 @@
     .header__btn{
         padding: 0.6rem 4rem;
     }
-    .img1 {
-        transform: scale(1.1);
-    }
     .header__btn{
-        padding: 0.5rem 2rem;
+        padding: 0.5rem 4rem;
     }
     
     .img1 {

@@ -6,6 +6,7 @@ export function Navbar() {
 
     const { openCart, cartQuantity } = useShoppingCart();
     return(
+        
         <div className="nav section__margin">
             <div className="nav__container"> 
                 <div className="nav__logo">

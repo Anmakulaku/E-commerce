@@ -8,20 +8,25 @@
     display: grid;
     grid-template-columns: 1fr 1.2fr 1fr;
     align-items: center;
-    justify-content: center;
 }
 
 .subscribe__img {
     max-width: 10rem;
     height: auto;
-    position: relative;
-    right: -15%;
+    
 }
 .subscribe__img img {
     width: auto;
     max-height: 43rem;
 }
-
+.subscribe__imgMan{
+    position: relative;
+    right: 1rem;
+}
+.subscribe__imgWoman{
+    position: relative;
+    left: 0;
+}
 .subscribe__text {
     display: flex;
     flex-direction: column;
@@ -29,6 +34,7 @@
     align-items: center;
     text-align:center;
     text-indent: 20px;
+    margin: 0 1rem;
 }
 
 .subscribe__title {
@@ -161,12 +167,20 @@
     animation: fadeIn 0.3s ease-in-out;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 1024px) {
     .subscribe{
         max-width: 1000px;
     }
     .subscribe__img img {
-        height: 31rem;
+        max-height: 31rem;
+    }
+    .subscribe__imgMan{
+        position: relative;
+        right: -1rem;
+    }
+    .subscribe__imgWoman{
+        position: relative;
+        left: 0;
     }
     .subscribe__title {
         font-size: 1.5em;
@@ -184,7 +198,15 @@
         max-width: 760px;
     }
     .subscribe__img img {
-        height: 18rem;
+        max-height: 21rem;
+    }
+    .subscribe__imgMan{
+        position: relative;
+        right: -1rem;
+    }
+    .subscribe__imgWoman{
+        position: relative;
+        left: 0;
     }
     .subscribe__title {
         font-size: 1em;
@@ -197,5 +219,8 @@
     .subscribe__inputField {
         height: 2.5rem;
     }
+}
+@media screen and (max-width: 480px) {
+    
 }
 

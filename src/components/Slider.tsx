@@ -12,13 +12,14 @@ export function Slider() {
             <div className='slider__grid'>
                 <div className='slider__imageBox'>
                     <img src={slider1} alt="Peaky Blinders woman"/>
+                    <Link to="/store" className="button slider__btn slider__btnMobile"><span>Shop Now</span></Link>
                     </div>
                 <div className='slider__separatorBox'></div>
                 <div className='slider__textBox'>
                     <p className='slider__description'>Women Collection</p>
                     <h2 className='slider__title'>Peaky Blinders</h2>
                     <p className='slider__description'>Discover a unique style inspired by the world of Peaky Blinders! White shirt, suspenders, flat cap, stylish trousers - become a member of the Shelby family. Choose elegance and class to create your own distinctive look today! </p>
-                    <Link to="/store" className="button slider__btn"><span>Shop Now</span></Link>
+                    <Link to="/store" className="button slider__btn slider__btnElse"><span>Shop Now</span></Link>
                 </div>
             </div>
             <div className='features section__margin'>
