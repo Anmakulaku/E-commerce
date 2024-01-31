@@ -35,9 +35,7 @@ export function Subscribe() {
             setEmail(''); 
         } else {
             console.log('Invalid email address');
-            setTimeout(() => {
-                setIsSubscribed(false);
-            }, 500);
+            setIsSubscribed(false);
         }
     };
 
