@@ -111,3 +111,30 @@
     }
     
 }
+@media screen and (max-width: 480px) {
+    .story__categoryItems,  
+    .story__subcategoryItems{
+        padding: 0.5rem 1rem;
+    }
+    .story__categoryItems{
+        font-size: 1em;
+    }
+    .story__subcategoryItems{
+        font-size: 0.8em;
+    }
+    .store__subcategorySelection{
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    .store__title {
+        font-size: 1em;
+        margin-bottom: 0;
+    }
+    .store__products {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+    .pagination li a{
+        font-size: 0.8em;
+    }
+}
