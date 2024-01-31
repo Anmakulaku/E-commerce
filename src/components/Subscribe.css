@@ -221,6 +221,44 @@
     }
 }
 @media screen and (max-width: 480px) {
-    
+    .subscribe{
+        max-width: 480px;
+        margin-top: 2rem;
+    }
+    .subscribe__grid {
+        grid-template-columns: 1fr 1.2fr;
+        align-items: flex-start;
+    }
+    .subscribe__img img {
+        max-height: 21rem;
+    }
+    .subscribe__imgMan{
+        position: relative;
+        right: 1rem;
+    }
+    .subscribe__imgWoman{
+        display: none;
+    }
+    .subscribe__text {
+        margin: 1rem;
+    }
+    .subscribe__title {
+        font-size: 1em;
+        line-height: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .subscribe__info {
+        font-size: 0.8em;
+        line-height: 1rem;
+    }
+    .subscribe__inputField {
+        height: 2.5rem;
+    }
+    .subscribe__btn {
+        padding: 1rem 2.2rem;
+    }
+    .subscribe__btnBg {
+        min-height: 5rem;
+    }
 }
 

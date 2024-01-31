@@ -141,7 +141,7 @@
 }
 @media screen and (max-width: 480px){
     .testimonialsItem {
-        width: 15rem;
+        width: 12rem;
         max-height: 20rem;
         padding: 0.5rem;
     }
