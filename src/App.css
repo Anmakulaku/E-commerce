@@ -60,5 +60,16 @@ body {
   }
 }
 @media screen and (max-width: 488px) {
-
+  .App{
+    max-width: 480px;
+  }
+  .section__margin {
+    padding: 1rem 0;
+  }
+  .section__padding {
+    padding: 0.5rem;
+  }
+  .button{
+    font-size: 0.8em;
+  }
 }
