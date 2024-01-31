@@ -81,7 +81,7 @@
         margin: 0.5rem 0;
     }
 }
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and  (max-width: 768px) {
     .shoppingCart{
         width: 35rem;
     }
@@ -92,6 +92,25 @@
     .shoppingCart__totalPrice span,
     .shoppingCart__totalPrice p{
         font-size: 1em;
+    }
+    .shoppingCart__giftWrap{
+        font-size: 0.8em;
+    }
+}
+@media screen and (max-width: 480px){
+    .shoppingCart{
+        width: 22rem;
+    }
+    .shoppingCart__content{
+        margin: 1rem;
+    }
+    .shoppingCart__title{
+        font-size: 1.2rem;
+        margin: 0.5rem 0;
+    }
+    .shoppingCart__totalPrice span,
+    .shoppingCart__totalPrice p{
+        font-size: em;
     }
     .shoppingCart__giftWrap{
         font-size: 0.8em;
