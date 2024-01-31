@@ -35,6 +35,9 @@ export function Subscribe() {
             setEmail(''); 
         } else {
             console.log('Invalid email address');
+            setTimeout(() => {
+                setIsSubscribed(false);
+            }, 500);
         }
     };
 
@@ -77,7 +80,7 @@ export function Subscribe() {
                     <img src={subscribe2} alt="woman photo" className='subscribe__imgWoman'/>
                 </div>
             </div>
-            {isSubscribed && (
+            {isSubscribed && isValidEmail && (
                 <div className={`modal ${isSubscribed ? 'show' : ''}`}>
                     <div className='modal-content'>
                         <p>Your subscription has been received.</p>
