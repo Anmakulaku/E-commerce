@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom';
-import storeItems from '../data/itemsAll.json';
 import { Footer } from '../components/Footer';
 import { Slider } from '../components/Slider';
 import { Subscribe } from '../components/Subscribe';
@@ -7,6 +6,7 @@ import './ProductPage.css';
 import { formatCurrency } from '../utilities/formatCurrency';
 import { useEffect, useState } from 'react';
 import { useShoppingCart } from '../context/ShoppingCartContext';
+import { getAllProducts } from '../services/productService';
 
 export function ProductPage() {
     const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart } = useShoppingCart();
@@ -31,8 +31,9 @@ export function ProductPage() {
     }
 
     useEffect(() => {
-        if (id && productId) {
-            const foundProduct = storeItems.find(item => item.id === productId);
+        const fetchData = async () => {
+            const allProducts = getAllProducts();
+            const foundProduct = allProducts.find(item => item.id === productId);
 
             if (foundProduct) {
                 setProduct(foundProduct);
@@ -43,7 +44,9 @@ export function ProductPage() {
                     setMainImage(foundProduct.imgOther[0]);
                 }
             }
-        }
+        };
+
+        fetchData();
     }, [id, productId]);
 
     if (!id || !product) {

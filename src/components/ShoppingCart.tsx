@@ -2,16 +2,16 @@ import { useShoppingCart } from "../context/ShoppingCartContext";
 import { formatCurrency } from "../utilities/formatCurrency";
 import { CartItem } from "./CartItem";
 import './ShoppingCart.css';
-import storeItems from "../data/itemsAll.json"
 import { Link } from "react-router-dom";
-
+import { getAllProducts } from '../services/productService';
 
 export function ShoppingCart() {
-    const { closeCart, cartItems, isGiftWrapSelected, toggleGiftWrap  } = useShoppingCart();
+    const { closeCart, cartItems, isGiftWrapSelected, toggleGiftWrap } = useShoppingCart();
     const giftWrapPrice = 10;
+    const allProducts = getAllProducts();
 
     const totalSum = cartItems.reduce((total, cartItem) => {
-        const item = storeItems.find((item) => item.id === cartItem.id);
+        const item = allProducts.find((item) => item.id === cartItem.id);
         return total + (item?.price || 0) * cartItem.quantity;
     }, 0);
 

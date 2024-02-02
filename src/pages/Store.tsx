@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import { StoreItem } from '../components/StoreItem';
 import { Footer } from '../components/Footer';
-import storeItems from '../data/itemsAll.json';
 import './Store.css';
 import { Subscribe } from '../components/Subscribe';
 import { Gallery } from '../components/Gallery';
 import { Slider } from '../components/Slider';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+import { getAllProducts } from '../services/productService'; 
 
 interface Product {
     id: number;
@@ -29,7 +29,17 @@ export function Store() {
     const [currentPage, setCurrentPage] = useState(0);
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null);
+    const [storeItems, setStoreItems] = useState<Product[]>([]); 
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const allProducts = getAllProducts();
+            setStoreItems(allProducts);
+        };
+
+        fetchData();
+    }, []);
+    
     const handlePageChange = (selectedPage: PageChange) => {
         setCurrentPage(selectedPage.selected);
     };

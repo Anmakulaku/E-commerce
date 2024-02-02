@@ -1,6 +1,6 @@
 import { useShoppingCart } from "../context/ShoppingCartContext"
-import storeItems from "../data/itemsAll.json"
 import { formatCurrency } from "../utilities/formatCurrency"
+import { getAllProducts } from '../services/productService'
 import "./CartItem.css"
 
 type CartItemProps ={
@@ -10,8 +10,10 @@ type CartItemProps ={
 
 export function CartItem ({id, quantity}: CartItemProps) {
     const { removeFromCart, increaseCartQuantity, decreaseCartQuantity }= useShoppingCart()
-    const item = storeItems.find(item=> item.id ==id)
-    if (item == null) return null
+    const allProducts = getAllProducts();
+
+    const item = allProducts.find(item => item.id === id);
+    if (item == null) return null;
 
     return(
         <div className="cartItem__content">
@@ -33,7 +35,6 @@ export function CartItem ({id, quantity}: CartItemProps) {
                         <p className="cartItem__price">Price: <span>{formatCurrency(item.price)}</span></p>
                         <p className="cartItem__price">Sum: <span>{formatCurrency(item.price*quantity)}</span></p>
                     </div>
-                    
                 </div>
             </div>
         </div>
