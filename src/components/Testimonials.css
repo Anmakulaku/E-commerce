@@ -1,5 +1,6 @@
 .testimonials {
     width: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,13 +22,16 @@
     text-indent: 20px;
 }
 .testimonials__items{
-    margin-top: 2rem;
+    width: auto;
+    height: 100%;
     display: flex;
     flex-direction: row;
     position: relative;
+    padding: 3rem;
+    overflow: hidden;
 }
 .testimonials__arrowBox{
-    margin-top: 4rem;
+    margin-top: 1rem;
     width: 7.5rem;
     height: auto;
     display: flex;

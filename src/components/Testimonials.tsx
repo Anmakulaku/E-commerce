@@ -1,21 +1,27 @@
 import { useState } from "react";
 import "./Testimonials.css";
 import { TestimonialsItem } from "../components/TestimonialsItem";
-import TestimonialsItems from "../data/itemTestimonials.json";
+import * as TestimonialsItems from "../data/itemTestimonials";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
 export function Testimonials() {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const nextSlide = () => {
-        setCurrentSlide((prevSlide) => (prevSlide + 1) % TestimonialsItems.length);
+        setCurrentSlide((prevSlide) => (prevSlide + 1) % TestimonialsItems.items.length);
     };
 
     const prevSlide = () => {
         setCurrentSlide(
-            (prevSlide) => (prevSlide - 1 + TestimonialsItems.length) % TestimonialsItems.length
+            (prevSlide) => (prevSlide - 1 + TestimonialsItems.items.length) % TestimonialsItems.items.length
         );
     };
+    const visibleSlides = [
+        TestimonialsItems.items[(currentSlide - 1 + TestimonialsItems.items.length) % TestimonialsItems.items.length],
+        TestimonialsItems.items[currentSlide],
+        TestimonialsItems.items[(currentSlide + 1) % TestimonialsItems.items.length],
+        
+    ];
 
     return (
         <div className="testimonials">
@@ -26,13 +32,13 @@ export function Testimonials() {
             us.
         </p>
         <div className="testimonials__items">
-        {[-1, 0, 1].map(offset => (
-            <TestimonialsItem
-                key={currentSlide + offset}
-                {...TestimonialsItems[(currentSlide + offset + TestimonialsItems.length) % TestimonialsItems.length]}
-                isMain={offset === 0}
-            />
-        ))}
+            {visibleSlides.map((testimonial) => (
+                <TestimonialsItem
+                    key={testimonial.id}
+                    {...testimonial}
+                    isMain={testimonial.id === currentSlide + 1}
+                />
+            ))}
         </div>
         <div className="testimonials__arrowBox">
             <div className="testimonials__arrow testimonials__prevArrow" onClick={prevSlide}>
