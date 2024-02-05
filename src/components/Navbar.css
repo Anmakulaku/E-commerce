@@ -84,7 +84,7 @@
 @media screen and (min-width: 769px) and (max-width: 1024px) {
     .nav {
         max-width: 1000px;
-        padding: 1.5rem 1rem;
+        padding: 1rem;
     }
 }
 @media screen and (min-width: 481px) and (max-width: 768px) {
