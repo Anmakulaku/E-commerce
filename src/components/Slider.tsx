@@ -1,9 +1,9 @@
 import './Slider.css'
-import slider1 from "../img/slider1.png"
-import highQualityIcon from "../img/highQualityicon.svg"
-import warrantyicon from "../img/warrantyicon.svg"
-import freeShippingicon from "../img/freeShippingicon.svg"
-import supporticon from "../img/supporticon.svg"
+import slider1 from "../assets/slider1.png"
+import highQualityIcon from "../assets/highQualityicon.svg"
+import warrantyicon from "../assets/warrantyicon.svg"
+import freeShippingicon from "../assets/freeShippingicon.svg"
+import supporticon from "../assets/supporticon.svg"
 import { Link } from 'react-router-dom'
 
 export function Slider() {

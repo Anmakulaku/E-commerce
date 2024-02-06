@@ -1,8 +1,8 @@
 import './Header.css'
-import header1 from '../img/header1.png'
-import header2 from '../img/header2.png'
-import header3 from '../img/header3.jpg'
-import header4 from '../img/header4.png'
+import header1 from '../assets/header1.png'
+import header2 from '../assets/header2.png'
+import header3 from '../assets/header3.jpg'
+import header4 from '../assets/header4.png'
 import { Link } from 'react-router-dom'
 
 export function Header() {

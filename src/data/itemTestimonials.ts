@@ -1,7 +1,8 @@
-import testimonials1 from '../img/testimonials1.png';
-import testimonials2 from '../img/testimonials2.png';
-import testimonials3 from '../img/testimonials3.png';
-import testimonials4 from '../img/testimonials4.png';
+import testimonials1 from '../assets/testimonials1.png';
+import testimonials2 from '../assets/testimonials2.png';
+import testimonials3 from '../assets/testimonials3.png';
+import testimonials4 from '../assets/testimonials4.png';
+
 
 export const items = [
     {
