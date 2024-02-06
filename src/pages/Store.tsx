@@ -6,8 +6,8 @@ import './Store.css';
 import { Subscribe } from '../components/Subscribe';
 import { Gallery } from '../components/Gallery';
 import { Slider } from '../components/Slider';
-import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
-import { getAllProducts } from '../services/productService'; 
+import { MdChevronLeft, MdChevronRight } from 'react-icons/md'; 
+import { itemsAll } from '../data/itemsAll';
 
 interface Product {
     id: number;
@@ -32,12 +32,7 @@ export function Store() {
     const [storeItems, setStoreItems] = useState<Product[]>([]); 
 
     useEffect(() => {
-        const fetchData = async () => {
-            const allProducts = getAllProducts();
-            setStoreItems(allProducts);
-        };
-
-        fetchData();
+        setStoreItems(itemsAll); 
     }, []);
     
     const handlePageChange = (selectedPage: PageChange) => {

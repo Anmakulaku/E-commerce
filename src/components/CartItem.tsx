@@ -1,6 +1,6 @@
 import { useShoppingCart } from "../context/ShoppingCartContext"
+import { itemsAll } from "../data/itemsAll"
 import { formatCurrency } from "../utilities/formatCurrency"
-import { getAllProducts } from '../services/productService'
 import "./CartItem.css"
 
 type CartItemProps ={
@@ -10,9 +10,8 @@ type CartItemProps ={
 
 export function CartItem ({id, quantity}: CartItemProps) {
     const { removeFromCart, increaseCartQuantity, decreaseCartQuantity }= useShoppingCart()
-    const allProducts = getAllProducts();
 
-    const item = allProducts.find(item => item.id === id);
+    const item = itemsAll.find((item) => item.id === id);
     if (item == null) return null;
 
     return(

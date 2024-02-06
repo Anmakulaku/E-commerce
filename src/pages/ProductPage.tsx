@@ -6,7 +6,7 @@ import './ProductPage.css';
 import { formatCurrency } from '../utilities/formatCurrency';
 import { useEffect, useState } from 'react';
 import { useShoppingCart } from '../context/ShoppingCartContext';
-import { getAllProducts } from '../services/productService';
+import { itemsAll } from '../data/itemsAll';
 
 export function ProductPage() {
     const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart } = useShoppingCart();
@@ -32,12 +32,11 @@ export function ProductPage() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const allProducts = getAllProducts();
-            const foundProduct = allProducts.find(item => item.id === productId);
-
+            const foundProduct = itemsAll.find(item => item.id === productId);
+    
             if (foundProduct) {
                 setProduct(foundProduct);
-
+    
                 if (foundProduct.img) {
                     setMainImage(foundProduct.img);
                 } else if (foundProduct.imgOther && foundProduct.imgOther.length > 0) {
