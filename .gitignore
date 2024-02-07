@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 zas.txt
+Screens
 
 # Editor directories and files
 .vscode/*

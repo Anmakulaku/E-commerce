@@ -67,13 +67,16 @@
         font-size: 1.3em;
         line-height: 2.5rem;
     }
+    .testimonials__items{
+        padding: 1.5rem;
+    }
     .testimonials__text {
         font-size: 0.8em;
         text-align: justify;
         margin-bottom: 0;
     }
     .testimonials__arrowBox{
-        margin-top: 1.8rem;
+        margin-top: 0;
     }
     .testimonials__arrow{
         font-size: 1.5em;
@@ -82,6 +85,9 @@
 @media screen and (max-width: 480px){
     .testimonials {
         margin: 0;
+    }
+    .testimonials__items{
+        padding: 2rem;
     }
     .testimonials__title {
         font-size: 1.3em;
@@ -93,7 +99,7 @@
         margin: 1rem 0;
     }
     .testimonials__arrowBox{
-        margin-top: 3rem;
+        margin-top: 1rem;
     }
     .testimonials__arrow{
         font-size: 1.5em;
