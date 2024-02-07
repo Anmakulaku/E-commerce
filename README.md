@@ -16,6 +16,7 @@ https://anmakulaku.github.io/E-commerce/
   <li>TypeScript</li>
   <li>Vite</li>
   <li>Vanilla CSS</li>
+  <li>Figma</li>
 </ul>
 
 # Sreenshots
