@@ -18,11 +18,14 @@ https://anmakulaku.github.io/E-commerce/
 
 # Sreenshots
 
-<img width="25%" alt="E-commerce1" src="https://github.com/Anmakulaku/E-commerce/assets/119726677/e329741f-bb4c-4e30-9558-f4269b43812d">
-<img width="25%" alt="E-commerce2" src="https://github.com/Anmakulaku/E-commerce/assets/119726677/e8a2ad56-93d7-4330-a175-01642e6339c1">
-<img width="25%" alt="E-commerce3" src="https://github.com/Anmakulaku/E-commerce/assets/119726677/a5c657ca-b199-4304-a5d4-ac7a7a72076d">
-<img width="25%" alt="E-commerce4" src="https://github.com/Anmakulaku/E-commerce/assets/119726677/19c6d4ea-2c0c-4583-b157-56c1fed40078">
-<img width="33%" alt="E-commerce5" src="https://github.com/Anmakulaku/E-commerce/assets/119726677/8ec0eeb5-9d81-4c66-b31d-7a1ee851d8b3">
-<img width="33%" alt="E-commerce6" src="https://github.com/Anmakulaku/E-commerce/assets/119726677/fae85a2e-66df-43d3-a3e0-366017b6dd04">
-<img width="33%" alt="E-commerce7" src="https://github.com/Anmakulaku/E-commerce/assets/119726677/e2adab63-4f6a-42f9-8766-d465d72b034b">
-
+<p align="center">
+    <img width="33%" alt="E-commerce5" src="https://github.com/Anmakulaku/E-commerce/assets/119726677/8ec0eeb5-9d81-4c66-b31d-7a1ee851d8b3">
+    <img width="33%" alt="E-commerce6" src="https://github.com/Anmakulaku/E-commerce/assets/119726677/fae85a2e-66df-43d3-a3e0-366017b6dd04">
+    <img width="33%" alt="E-commerce7" src="https://github.com/Anmakulaku/E-commerce/assets/119726677/e2adab63-4f6a-42f9-8766-d465d72b034b">
+</p>
+<p align="center">
+    <img width="23%" alt="E-commerce1" src="https://github.com/Anmakulaku/E-commerce/assets/119726677/e329741f-bb4c-4e30-9558-f4269b43812d">
+    <img width="21%" alt="E-commerce2" src="https://github.com/Anmakulaku/E-commerce/assets/119726677/e8a2ad56-93d7-4330-a175-01642e6339c1">
+    <img width="20%" alt="E-commerce3" src="https://github.com/Anmakulaku/E-commerce/assets/119726677/a5c657ca-b199-4304-a5d4-ac7a7a72076d">
+    <img width="23%" alt="E-commerce4" src="https://github.com/Anmakulaku/E-commerce/assets/119726677/19c6d4ea-2c0c-4583-b157-56c1fed40078">
+</p>
