@@ -1,10 +1,12 @@
+<img width="100%" alt="E-commerce8" src="https://github.com/Anmakulaku/E-commerce/assets/119726677/6d8647f5-4917-4620-906d-755f35982da9">
+
 # E-commerce
 
 This is a simple e-commerce website. Designed for easy navigation and a user-friendly interface to give users a pleasant shopping experience. Try it!
 
 Special thanks for the graphic design go to: hamza anza (https://www.figma.com/@hamzaanza) and the creators from Unsplash, especially: Laura Chouette, Lukas Lenzi, charlesdeluvio, Gabrielle Henderson, NikHil, Tamara Bellis, engin akyurt, Redicul Pict, Joshua Rondeau, Napat Saeng, Junior REIS, James Barr, Zahir Namane, Mohamad Khosravi, HamZa NOUASRIA, Mahdi Bafande, Brandon Atchinson, Royal Anwar, Crealism, Khalid Boutchich, Lance Reis, Tyrell James, Clay Elliot, Valentina Jorio, Dekler Ph.
 
-# Live:
+# Live
 
 https://anmakulaku.github.io/E-commerce/
 
