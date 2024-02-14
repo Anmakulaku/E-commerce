@@ -6,7 +6,9 @@ import './ProductPage.css';
 import { formatCurrency } from '../utilities/formatCurrency';
 import { useEffect, useState } from 'react';
 import { useShoppingCart } from '../context/ShoppingCartContext';
-import { itemsAll } from '../data/itemsAll';
+import { itemsAll } from '../_mocks_/itemsAll';
+import { Product } from '../utilities/services/items.service';
+
 
 export function ProductPage() {
     const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart } = useShoppingCart();
@@ -14,15 +16,7 @@ export function ProductPage() {
 
     const [selectedSize, setSelectedSize] = useState<string | null>(null);
     const [mainImage, setMainImage] = useState<string | null>(null);
-    const [product, setProduct] = useState<{
-        id: number;
-        gender: string;
-        category: string;
-        img: string;
-        imgOther: string[];
-        name: string;
-        price: number;
-    } | null>(null);
+    const [product, setProduct] = useState<Product | null>(null);
 
     let productId = -1; 
 

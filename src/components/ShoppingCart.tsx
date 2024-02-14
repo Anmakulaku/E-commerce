@@ -1,17 +1,34 @@
 import { useShoppingCart } from "../context/ShoppingCartContext";
-import { itemsAll } from "../data/itemsAll";
+import { Product } from "../utilities/services/items.service";
 import { formatCurrency } from "../utilities/formatCurrency";
 import { CartItem } from "./CartItem";
 import './ShoppingCart.css';
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { itemsAll } from "../_mocks_/itemsAll";
 
 export function ShoppingCart() {
     const { closeCart, cartItems, isGiftWrapSelected, toggleGiftWrap } = useShoppingCart();
     const giftWrapPrice = 10;
+    const [cartProducts, setCartProducts] = useState<Product[]>([]); 
+
+    useEffect(() => {
+        const fetchCartProducts = async () => {
+            try {
+                const cartProductIds = cartItems.map(item => item.id); 
+                const productsInCart = itemsAll.filter(item => cartProductIds.includes(item.id)); 
+                setCartProducts(productsInCart);
+            } catch (error) {
+                console.error('Error fetching cart products:', error);
+            }
+        };
+
+        fetchCartProducts();
+    }, [cartItems]);
 
     const totalSum = cartItems.reduce((total, cartItem) => {
-        const item = itemsAll.find((item) => item.id === cartItem.id);
-        return total + (item?.price || 0) * cartItem.quantity;
+        const cartProduct = cartProducts.find(product => product.id === cartItem.id); 
+        return total + (cartProduct?.price || 0) * cartItem.quantity;
     }, 0);
 
     const totalSumWithGiftWrap = isGiftWrapSelected ? totalSum + giftWrapPrice : totalSum;

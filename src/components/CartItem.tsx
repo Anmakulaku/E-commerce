@@ -1,7 +1,8 @@
 import { useShoppingCart } from "../context/ShoppingCartContext"
-import { itemsAll } from "../data/itemsAll"
+import { Product, getItemById } from "../utilities/services/items.service"
 import { formatCurrency } from "../utilities/formatCurrency"
 import "./CartItem.css"
+import { useEffect, useState } from "react"
 
 type CartItemProps ={
     id: number 
@@ -11,8 +12,19 @@ type CartItemProps ={
 export function CartItem ({id, quantity}: CartItemProps) {
     const { removeFromCart, increaseCartQuantity, decreaseCartQuantity }= useShoppingCart()
 
-    const item = itemsAll.find((item) => item.id === id);
-    if (item == null) return null;
+    const [item, setItem] = useState<Product | null>(null);
+
+    useEffect(() => {
+        getItemById(id)
+            .then(item => {
+                setItem(item);
+            })
+            .catch(error => {
+                console.error('Error fetching item:', error);
+            });
+    }, [id]);
+
+    if (!item) return null;
 
     return(
         <div className="cartItem__content">

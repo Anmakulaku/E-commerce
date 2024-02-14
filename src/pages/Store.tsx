@@ -7,18 +7,8 @@ import { Subscribe } from '../components/Subscribe';
 import { Gallery } from '../components/Gallery';
 import { Slider } from '../components/Slider';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md'; 
-import { itemsAll } from '../data/itemsAll';
-
-interface Product {
-    id: number;
-    gender: string;
-    category: string;
-    subcategory?: string;
-    img: string;
-    imgOther: string[];
-    name: string;
-    price: number;
-}
+import { getAllItems } from '../utilities/services/items.service'; 
+import { Product } from '../utilities/services/items.service';
 
 interface PageChange {
     selected: number;
@@ -32,8 +22,10 @@ export function Store() {
     const [storeItems, setStoreItems] = useState<Product[]>([]); 
 
     useEffect(() => {
-        setStoreItems(itemsAll); 
-    }, []);
+        getAllItems().then((data) => {
+            setStoreItems(data);
+        });
+    }, []); 
     
     const handlePageChange = (selectedPage: PageChange) => {
         setCurrentPage(selectedPage.selected);
