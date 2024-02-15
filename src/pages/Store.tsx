@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
-import { StoreItem } from '../components/StoreItem';
+import StoreItem from '../components/StoreItem';
 import { Footer } from '../components/Footer';
 import './Store.css';
 import { Subscribe } from '../components/Subscribe';
 import { Gallery } from '../components/Gallery';
 import { Slider } from '../components/Slider';
-import { MdChevronLeft, MdChevronRight } from 'react-icons/md'; 
-import { getAllItems } from '../utilities/services/items.service'; 
-import { Product } from '../utilities/services/items.service';
+import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+import { getAllItems, Product } from '../utilities/services/items.service';
 
 interface PageChange {
     selected: number;
@@ -19,23 +18,23 @@ export function Store() {
     const [currentPage, setCurrentPage] = useState(0);
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null);
-    const [storeItems, setStoreItems] = useState<Product[]>([]); 
+    const [storeItems, setStoreItems] = useState<Product[]>([]);
 
     useEffect(() => {
         getAllItems().then((data) => {
             setStoreItems(data);
         });
-    }, []); 
-    
+    }, []);
+
     const handlePageChange = (selectedPage: PageChange) => {
         setCurrentPage(selectedPage.selected);
     };
 
     const handleCategoryChange = (category: string) => {
         setSelectedCategory(category);
-        setSelectedSubcategory(null); 
+        setSelectedSubcategory(null);
     };
-    
+
     const handleShowAll = () => {
         setSelectedCategory(null);
         setSelectedSubcategory(null);
@@ -55,27 +54,16 @@ export function Store() {
         }
     };
 
-    const filteredItems = storeItems.filter((item) => {
-        if (selectedCategory && item.category !== selectedCategory) {
-            return false;
-        }
-        if (selectedSubcategory && item.subcategory !== selectedSubcategory) {
-            return false;
-        }
-        return true;
-    });
-
     const filterItems = (items: Product[]) => {
         return items
             .filter(item => !selectedCategory || item.category === selectedCategory)
             .filter(item => !selectedSubcategory || item.subcategory === selectedSubcategory);
     };
-    const sortedItems = filterItems(storeItems).sort(() => Math.random() - 0.5);
 
     const indexOfLastItem = (currentPage + 1) * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = sortedItems.slice(indexOfFirstItem, indexOfLastItem);
-    
+    const sortedItems = filterItems(storeItems).sort((a, b) => b.addDate.getTime() - a.addDate.getTime()).slice(indexOfFirstItem, indexOfLastItem);
+
 
     return (
         <div className='store'>
@@ -108,7 +96,7 @@ export function Store() {
                 )}
                 <h1 className="store__title">{getCategoryPath()}</h1>
                 <div className="store__products">
-                    {currentItems.map((item) => (
+                    {sortedItems.map((item) => (
                         <StoreItem key={item.id} {...item} />
                     ))}
                 </div>
@@ -116,7 +104,7 @@ export function Store() {
                     previousLabel={<MdChevronLeft className="store__pagination-arrow" />}
                     nextLabel={<MdChevronRight className="store__pagination-arrow" />}
                     breakLabel={'...'}
-                    pageCount={Math.ceil(filteredItems.length / itemsPerPage)}
+                    pageCount={Math.ceil(sortedItems.length / itemsPerPage)}
                     marginPagesDisplayed={2}
                     pageRangeDisplayed={5}
                     onPageChange={handlePageChange}

@@ -110,7 +110,8 @@ export const itemsAll= [
         img: bag1,
         imgOther: [bag1O1, bag1O2],
         name: "Blue-cream bag",
-        price: 29.99
+        price: 29.99,
+        addDate: new Date(2024, 1, 9, 12, 30, 0),
     },
     {
         id: 2,
@@ -120,7 +121,8 @@ export const itemsAll= [
         img: bag2,
         imgOther: [bag2O1, bag2O2],
         name: "Blue hand bag",
-        price: 39.99
+        price: 39.99,
+        addDate: new Date(2023, 3, 12, 7, 30, 0)
     },
     {
         id: 3,
@@ -130,7 +132,8 @@ export const itemsAll= [
         img: bag3,
         imgOther: [bag3O1, bag3O2],
         name: "Cammel XL bag",
-        price: 49.99
+        price: 49.99,
+        addDate: new Date(2023, 3, 12, 7, 35, 0)
     },
     {
         id: 4,
@@ -140,7 +143,8 @@ export const itemsAll= [
         img: dress1,
         imgOther: [dress1O1, dress1O2, dress1O3],
         name: "White boho dress",
-        price: 59.99
+        price: 59.99,
+        addDate: new Date(2023, 3, 12, 9, 15, 0)
     },
     {
         id: 5,
@@ -150,7 +154,8 @@ export const itemsAll= [
         img: dress2,
         imgOther: [dress2O1, dress2O2],
         name: "Black summer dress",
-        price: 49.99
+        price: 49.99, 
+        addDate: new Date(2023, 4, 1, 8, 22, 0)
     },
     {
         id: 6,
@@ -160,7 +165,8 @@ export const itemsAll= [
         img: dress3,
         imgOther: [dress3O1, dress3O2],
         name: "Green Christmass dress",
-        price: 49.99
+        price: 49.99,
+        addDate: new Date(2023, 11, 10, 16, 3, 0)
     },
     {
         id: 7,
@@ -170,7 +176,8 @@ export const itemsAll= [
         img: dress4,
         imgOther: [dress4O1, dress4O2],
         name: "Red dress",
-        price: 59.99
+        price: 59.99,
+        addDate: new Date(2023, 4, 11, 6, 5, 0)
     },
     {
         id: 8,
@@ -180,7 +187,8 @@ export const itemsAll= [
         img: dress5,
         imgOther: [dress5O1, dress5O2, dress5O4],
         name: "Checked dress",
-        price: 59.99
+        price: 59.99, 
+        addDate: new Date(2023, 5, 30, 11, 55, 0)
     },
     {
         id: 9,
@@ -190,7 +198,8 @@ export const itemsAll= [
         img: earrings1,
         imgOther: [earrings1O1, earrings1O2],
         name: "Blue hearts",
-        price: 19.99
+        price: 19.99,
+        addDate: new Date(2023, 5, 30, 11, 57, 0)
     },
     {
         id: 10,
@@ -200,7 +209,8 @@ export const itemsAll= [
         img: hat1,
         imgOther: [hat1O1, hat1O3],
         name: "Autumn hat",
-        price: 34.99
+        price: 34.99,
+        addDate: new Date(2023, 4, 8, 11, 55, 0)
     },
     {
         id: 11,
@@ -210,7 +220,8 @@ export const itemsAll= [
         img: hat2O1,
         imgOther: [hat2O2, hat2],
         name: "Large brim hat",
-        price: 46.99
+        price: 46.99,
+        addDate: new Date(2023, 11, 3, 6, 5, 0)
     },
     {
         id: 12,
@@ -220,7 +231,8 @@ export const itemsAll= [
         img: hat3,
         imgOther: [hat3O1, hat3O2],
         name: "Straw hat",
-        price: 29.99
+        price: 29.99,
+        addDate: new Date(2023, 2, 14, 13, 20, 0)
     },
     {
         id: 13,
@@ -230,7 +242,8 @@ export const itemsAll= [
         img: hoodie1,
         imgOther: [hoodie1O1, hoodie1O2],
         name: "Sweatshirt",
-        price: 31.99
+        price: 31.99,
+        addDate: new Date(2023, 2, 14, 13, 25, 0)
     },
     {
         id: 14,
@@ -240,7 +253,8 @@ export const itemsAll= [
         img: hoodie2,
         imgOther: [hoodie2O1, hoodie2O2],
         name: "Hoodie",
-        price: 44.99
+        price: 44.99,
+        addDate: new Date(2023, 11, 4, 15, 37, 0)
     },
     {
         id: 15,
@@ -250,7 +264,8 @@ export const itemsAll= [
         img: jacket1,
         imgOther: [jacket1O1, jacket1O2],
         name: "Red jacket",
-        price: 69.99
+        price: 69.99,
+        addDate: new Date(2023, 7, 9, 16, 0, 0)
     },
     {
         id: 16,
@@ -260,7 +275,8 @@ export const itemsAll= [
         img: jacket2,
         imgOther: [jacket2O1, jacket2O2],
         name: "Coco jacket",
-        price: 75.99
+        price: 75.99,
+        addDate: new Date(2023, 10, 19, 7, 30, 0)
     },
     {
         id: 17,
@@ -270,7 +286,8 @@ export const itemsAll= [
         img: jacket3,
         imgOther: [jacket3O1, jacket3O2, jacket3O3],
         name: "Black jacket",
-        price: 52.99
+        price: 52.99,
+        addDate: new Date(2023, 7, 9, 13, 10, 0)
     },
     {
         id: 18,
@@ -280,7 +297,8 @@ export const itemsAll= [
         img: jacket4,
         imgOther: [jacket4O1, jacket4O2],
         name: "Grey jacket",
-        price: 52.99
+        price: 52.99,
+        addDate: new Date(2023, 9, 19, 9, 13, 0)
     },
     {
         id: 19,
@@ -290,7 +308,8 @@ export const itemsAll= [
         img: jacket5,
         imgOther: [jacket5O1, jacket5O2],
         name: "Bisquit coat",
-        price: 77.99
+        price: 77.99,
+        addDate: new Date(2024, 2, 9, 7, 10, 0)
     },
     {
         id: 20,
@@ -300,7 +319,8 @@ export const itemsAll= [
         img: sunGl1,
         imgOther: [sunGl1O1, sunGl1O2, sunGl1O3],
         name: "Sunglasses",
-        price: 29.99
+        price: 29.99,
+        addDate: new Date(2023, 7, 22, 6, 17, 0)
     },
     {
         id: 21,
@@ -310,7 +330,8 @@ export const itemsAll= [
         img: sunGl2O1,
         imgOther: [sunGl2, sunGl2O4, sunGl2O2],
         name: "Ray Ban Sunglasses",
-        price: 55.99
+        price: 55.99,
+        addDate: new Date(2023, 8, 5, 8, 49, 0)
     },
     {
         id: 22,
@@ -320,7 +341,8 @@ export const itemsAll= [
         img: top1O1,
         imgOther: [top1, top1O2],
         name: "Top",
-        price: 23.99
+        price: 23.99,
+        addDate: new Date(2023, 6, 24, 7, 10, 0)
     },
     {
         id: 23,
@@ -330,7 +352,8 @@ export const itemsAll= [
         img: top2,
         imgOther: [top2O1, top2O2],
         name: "Flowers top",
-        price: 27.99
+        price: 27.99,
+        addDate: new Date(2023, 6, 24, 7, 10, 0)
     },
     {
         id: 24,
@@ -340,7 +363,8 @@ export const itemsAll= [
         img: top3,
         imgOther: [top3O1, top3O2, top3O3],
         name: "White Shirt",
-        price: 32.99
+        price: 32.99,
+        addDate: new Date(2023, 6, 24, 7, 10, 0)
     },
     {
         id: 25,
@@ -350,7 +374,8 @@ export const itemsAll= [
         img: top4,
         imgOther: [top4O1, top4O2, top4O3],
         name: "Light shirt",
-        price: 37.99
+        price: 37.99,
+        addDate: new Date(2023, 6, 24, 7, 10, 0)
     },
     {
         id: 26,
@@ -360,7 +385,8 @@ export const itemsAll= [
         img: trousers1,
         imgOther: [trousers1O1, trousers1O2],
         name: "Blue Jeans",
-        price: 69.99
+        price: 69.99,
+        addDate: new Date(2023, 0, 24, 7, 10, 0)
     },
     {
         id: 27,
@@ -370,7 +396,8 @@ export const itemsAll= [
         img: trousers2O3,
         imgOther: [trousers2O1, trousers2O2, trousers2],
         name: "Summer Trousers",
-        price: 49.99
+        price: 49.99,
+        addDate: new Date(2023, 6, 24, 7, 10, 0)
     },
     {
         id: 28,
@@ -380,7 +407,8 @@ export const itemsAll= [
         img: trousers3O3,
         imgOther: [trousers3O2, trousers3],
         name: "Soldier Trousers",
-        price: 62.99
+        price: 62.99,
+        addDate: new Date(2023, 6, 24, 7, 10, 0)
     },
     {
         id: 29,
@@ -390,7 +418,8 @@ export const itemsAll= [
         img: wallet1,
         imgOther: [wallet1O1, wallet1O2],
         name: "Ginger Wallet",
-        price: 59.99
+        price: 59.99,
+        addDate: new Date(2023, 0, 24, 7, 10, 0)
     },
     {
         id: 30,
@@ -400,7 +429,8 @@ export const itemsAll= [
         img: earrings2,
         imgOther: [earrings2O1, earrings2O2],
         name: "Laurel earrings",
-        price: 89.99
+        price: 89.99,
+        addDate: new Date(2023, 6, 22, 7, 10, 0)
     },
     {
         id: 31,
@@ -410,6 +440,7 @@ export const itemsAll= [
         img: trousers4O2,
         imgOther: [trousers4O1, trousers4],
         name: "Slim Jeans",
-        price: 62.99
+        price: 62.99,
+        addDate: new Date(2023, 5, 24, 7, 10, 0)
     }
 ]

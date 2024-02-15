@@ -4,7 +4,7 @@ import { formatCurrency } from '../utilities/formatCurrency';
 import { getAllItems, Product } from '../utilities/services/items.service';
 import './StoreItem.css';
 
-export function StoreItem({ id, name, price, img }: Product) {
+export default function StoreItem({ id, name, price, img }: Product) {
     const [product, setProduct] = useState<Product | null>(null);
     const [isLoading, setIsLoading] = useState(true);
 

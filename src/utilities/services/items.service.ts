@@ -9,13 +9,14 @@ export interface Product {
     imgOther: string[];
     name: string;
     price: number;
+    addDate: Date
 }
 
 export const getAllItems = (): Promise <Product []> => {
     return new Promise((resolve => {
         setTimeout(() => {
             resolve(itemsAll);
-        }, 1000);
+        }, 300);
     }))
 }
 export const getItemById = async (id: number): Promise<Product | null> => {
