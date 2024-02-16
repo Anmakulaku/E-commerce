@@ -9,7 +9,8 @@ export interface Product {
     imgOther: string[];
     name: string;
     price: number;
-    addDate: Date
+    addDate: Date;
+    size?: string
 }
 
 export const getAllItems = (): Promise <Product []> => {

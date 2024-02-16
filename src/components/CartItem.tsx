@@ -7,9 +7,10 @@ import { useEffect, useState } from "react"
 type CartItemProps ={
     id: number 
     quantity: number
+    size?: string
 }
 
-export function CartItem ({id, quantity}: CartItemProps) {
+export function CartItem ({id, size, quantity}: CartItemProps) {
     const { removeFromCart, increaseCartQuantity, decreaseCartQuantity }= useShoppingCart()
 
     const [item, setItem] = useState<Product | null>(null);
@@ -25,6 +26,7 @@ export function CartItem ({id, quantity}: CartItemProps) {
     }, [id]);
 
     if (!item) return null;
+    // console.log("Size in CartItem:", size); 
 
     return(
         <div className="cartItem__content">
@@ -32,11 +34,12 @@ export function CartItem ({id, quantity}: CartItemProps) {
                 <img className="cartItem__itemImg" src={item.img} alt="product image"/>
                 <div className="cartItem__text">
                     <h3 className="cartItem__title">{item.name}</h3> 
+                    <p className="cartItem__title">Size: {size}</p> 
                     <div className="cartItem__quantity">
                         <div className="cartItem__quantityBtns">
-                            <button className='button cartItem__btn' onClick={() => decreaseCartQuantity(item.id)}>-</button>
-                                {quantity >= 1 && <span>{quantity}</span>}
-                            <button className='button cartItem__btn' onClick={() => increaseCartQuantity(item.id)}>+</button>
+                            <button className='button cartItem__btn' onClick={() => item.size && decreaseCartQuantity(item.id, item.size)}>-</button>
+                            {quantity >= 1 && <span>{quantity}</span>}
+                            <button className='button cartItem__btn' onClick={() => item.size && increaseCartQuantity(item.id, item.size)}>+</button>
                         </div>
                         <button className='button cartItem__btnRemove' onClick={() => removeFromCart(item.id)}>
                             <span className='cartItem__btnRemoveStyle'>Remove</span> 

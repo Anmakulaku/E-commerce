@@ -15,8 +15,8 @@ export function ShoppingCart() {
     useEffect(() => {
         const fetchCartProducts = async () => {
             try {
-                const cartProductIds = cartItems.map(item => item.id); 
-                const productsInCart = itemsAll.filter(item => cartProductIds.includes(item.id)); 
+                const cartProductIds = cartItems.map(item => item.id); // Pobierz identyfikatory produktów w koszyku
+                const productsInCart = itemsAll.filter(item => cartProductIds.includes(item.id)); // Wybierz tylko te produkty, które są w koszyku
                 setCartProducts(productsInCart);
             } catch (error) {
                 console.error('Error fetching cart products:', error);
@@ -27,7 +27,7 @@ export function ShoppingCart() {
     }, [cartItems]);
 
     const totalSum = cartItems.reduce((total, cartItem) => {
-        const cartProduct = cartProducts.find(product => product.id === cartItem.id); 
+        const cartProduct = cartProducts.find(product => product.id === cartItem.id); // Użyj produktów w koszyku do obliczenia sumy cen
         return total + (cartProduct?.price || 0) * cartItem.quantity;
     }, 0);
 
@@ -44,8 +44,10 @@ export function ShoppingCart() {
                             &times;
                         </button>
                     </div>
-                    {cartItems.map(item=> (
-                        <CartItem key={item.id} {...item} />
+                    {/* <>{console.log("ShoppingCart:", cartItems)}</> */}
+                    {
+                    cartItems.map((item, index)=> (
+                        <CartItem key={`${item.id}-${item.size}-${index}`} {...item} id={item.id} quantity={item.quantity} size={item.size} />
                     ))}
                     <div className="shoppingCart__footer">
                         <div className="shoppingCart__totalPrice">

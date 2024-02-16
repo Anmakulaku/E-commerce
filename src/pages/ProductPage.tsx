@@ -55,6 +55,7 @@ export function ProductPage() {
     };
 
     const handleSizeSelection = (size: string) => {
+        // console.log("Selected size in productPage:", size);
         setSelectedSize(size);
         setIsSizeSelected(false); 
     };
@@ -65,9 +66,9 @@ export function ProductPage() {
             return; // Przerwij dodawanie produktu do koszyka
         }    
         for (let i = 0; i < quantity; i++) {
-            increaseCartQuantity(productId);
+            increaseCartQuantity(productId, selectedSize || '');
         }
-        setQuantity(0);
+        setQuantity(1);
     };
 
     return (
