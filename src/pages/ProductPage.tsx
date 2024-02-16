@@ -11,12 +11,14 @@ import { Product } from '../utilities/services/items.service';
 
 
 export function ProductPage() {
-    const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart } = useShoppingCart();
+    const { increaseCartQuantity, removeFromCart } = useShoppingCart();
     const { id } = useParams<{ id?: string }>();
 
     const [selectedSize, setSelectedSize] = useState<string | null>(null);
     const [mainImage, setMainImage] = useState<string | null>(null);
     const [product, setProduct] = useState<Product | null>(null);
+    const [quantity, setQuantity] = useState<number>(1); 
+    const [isSizeSelected, setIsSizeSelected] = useState<boolean>(false);
 
     let productId = -1; 
 
@@ -46,7 +48,6 @@ export function ProductPage() {
         return <div>Brak identyfikatora produktu</div>;
     }
 
-    const quantity = getItemQuantity(product.id);
     const isAccessories = product.category === 'accessories';
 
     const handleImageClick = (clickedImage: string) => {
@@ -55,25 +56,37 @@ export function ProductPage() {
 
     const handleSizeSelection = (size: string) => {
         setSelectedSize(size);
+        setIsSizeSelected(false); 
+    };
+
+    const handleAddToCart = () => {
+        if (!selectedSize) {
+            setIsSizeSelected(true); // Ustawiamy flagę informującą o nie wybraniu rozmiaru
+            return; // Przerwij dodawanie produktu do koszyka
+        }    
+        for (let i = 0; i < quantity; i++) {
+            increaseCartQuantity(productId);
+        }
+        setQuantity(0);
     };
 
     return (
         <div className="productPage">
-        <div className='productPage__content'>
-            <div className='productPage__images'>
-            {mainImage && (
-                <img src={mainImage} alt={product.name} className="productPage__imgMain" />
-            )}
-            <div className='productPage__imgOthers'>
-                {[product.img, ...product.imgOther].map((img, index) => (
-                <img
-                    key={index}
-                    src={img}
-                    alt={index === 0 ? product.name : `${product.name} - Additional Image ${index}`}
-                    onClick={() => handleImageClick(img)}
-                    className={img === mainImage ? 'selected' : ''}
-                />
-                ))}
+            <div className='productPage__content'>
+                <div className='productPage__images'>
+                    {mainImage && (
+                        <img src={mainImage} alt={product.name} className="productPage__imgMain" />
+                    )}
+                    <div className='productPage__imgOthers'>
+                        {[product.img, ...product.imgOther].map((img, index) => (
+                            <img
+                                key={index}
+                                src={img}
+                                alt={index === 0 ? product.name : `${product.name} - Additional Image ${index}`}
+                                onClick={() => handleImageClick(img)}
+                                className={img === mainImage ? 'selected' : ''}
+                            />
+                        ))}
                     </div>
                 </div>
                 <div className='productPage__info'>
@@ -93,30 +106,31 @@ export function ProductPage() {
                                 <button className={`productPage__sizeLabelsItem ${selectedSize === 'XL' && 'selected'}`} onClick={() => handleSizeSelection('XL')}>XL</button>
                                 <button className={`productPage__sizeLabelsItem ${selectedSize === 'XXL' && 'selected'}`} onClick={() => handleSizeSelection('XXL')}>XXL</button>
                             </div>
-                        )} 
-                        
-                    <div className="productPage__quantity">
-                        <div className='productPage__sizeTitle'> Quantity:</div>
+                        )
+                        } 
+                        {isSizeSelected && <p className='productPage__sizeError'>Please, select your size</p>}
+                        <div className="productPage__quantity">
+                            <div className='productPage__sizeTitle'> Quantity:</div>
                             <div className='productPage__quantityContent'>
                                 <div className='productPage__changeQuantity'>
-                                    <button className='button productPage__btn' onClick={() => decreaseCartQuantity(productId)}>-</button>
-                                        <span>{quantity}</span>
-                                    <button className='button productPage__btn' onClick={() => increaseCartQuantity(productId)}>+</button>
+                                    <button className='button productPage__btn' onClick={() => setQuantity(prevQuantity => Math.max(prevQuantity - 1, 0))}>-</button>
+                                    <span>{quantity}</span>
+                                    <button className='button productPage__btn' onClick={() => setQuantity(prevQuantity => prevQuantity + 1)}>+</button>
                                 </div>
-                                    <button className='button productPage__btnAdd' onClick={() => increaseCartQuantity(productId)}>
-                                        <span className='productPage__titleStyle'>Add to Cart</span> 
-                                    </button> 
+                                <button className='button productPage__btnAdd' onClick={handleAddToCart}>
+                                    <span className='productPage__titleStyle'>Add to Cart</span> 
+                                </button> 
                                 <button className='button productPage__btnAdd' onClick={() => removeFromCart(productId)}>
                                     <span className='productPage__titleStyle'>Remove</span> 
                                 </button> 
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <Slider />
-        <Subscribe />
-        <Footer />
+            <Slider />
+            <Subscribe />
+            <Footer />
         </div>
     );
 }
