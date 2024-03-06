@@ -1,11 +1,11 @@
-import { useShoppingCart } from "../context/ShoppingCartContext";
-import { Product } from "../utilities/services/items.service";
-import { formatCurrency } from "../utilities/formatCurrency";
+import { useShoppingCart } from "../../context/ShoppingCartContext";
+import { Product } from "../../utilities/services/items.service";
+import { formatCurrency } from "../../utilities/formatCurrency";
 import { CartItem } from "./CartItem";
 import './ShoppingCart.css';
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { itemsAll } from "../_mocks_/itemsAll";
+import { itemsAll } from "../../_mocks_/itemsAll";
 
 export function ShoppingCart() {
     const { closeCart, cartItems, isGiftWrapSelected, toggleGiftWrap } = useShoppingCart();

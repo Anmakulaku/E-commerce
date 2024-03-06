@@ -1,5 +1,5 @@
 import { createContext, useContext, ReactNode, useState } from "react";
-import { ShoppingCart } from "../components/ShoppingCart";
+import { ShoppingCart } from "../components/ShoppingCart/ShoppingCart";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 type ShoppingCartProviderProps = {
@@ -51,6 +51,7 @@ export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
         return cartItems.find(item => item.id === id)?.quantity || 0
     } 
     function increaseCartQuantity(id: number, size: string) {
+        console.log("Increasing quantity for item with id:", id, "and size:", size)
         setCartItems(currItems => {
             const existingItem = currItems.find(item => item.id === id && item.size === size);
     
@@ -69,6 +70,7 @@ export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
     }
     
     function decreaseCartQuantity(id: number, size: string) {
+        console.log("Decreasing quantity for item with id:", id, "and size:", size);
     setCartItems(currItems => {
         const existingItem = currItems.find(item => item.id === id && item.size === size);
 

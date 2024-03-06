@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
-import { Footer } from '../components/Footer';
-import { Slider } from '../components/Slider';
-import { Subscribe } from '../components/Subscribe';
+import { Footer } from '../components/Footer/Footer';
+import { Slider } from '../components/Slider/Slider';
+import { Subscribe } from '../components/Subscribe/Subscribe';
 import './ProductPage.css';
 import { formatCurrency } from '../utilities/formatCurrency';
 import { useEffect, useState } from 'react';
@@ -114,9 +114,16 @@ export function ProductPage() {
                             <div className='productPage__sizeTitle'> Quantity:</div>
                             <div className='productPage__quantityContent'>
                                 <div className='productPage__changeQuantity'>
-                                    <button className='button productPage__btn' onClick={() => setQuantity(prevQuantity => Math.max(prevQuantity - 1, 0))}>-</button>
+                                <button className='button productPage__btn' 
+                                    onClick={() => {
+                                        if (quantity > 1) {
+                                            setQuantity(prevQuantity => prevQuantity - 1);
+                                        }
+                                    }}
+                                >-</button>
                                     <span>{quantity}</span>
-                                    <button className='button productPage__btn' onClick={() => setQuantity(prevQuantity => prevQuantity + 1)}>+</button>
+                                    <button className='button productPage__btn' 
+                                    onClick={() => setQuantity(prevQuantity => prevQuantity + 1)}>+</button>
                                 </div>
                                 <button className='button productPage__btnAdd' onClick={handleAddToCart}>
                                     <span className='productPage__titleStyle'>Add to Cart</span> 

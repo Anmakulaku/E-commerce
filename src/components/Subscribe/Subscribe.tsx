@@ -1,6 +1,6 @@
 import './Subscribe.css';
-import subscribe1 from '../assets/subscribe1.png';
-import subscribe2 from '../assets/subscribe2.png';
+import subscribe1 from '../../assets/subscribe1.png';
+import subscribe2 from '../../assets/subscribe2.png';
 import { useState } from 'react';
 
 export function Subscribe() {

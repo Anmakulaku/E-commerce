@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { formatCurrency } from '../utilities/formatCurrency';
-import { getAllItems, Product } from '../utilities/services/items.service';
+import { formatCurrency } from '../../utilities/formatCurrency';
+import { getAllItems, Product } from '../../utilities/services/items.service';
 import './StoreItem.css';
 
 export default function StoreItem({ id, name, price, img }: Product) {

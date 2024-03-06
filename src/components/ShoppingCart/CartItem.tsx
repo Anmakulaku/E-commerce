@@ -1,6 +1,6 @@
-import { useShoppingCart } from "../context/ShoppingCartContext"
-import { Product, getItemById } from "../utilities/services/items.service"
-import { formatCurrency } from "../utilities/formatCurrency"
+import { useShoppingCart } from "../../context/ShoppingCartContext"
+import { Product, getItemById } from "../../utilities/services/items.service"
+import { formatCurrency } from "../../utilities/formatCurrency"
 import "./CartItem.css"
 import { useEffect, useState } from "react"
 
@@ -11,7 +11,7 @@ type CartItemProps ={
 }
 
 export function CartItem ({id, size, quantity}: CartItemProps) {
-    const { removeFromCart, increaseCartQuantity, decreaseCartQuantity }= useShoppingCart()
+    const { removeFromCart, increaseCartQuantity, decreaseCartQuantity } = useShoppingCart()
 
     const [item, setItem] = useState<Product | null>(null);
 

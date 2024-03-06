@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { Home } from './pages/Home'
 import { Store } from './pages/Store'
 import { ProductPage } from './pages/ProductPage'
-import { Navbar } from './components/Navbar'
+import { Navbar } from './components/Navbar/Navbar'
 import { Cart } from './pages/Cart'
 import { ShoppingCartProvider } from './context/ShoppingCartContext'
 
