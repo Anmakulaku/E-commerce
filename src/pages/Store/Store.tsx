@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
-import StoreItem from '../components/Store/StoreItem';
-import { Footer } from '../components/Footer/Footer';
+import StoreItem from '../../components/Store/StoreItem';
+import { Footer } from '../../components/Footer/Footer';
 import './Store.css';
-import { Subscribe } from '../components/Subscribe/Subscribe';
-import { Gallery } from '../components/Gallery/Gallery';
-import { Slider } from '../components/Slider/Slider';
+import { Subscribe } from '../../components/Subscribe/Subscribe';
+import { Gallery } from '../../components/Gallery/Gallery';
+import { Slider } from '../../components/Slider/Slider';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
-import { getAllItems, Product } from '../utilities/services/items.service';
+import { getAllItems, Product } from '../../utilities/services/items.service';
 
 interface PageChange {
     selected: number;

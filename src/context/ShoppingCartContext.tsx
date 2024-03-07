@@ -17,7 +17,7 @@ type ShoppingCartContext = {
     getItemQuantity: (id: number) => number
     increaseCartQuantity: (id: number, size: string) => void
     decreaseCartQuantity: (id: number, size: string) => void
-    removeFromCart: (id: number) => void
+    removeFromCart: (id: number, size: string) => void
     addGiftWrap: () => void;
     isGiftWrapSelected: boolean;
     toggleGiftWrap: () => void;
@@ -92,11 +92,11 @@ export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
     });
 }
 
-    function removeFromCart(id:number) {
-        setCartItems(currItems => {
-            return currItems.filter(item => item.id !== id)
-        })
-    }
+function removeFromCart(id: number, size: string) {
+    setCartItems(currItems => {
+        return currItems.filter(item => item.id !== id || item.size !== size);
+    });
+}
     function addGiftWrap() {
         setCartItems((currItems) => {
             const giftWrapItem: CartItem = {

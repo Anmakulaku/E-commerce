@@ -1,10 +1,10 @@
 import './App.css'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { Home } from './pages/Home'
-import { Store } from './pages/Store'
-import { ProductPage } from './pages/ProductPage'
+import { Store } from './pages/Store/Store'
+import { ProductPage } from './pages/ProductPage/ProductPage'
 import { Navbar } from './components/Navbar/Navbar'
-import { Cart } from './pages/Cart'
+import { Cart } from './pages/Cart/Cart'
 import { ShoppingCartProvider } from './context/ShoppingCartContext'
 
 function App() {
