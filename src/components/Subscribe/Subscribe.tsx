@@ -1,53 +1,20 @@
 import './Subscribe.css';
 import subscribe1 from '../../assets/subscribe1.png';
 import subscribe2 from '../../assets/subscribe2.png';
-import { useState } from 'react';
+import { useSubscribeLogic } from './SubscribeLogic';
+import SubscribeModal from './SubscribeModal';
 
 export function Subscribe() {
-    const [email, setEmail] = useState<string>('');
-    const [emailError, setEmailError] = useState<string>('');
-    const [isValidEmail, setIsValidEmail] = useState(true);
-    const [isSubscribed, setIsSubscribed] = useState(false);
-
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(event.target.value);
-    };
-
-    const validateEmail = () => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const isValid = emailRegex.test(email);
-    
-        if (!isValid) {
-            setEmailError('Invalid email address');
-        } else {
-            setEmailError('');
-        }
-        
-        setIsValidEmail(isValid);
-    };
-
-    const handleSubscribe = () => {
-        validateEmail();
-    
-        if (isValidEmail) {
-            console.log('Subscribed with email:', email);
-            setIsSubscribed(true);
-            setEmail(''); 
-        } else {
-            console.log('Invalid email address');
-            setIsSubscribed(false);
-        }
-    };
-
-    const handleEnterKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === 'Enter') {
-            handleSubscribe();
-        }
-    };
-
-    const closeModal = () => {
-        setIsSubscribed(false); 
-    };
+    const {
+        email,
+        emailError,
+        isValidEmail,
+        isSubscribed,
+        handleInputChange,
+        handleSubscribe,
+        handleEnterKeyPress,
+        closeModal
+    } = useSubscribeLogic();
 
     return (
         <div className='subscribe section__margin'>
@@ -78,14 +45,7 @@ export function Subscribe() {
                     <img src={subscribe2} alt="woman photo" className='subscribe__imgWoman'/>
                 </div>
             </div>
-            {isSubscribed && isValidEmail && (
-                <div className={`modal ${isSubscribed ? 'show' : ''}`}>
-                    <div className='modal-content'>
-                        <p>Your subscription has been received.</p>
-                        <span className='close' onClick={closeModal}>&times;</span>
-                    </div>
-                </div>
-            )}
+            <SubscribeModal showModal={isSubscribed && isValidEmail} closeModal={closeModal} />
         </div>
     );
 }
