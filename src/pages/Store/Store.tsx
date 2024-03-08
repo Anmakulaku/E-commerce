@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import StoreItem from '../../components/Store/StoreItem';
 import { Footer } from '../../components/Footer/Footer';
@@ -7,75 +6,55 @@ import { Subscribe } from '../../components/Subscribe/Subscribe';
 import { Gallery } from '../../components/Gallery/Gallery';
 import { Slider } from '../../components/Slider/Slider';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
-import { getAllItems, Product } from '../../utilities/services/items.service';
+import { useStoreLogic } from './StoreLogic';
+import { useState } from 'react';
 
-interface PageChange {
-    selected: number;
+interface StoreProps {
+    itemsPerPage: number;
 }
 
-export function Store() {
-    const itemsPerPage = 12;
+export function Store({ itemsPerPage }: StoreProps) {
     const [currentPage, setCurrentPage] = useState(0);
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null);
-    const [storeItems, setStoreItems] = useState<Product[]>([]);
-    const [paginatedItems, setPaginatedItems] = useState<Product[]>([]);
-    const [pageCount, setPageCount] = useState(0);
 
-    useEffect(() => {
-        getAllItems().then((data) => {
-            setStoreItems(data);
-        });
-    }, [selectedCategory, selectedSubcategory]);
-    
-    useEffect(() => {
-        const totalItemsCount = storeItems
-            .filter(item => !selectedCategory || item.category === selectedCategory)
-            .filter(item => !selectedSubcategory || item.subcategory === selectedSubcategory)
-            .length;
-    
-        setPageCount(Math.ceil(totalItemsCount / itemsPerPage));
-    
-        const indexOfLastItem = (currentPage + 1) * itemsPerPage;
-        const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-        
-        const sortedItems = storeItems
-            .filter(item => !selectedCategory || item.category === selectedCategory)
-            .filter(item => !selectedSubcategory || item.subcategory === selectedSubcategory)
-            .sort((a, b) => b.addDate.getTime() - a.addDate.getTime())
-            .slice(indexOfFirstItem, indexOfLastItem);
-        
-            setPaginatedItems(sortedItems);
-        }, [currentPage, selectedCategory, selectedSubcategory, storeItems]);
+    const { paginatedItems, pageCount } = useStoreLogic({
+        selectedCategory,
+        selectedSubcategory,
+        currentPage,
+        itemsPerPage,
+    });
 
-        const handlePageChange = (selectedPage: PageChange) => {
-            setCurrentPage(selectedPage.selected);
-            window.scrollTo(0, 0); 
-        };
+const handlePageChange = (selectedPage: { selected: number }) => {
+    setCurrentPage(selectedPage.selected);
+    window.scrollTo(0, 0);
+};
 
-    const handleCategoryChange = (category: string) => {
-        setSelectedCategory(category);
-        setSelectedSubcategory(null);
-    };
+const handleCategoryChange = (category: string) => {
+    // console.log("Selected category:", category);
+    setSelectedCategory(category);
+    setSelectedSubcategory(null);
+};
 
-    const handleShowAll = () => {
-        setSelectedCategory(null);
-        setSelectedSubcategory(null);
-    };
+const handleShowAll = () => {
+    setSelectedCategory(null);
+    setSelectedSubcategory(null);
+};
 
-    const handleSubcategoryChange = (subcategory: string) => {
-        setSelectedSubcategory(subcategory);
-    };
+const handleSubcategoryChange = (subcategory: string) => {
+    // console.log("Selected subcategory:", subcategory);
+    setSelectedSubcategory(subcategory);
+};
 
-    const getCategoryPath = () => {
-        if (selectedCategory && selectedSubcategory) {
-            return `${selectedCategory} > ${selectedSubcategory}`;
-        } else if (selectedCategory) {
-            return selectedCategory;
-        } else {
-            return 'All';
-        }
-    };
+const getCategoryPath = () => {
+    if (selectedCategory && selectedSubcategory) {
+        return `${selectedCategory} > ${selectedSubcategory}`;
+    } else if (selectedCategory) {
+        return selectedCategory;
+    } else {
+        return 'All';
+    }
+};
 
     return (
         <div className='store'>
