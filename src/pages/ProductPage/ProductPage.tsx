@@ -16,7 +16,7 @@ export function ProductPage() {
         handleAddToCart,
         decreaseQuantity,
         increaseQuantity,
-        removeFromCart,
+        // removeFromCart,
         renderImages,
     } = useProductPageLogic();
 
@@ -63,9 +63,9 @@ export function ProductPage() {
                                 <button className='button productPage__btnAdd' onClick={handleAddToCart}>
                                     <span className='productPage__titleStyle'>Add to Cart</span> 
                                 </button> 
-                                <button className='button productPage__btnAdd' onClick={() => selectedSize && removeFromCart(product.id, selectedSize)}>
+                                {/* <button className='button productPage__btnAdd' onClick={() => selectedSize && removeFromCart(product.id, selectedSize)}>
                                     <span className='productPage__titleStyle'>Remove</span> 
-                                </button>
+                                </button> */}
                             </div>
                         </div>
                     </div>

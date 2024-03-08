@@ -19,16 +19,39 @@ export function Store() {
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null);
     const [storeItems, setStoreItems] = useState<Product[]>([]);
+    const [paginatedItems, setPaginatedItems] = useState<Product[]>([]);
+    const [pageCount, setPageCount] = useState(0);
 
     useEffect(() => {
         getAllItems().then((data) => {
             setStoreItems(data);
         });
-    }, []);
+    }, [selectedCategory, selectedSubcategory]);
+    
+    useEffect(() => {
+        const totalItemsCount = storeItems
+            .filter(item => !selectedCategory || item.category === selectedCategory)
+            .filter(item => !selectedSubcategory || item.subcategory === selectedSubcategory)
+            .length;
+    
+        setPageCount(Math.ceil(totalItemsCount / itemsPerPage));
+    
+        const indexOfLastItem = (currentPage + 1) * itemsPerPage;
+        const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+        
+        const sortedItems = storeItems
+            .filter(item => !selectedCategory || item.category === selectedCategory)
+            .filter(item => !selectedSubcategory || item.subcategory === selectedSubcategory)
+            .sort((a, b) => b.addDate.getTime() - a.addDate.getTime())
+            .slice(indexOfFirstItem, indexOfLastItem);
+        
+            setPaginatedItems(sortedItems);
+        }, [currentPage, selectedCategory, selectedSubcategory, storeItems]);
 
-    const handlePageChange = (selectedPage: PageChange) => {
-        setCurrentPage(selectedPage.selected);
-    };
+        const handlePageChange = (selectedPage: PageChange) => {
+            setCurrentPage(selectedPage.selected);
+            window.scrollTo(0, 0); 
+        };
 
     const handleCategoryChange = (category: string) => {
         setSelectedCategory(category);
@@ -53,17 +76,6 @@ export function Store() {
             return 'All';
         }
     };
-
-    const filterItems = (items: Product[]) => {
-        return items
-            .filter(item => !selectedCategory || item.category === selectedCategory)
-            .filter(item => !selectedSubcategory || item.subcategory === selectedSubcategory);
-    };
-
-    const indexOfLastItem = (currentPage + 1) * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const sortedItems = filterItems(storeItems).sort((a, b) => b.addDate.getTime() - a.addDate.getTime()).slice(indexOfFirstItem, indexOfLastItem);
-
 
     return (
         <div className='store'>
@@ -96,7 +108,7 @@ export function Store() {
                 )}
                 <h1 className="store__title">{getCategoryPath()}</h1>
                 <div className="store__products">
-                    {sortedItems.map((item) => (
+                    {paginatedItems.map((item) => (
                         <StoreItem key={item.id} {...item} />
                     ))}
                 </div>
@@ -104,7 +116,7 @@ export function Store() {
                     previousLabel={<MdChevronLeft className="store__pagination-arrow" />}
                     nextLabel={<MdChevronRight className="store__pagination-arrow" />}
                     breakLabel={'...'}
-                    pageCount={Math.ceil(sortedItems.length / itemsPerPage)}
+                    pageCount={pageCount}
                     marginPagesDisplayed={2}
                     pageRangeDisplayed={5}
                     onPageChange={handlePageChange}
