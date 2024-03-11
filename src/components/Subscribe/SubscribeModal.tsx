@@ -1,16 +1,16 @@
 import React from 'react';
 
 interface Props {
-    showModal: boolean;
-    closeModal: () => void;
+    isVisible: boolean;
+    onCloseClick: () => void;
 }
 
-const SubscribeModal: React.FC<Props> = ({ showModal, closeModal }) => {
+const SubscribeModal: React.FC<Props> = ({ isVisible, onCloseClick }) => {
     return (
-        <div className={`modal ${showModal ? 'show' : ''}`}>
+        <div className={`modal ${isVisible ? 'show' : ''}`}>
             <div className='modal-content'>
                 <p>Your subscription has been received.</p>
-                <span className='close' onClick={closeModal}>&times;</span>
+                <span className='close' onClick={onCloseClick}>&times;</span>
             </div>
         </div>
     );

@@ -13,7 +13,7 @@ export function Subscribe() {
         handleInputChange,
         handleSubscribe,
         handleEnterKeyPress,
-        closeModal
+        onCloseClick
     } = useSubscribeLogic();
 
     return (
@@ -45,7 +45,7 @@ export function Subscribe() {
                     <img src={subscribe2} alt="woman photo" className='subscribe__imgWoman'/>
                 </div>
             </div>
-            <SubscribeModal showModal={isSubscribed && isValidEmail} closeModal={closeModal} />
+            <SubscribeModal isVisible={isSubscribed && isValidEmail} onCloseClick={onCloseClick} />
         </div>
     );
 }

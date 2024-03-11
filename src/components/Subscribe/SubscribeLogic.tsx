@@ -41,7 +41,7 @@ export function useSubscribeLogic() {
         }
     };
 
-    const closeModal = () => {
+    const onCloseClick = () => {
         setIsSubscribed(false); 
     };
 
@@ -53,6 +53,6 @@ export function useSubscribeLogic() {
         handleInputChange,
         handleSubscribe,
         handleEnterKeyPress,
-        closeModal
+        onCloseClick
     };
 }

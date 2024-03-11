@@ -1,29 +1,17 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { formatCurrency } from '../../utilities/formatCurrency';
-import { getAllItems, Product } from '../../utilities/services/items.service';
 import './StoreItem.css';
+import { useStoreItemLogic } from './StoreItemLogic';
 
-export default function StoreItem({ id, name, price, img }: Product) {
-    const [product, setProduct] = useState<Product | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
+interface StoreItemProps {
+    id: number;
+    name: string;
+    price: number;
+    img: string;
+}
 
-    useEffect(() => {
-        const fetchProduct = async () => {
-        try {
-            const products = await getAllItems();
-            const foundProduct = products.find(product => product.id === id);
-            if (foundProduct) {
-            setProduct(foundProduct);
-            }
-            setIsLoading(false);
-        } catch (error) {
-            console.error('Error fetching product:', error);
-        }
-        };
-
-        fetchProduct();
-    }, [id]);
+export default function StoreItem({ id, name, price, img }: StoreItemProps) {
+    const { product, isLoading } = useStoreItemLogic(id);
 
     if (isLoading) {
         return "Loading...";
