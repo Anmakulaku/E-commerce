@@ -5,6 +5,25 @@ import './ProductPage.css';
 import { formatCurrency } from '../../utilities/formatCurrency';
 import { useProductPageLogic } from './ProductPageLogic';
 
+function renderSizeButtons(isAccessories: boolean, selectedSize: string | null, handleSizeSelection: (size: string) => void) {
+    if (isAccessories) {
+        return (
+            <button className={`productPage__sizeLabelsItem ${selectedSize === 'oneSize' && 'selected'}`} onClick={() => handleSizeSelection('One Size')}>One Size</button>
+        );
+    } else {
+        return (
+            <div className='productPage__sizeLabels'>
+                <button className={`productPage__sizeLabelsItem ${selectedSize === 'XS' && 'selected'}`} onClick={() => handleSizeSelection('XS')}>XS</button>
+                <button className={`productPage__sizeLabelsItem ${selectedSize === 'S' && 'selected'}`} onClick={() => handleSizeSelection('S')}>S</button>
+                <button className={`productPage__sizeLabelsItem ${selectedSize === 'M' && 'selected'}`} onClick={() => handleSizeSelection('M')}>M</button>
+                <button className={`productPage__sizeLabelsItem ${selectedSize === 'L' && 'selected'}`} onClick={() => handleSizeSelection('L')}>L</button>
+                <button className={`productPage__sizeLabelsItem ${selectedSize === 'XL' && 'selected'}`} onClick={() => handleSizeSelection('XL')}>XL</button>
+                <button className={`productPage__sizeLabelsItem ${selectedSize === 'XXL' && 'selected'}`} onClick={() => handleSizeSelection('XXL')}>XXL</button>
+            </div>
+        );
+    }
+}
+
 export function ProductPage() {
     const {
         product,
@@ -38,19 +57,7 @@ export function ProductPage() {
                     <span className="productPage__titleStyle productPage__price">{formatCurrency(product.price)}</span>
                     <div className= 'productPage__sizeBox'>
                         <span className='productPage__sizeTitle'>Size: {selectedSize && <div className='productPage__sizeSelected'> {selectedSize}</div>}</span>
-                        {isAccessories ? (
-                            <button className={`productPage__sizeLabelsItem ${selectedSize === 'oneSize' && 'selected'}`} onClick={() => handleSizeSelection('One Size')}>One Size</button>
-                        ) : (
-                            <div className='productPage__sizeLabels'>
-                                <button className={`productPage__sizeLabelsItem ${selectedSize === 'XS' && 'selected'}`} onClick={() => handleSizeSelection('XS')}>XS</button>
-                                <button className={`productPage__sizeLabelsItem ${selectedSize === 'S' && 'selected'}`} onClick={() => handleSizeSelection('S')}>S</button>
-                                <button className={`productPage__sizeLabelsItem ${selectedSize === 'M' && 'selected'}`} onClick={() => handleSizeSelection('M')}>M</button>
-                                <button className={`productPage__sizeLabelsItem ${selectedSize === 'L' && 'selected'}`} onClick={() => handleSizeSelection('L')}>L</button>
-                                <button className={`productPage__sizeLabelsItem ${selectedSize === 'XL' && 'selected'}`} onClick={() => handleSizeSelection('XL')}>XL</button>
-                                <button className={`productPage__sizeLabelsItem ${selectedSize === 'XXL' && 'selected'}`} onClick={() => handleSizeSelection('XXL')}>XXL</button>
-                            </div>
-                        )
-                        } 
+                        {renderSizeButtons(isAccessories, selectedSize, handleSizeSelection)}
                         {isSizeSelected && <p className='productPage__sizeError'>Please, select your size</p>}
                         <div className="productPage__quantity">
                             <div className='productPage__sizeTitle'> Quantity:</div>

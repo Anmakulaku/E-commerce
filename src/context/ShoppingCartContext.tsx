@@ -25,10 +25,14 @@ type ShoppingCartContext = {
     cartItems: CartItem[]
 }
 
-const ShoppingCartContext = createContext ({} as ShoppingCartContext)
+export const ShoppingCartContext = createContext({} as ShoppingCartContext);
 
 export function useShoppingCart() {
-    return useContext (ShoppingCartContext)
+    const context = useContext(ShoppingCartContext);
+    if (!context) {
+        throw new Error("useShoppingCart must be used within a ShoppingCartProvider");
+    }
+    return context;
 }
 
 export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {

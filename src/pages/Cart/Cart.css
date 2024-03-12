@@ -1,9 +1,27 @@
 .cart{
     max-width: 1200px;
+    margin: 0 auto;
 }
 .cart__content{
     height: 500px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
+    margin: 0 1rem;
+}
+.cart__title{
+    margin: 3rem 0;
+}
+.cart__table{
+    width: 100%;
+}
+.cart__tableTitles{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cart__tableTitles p {  
+    font-size: var(--font-family-titles);
+    font-weight: 700;
 }
