@@ -4,6 +4,7 @@ import { Subscribe } from '../../components/Subscribe/Subscribe';
 import './ProductPage.css';
 import { formatCurrency } from '../../utilities/formatCurrency';
 import { useProductPageLogic } from './ProductPageLogic';
+import { useState } from 'react';
 
 function renderSizeButtons(isAccessories: boolean, selectedSize: string | null, handleSizeSelection: (size: string) => void) {
     if (isAccessories) {
@@ -62,11 +63,7 @@ export function ProductPage() {
                         <div className="productPage__quantity">
                             <div className='productPage__sizeTitle'> Quantity:</div>
                             <div className='productPage__quantityContent'>
-                                <div className='productPage__changeQuantity'>
-                                    <button className='button productPage__btn' onClick={decreaseQuantity}>-</button>
-                                    <span>{quantity}</span>
-                                    <button className='button productPage__btn' onClick={increaseQuantity}>+</button>
-                                </div>
+                                
                                 <button className='button productPage__btnAdd' onClick={handleAddToCart}>
                                     <span className='productPage__titleStyle'>Add to Cart</span> 
                                 </button> 
@@ -83,4 +80,33 @@ export function ProductPage() {
             <Footer />
         </div>
     );
+}
+
+type NumberPickerProps = {
+  value: number;
+  onChange: (value: number) => void;
+}
+
+const NumberPicker = ({value: propsValue, onChange}) => {
+  const [value, setValue] = useState(propsValue)
+
+  useEffect(() => {
+    setValue(propsValue)
+  }, [propsValue])
+
+  const increase = () => {
+    setValue(value + 1);
+    onChange(value + 1);
+  }
+
+  const decrease = () => {
+    setValue(value - 1);
+    onChange(value - 1);
+  }
+
+  return <div className='productPage__changeQuantity'>
+  <button className='button productPage__btn' onClick={decrease}>-</button>
+  <span>{value}</span>
+  <button className='button productPage__btn' onClick={increase}>+</button>
+</div>
 }
