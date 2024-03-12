@@ -2,32 +2,36 @@ import { Link } from 'react-router-dom';
 import { formatCurrency } from '../../utilities/formatCurrency';
 import './StoreItem.css';
 import { useStoreItemLogic } from './StoreItemLogic';
+import { Product } from '../../utilities/services/items.service';
 
 interface StoreItemProps {
-    id: number;
-    name: string;
-    price: number;
-    img: string;
+  item: Product;
 }
 
-export default function StoreItem({ id, name, price, img }: StoreItemProps) {
-    const { product, isLoading } = useStoreItemLogic(id);
+export function StoreItemWrapper() {
+  const { product, isLoading } = useStoreItemLogic(id);
 
-    if (isLoading) {
-        return "Loading...";
-    }
-    if (!product) {
-        return "Product not found";
-    }
+  if (isLoading) {
+    return "Loading...";
+  }
+  if (!product) {
+      return "Product not found";
+  }
+
+  return <StoreItem item={product}/>;
+}
+
+export default function StoreItem({ item }: StoreItemProps) {
+    const handleImgOverMouse = (e: React.MouseEvent<HTMLDivElement>) => {}
 
     return (
         <Link to={`/product/${id}`} className="storeItem__container">
         <div className="storeItem__img">
-            <img src={img} alt="product-image" />
+            <img src={item.img} alt="product-image" onMouseEnter={handleImgOverMouse} />
         </div>
         <div className="storeItem__text">
-            <h1 className="storeItem__title">{name}</h1>
-            <span className="storeItem__price">{formatCurrency(price)}</span>
+            <h1 className="storeItem__title">{item.name}</h1>
+            <span className="storeItem__price">{formatCurrency(item.price)}</span>
         </div>
         </Link>
     );
