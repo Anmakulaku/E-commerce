@@ -56,6 +56,7 @@
 .cartItem__price span{
     font-weight: 600;
 }
+
 @media screen and (min-width: 481px) and (max-width: 768px) {
     .cartItem__item{
         gap: 1rem;

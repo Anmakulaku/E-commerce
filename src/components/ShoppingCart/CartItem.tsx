@@ -1,29 +1,17 @@
 import { useShoppingCart } from "../../context/ShoppingCartContext"
-import { Product, getItemById } from "../../utilities/services/items.service"
 import { formatCurrency } from "../../utilities/formatCurrency"
 import "./CartItem.css"
-import { useEffect, useState } from "react"
+import { useCartItemLogic } from "./CartItemLogic"
 
 type CartItemProps ={
     id: number 
     quantity: number
-    size?: string
+    size: string
 }
 
 export function CartItem ({id, size, quantity}: CartItemProps) {
     const { removeFromCart, increaseCartQuantity, decreaseCartQuantity } = useShoppingCart()
-
-    const [item, setItem] = useState<Product | null>(null);
-
-    useEffect(() => {
-        getItemById(id)
-            .then(item => {
-                setItem(item);
-            })
-            .catch(error => {
-                console.error('Error fetching item:', error);
-            });
-    }, [id]);
+    const item = useCartItemLogic(id);
 
     if (!item) return null;
     // console.log("Size in CartItem:", size); 
@@ -37,11 +25,11 @@ export function CartItem ({id, size, quantity}: CartItemProps) {
                     <p className="cartItem__title">Size: {size}</p> 
                     <div className="cartItem__quantity">
                         <div className="cartItem__quantityBtns">
-                            <button className='button cartItem__btn' onClick={() => item.size && decreaseCartQuantity(item.id, item.size)}>-</button>
+                            <button className='button cartItem__btn' onClick={() => decreaseCartQuantity(item.id, size)}>-</button>
                             {quantity >= 1 && <span>{quantity}</span>}
-                            <button className='button cartItem__btn' onClick={() => item.size && increaseCartQuantity(item.id, item.size)}>+</button>
+                            <button className='button cartItem__btn' onClick={() => increaseCartQuantity(item.id, size)}>+</button>
                         </div>
-                        <button className='button cartItem__btnRemove' onClick={() => removeFromCart(item.id)}>
+                        <button className='button cartItem__btnRemove' onClick={() => removeFromCart(item.id, size)}>
                             <span className='cartItem__btnRemoveStyle'>Remove</span> 
                         </button> 
                     </div>

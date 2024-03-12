@@ -1,37 +1,13 @@
 import { useShoppingCart } from "../../context/ShoppingCartContext";
-import { Product } from "../../utilities/services/items.service";
 import { formatCurrency } from "../../utilities/formatCurrency";
 import { CartItem } from "./CartItem";
 import './ShoppingCart.css';
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { itemsAll } from "../../_mocks_/itemsAll";
+import { useShoppingCartLogic } from "./ShoppingCartLogic";
 
 export function ShoppingCart() {
     const { closeCart, cartItems, isGiftWrapSelected, toggleGiftWrap } = useShoppingCart();
-    const giftWrapPrice = 10;
-    const [cartProducts, setCartProducts] = useState<Product[]>([]); 
-
-    useEffect(() => {
-        const fetchCartProducts = async () => {
-            try {
-                const cartProductIds = cartItems.map(item => item.id); // Pobierz identyfikatory produktów w koszyku
-                const productsInCart = itemsAll.filter(item => cartProductIds.includes(item.id)); // Wybierz tylko te produkty, które są w koszyku
-                setCartProducts(productsInCart);
-            } catch (error) {
-                console.error('Error fetching cart products:', error);
-            }
-        };
-
-        fetchCartProducts();
-    }, [cartItems]);
-
-    const totalSum = cartItems.reduce((total, cartItem) => {
-        const cartProduct = cartProducts.find(product => product.id === cartItem.id); // Użyj produktów w koszyku do obliczenia sumy cen
-        return total + (cartProduct?.price || 0) * cartItem.quantity;
-    }, 0);
-
-    const totalSumWithGiftWrap = isGiftWrapSelected ? totalSum + giftWrapPrice : totalSum;
+    const { totalSumWithGiftWrap } = useShoppingCartLogic();
 
     return (
         <div className="shoppingCartOverlay">
@@ -47,7 +23,7 @@ export function ShoppingCart() {
                     {/* <>{console.log("ShoppingCart:", cartItems)}</> */}
                     {
                     cartItems.map((item, index)=> (
-                        <CartItem key={`${item.id}-${item.size}-${index}`} {...item} id={item.id} quantity={item.quantity} size={item.size} />
+                        <CartItem key={`${item.id}-${item.size}-${index}`} {...item} id={item.id} quantity={item.quantity} size={item.size || ''} />
                     ))}
                     <div className="shoppingCart__footer">
                         <div className="shoppingCart__totalPrice">
