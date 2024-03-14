@@ -1,5 +1,5 @@
 import { createContext, useContext, ReactNode, useState } from "react";
-import { ShoppingCart } from "../components/ShoppingCart";
+import { ShoppingCart } from "../components/ShoppingCart/ShoppingCart";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 type ShoppingCartProviderProps = {
@@ -17,7 +17,7 @@ type ShoppingCartContext = {
     getItemQuantity: (id: number) => number
     increaseCartQuantity: (id: number, size: string) => void
     decreaseCartQuantity: (id: number, size: string) => void
-    removeFromCart: (id: number) => void
+    removeFromCart: (id: number, size: string) => void
     addGiftWrap: () => void;
     isGiftWrapSelected: boolean;
     toggleGiftWrap: () => void;
@@ -25,10 +25,14 @@ type ShoppingCartContext = {
     cartItems: CartItem[]
 }
 
-const ShoppingCartContext = createContext ({} as ShoppingCartContext)
+export const ShoppingCartContext = createContext({} as ShoppingCartContext);
 
 export function useShoppingCart() {
-    return useContext (ShoppingCartContext)
+    const context = useContext(ShoppingCartContext);
+    if (!context) {
+        throw new Error("useShoppingCart must be used within a ShoppingCartProvider");
+    }
+    return context;
 }
 
 export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
@@ -51,6 +55,7 @@ export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
         return cartItems.find(item => item.id === id)?.quantity || 0
     } 
     function increaseCartQuantity(id: number, size: string) {
+        console.log("Increasing quantity for item with id:", id, "and size:", size)
         setCartItems(currItems => {
             const existingItem = currItems.find(item => item.id === id && item.size === size);
     
@@ -69,6 +74,7 @@ export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
     }
     
     function decreaseCartQuantity(id: number, size: string) {
+        console.log("Decreasing quantity for item with id:", id, "and size:", size);
     setCartItems(currItems => {
         const existingItem = currItems.find(item => item.id === id && item.size === size);
 
@@ -90,11 +96,11 @@ export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
     });
 }
 
-    function removeFromCart(id:number) {
-        setCartItems(currItems => {
-            return currItems.filter(item => item.id !== id)
-        })
-    }
+function removeFromCart(id: number, size: string) {
+    setCartItems(currItems => {
+        return currItems.filter(item => item.id !== id || item.size !== size);
+    });
+}
     function addGiftWrap() {
         setCartItems((currItems) => {
             const giftWrapItem: CartItem = {

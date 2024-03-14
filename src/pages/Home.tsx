@@ -1,10 +1,10 @@
-import { Header } from '../components/Header'
-import { Brand } from '../components/Brand'
-import { Footer } from '../components/Footer'
-import { Subscribe } from '../components/Subscribe'
-import { Gallery } from '../components/Gallery'
-import { Slider } from '../components/Slider'
-import { Testimonials } from '../components/Testimonials'
+import { Header } from '../components/Header/Header'
+import { Brand } from '../components/Brands/Brand'
+import { Footer } from '../components/Footer/Footer'
+import { Subscribe } from '../components/Subscribe/Subscribe'
+import { Gallery } from '../components/Gallery/Gallery'
+import { Slider } from '../components/Slider/Slider'
+import { Testimonials } from '../components/Testimonials/Testimonials'
 
 export function Home() {
     return(
