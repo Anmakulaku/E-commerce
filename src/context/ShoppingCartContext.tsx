@@ -9,6 +9,8 @@ type CartItem = {
     id: number
     quantity: number
     size?: string
+    name?: string
+    price?: number
 }
 
 type ShoppingCartContext = {
@@ -55,7 +57,7 @@ export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
         return cartItems.find(item => item.id === id)?.quantity || 0
     } 
     function increaseCartQuantity(id: number, size: string) {
-        console.log("Increasing quantity for item with id:", id, "and size:", size)
+        // console.log("Increasing quantity for item with id:", id, "and size:", size)
         setCartItems(currItems => {
             const existingItem = currItems.find(item => item.id === id && item.size === size);
     
@@ -74,7 +76,7 @@ export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
     }
     
     function decreaseCartQuantity(id: number, size: string) {
-        console.log("Decreasing quantity for item with id:", id, "and size:", size);
+        // console.log("Decreasing quantity for item with id:", id, "and size:", size);
     setCartItems(currItems => {
         const existingItem = currItems.find(item => item.id === id && item.size === size);
 
@@ -97,11 +99,13 @@ export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
 }
 
 function removeFromCart(id: number, size: string) {
+    // console.log("Removing item with id:", id, "and size:", size);
     setCartItems(currItems => {
         return currItems.filter(item => item.id !== id || item.size !== size);
     });
 }
     function addGiftWrap() {
+        console.log("Gift wrap render")
         setCartItems((currItems) => {
             const giftWrapItem: CartItem = {
                 id: -1, 

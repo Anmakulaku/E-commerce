@@ -1,0 +1,27 @@
+.cartItemData__content{
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+.cartItemData__itemImg{
+    width: 7rem;
+    height: auto;
+    margin-bottom: 1rem;
+}
+.cartItemData__item img{
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+.cartItemData__text{
+    width: 9rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.cartItemData__title{
+    font-family: var(--font-family-titles);
+    margin: 1rem 0;
+}

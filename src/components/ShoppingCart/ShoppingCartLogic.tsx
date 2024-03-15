@@ -4,6 +4,7 @@ import { Product } from "../../utilities/services/items.service";
 import { itemsAll } from "../../_mocks_/itemsAll";
 
 export function useShoppingCartLogic() {
+    console.log('useShoppingCartLogic render');
     const { cartItems, isGiftWrapSelected } = useShoppingCart();
     const [cartProducts, setCartProducts] = useState<Product[]>([]); 
     const giftWrapPrice = 10;

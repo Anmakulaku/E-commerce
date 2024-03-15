@@ -5,6 +5,7 @@ import { useShoppingCart } from '../../context/ShoppingCartContext';
 import { Product } from '../../utilities/services/items.service';
 
 export function useProductPageLogic() {
+    console.log('useProductPageLogic render');
     const { increaseCartQuantity, removeFromCart } = useShoppingCart();
     const { id } = useParams<{ id?: string }>();
 

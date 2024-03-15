@@ -10,7 +10,7 @@ export interface Product {
     name: string;
     price: number;
     addDate: Date;
-    size?: string
+    sizes: { size: string; quantity: number }[];
 }
 
 export const getAllItems = (): Promise <Product []> => {

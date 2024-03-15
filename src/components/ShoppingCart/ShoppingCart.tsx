@@ -20,7 +20,7 @@ export function ShoppingCart() {
                             &times;
                         </button>
                     </div>
-                    {/* <>{console.log("ShoppingCart:", cartItems)}</> */}
+                    <>{console.log("ShoppingCart:", cartItems)}</>
                     {
                     cartItems.map((item, index)=> (
                         <CartItem key={`${item.id}-${item.size}-${index}`} {...item} id={item.id} quantity={item.quantity} size={item.size || ''} />

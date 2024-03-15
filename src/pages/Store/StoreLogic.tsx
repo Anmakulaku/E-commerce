@@ -15,22 +15,20 @@ export function useStoreLogic({ selectedCategory, selectedSubcategory, currentPa
     const [pageCount, setPageCount] = useState(0);
 
     useEffect(() => {
-        // console.log("selectedCategory:", selectedCategory);
-        // console.log("selectedSubcategory:", selectedSubcategory);
         
         getAllItems().then((data) => {
-            // console.log("All items:", data);
             setStoreItems(data);
         });
     }, [selectedCategory, selectedSubcategory]);
 
     useEffect(() => {
+        if (storeItems.length === 0) return; // Sprawdź, czy storeItems nie jest puste
         const totalItemsCount = storeItems
             .filter(item => !selectedCategory || item.category === selectedCategory)
             .filter(item => !selectedSubcategory || item.subcategory === selectedSubcategory)
             .length;
-            console.log("Total items count:", totalItemsCount);
-            const itemsPerPage = 12;
+        console.log("Total items count:", totalItemsCount);
+        const itemsPerPage = 12;
         setPageCount(Math.ceil(totalItemsCount / itemsPerPage));
 
         const indexOfLastItem = (currentPage + 1) * itemsPerPage;
