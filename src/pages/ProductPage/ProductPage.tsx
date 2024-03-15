@@ -38,6 +38,8 @@ export function ProductPage() {
         // removeFromCart,
         renderImages,
     } = useProductPageLogic();
+    
+    console.log('ProductPage render');
 
     if (!product) {
         return <div>Brak identyfikatora produktu</div>;

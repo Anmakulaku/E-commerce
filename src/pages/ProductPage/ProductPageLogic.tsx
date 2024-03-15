@@ -14,6 +14,7 @@ export function useProductPageLogic() {
     const [product, setProduct] = useState<Product | null>(null);
     const [quantity, setQuantity] = useState<number>(1);
     const [isSizeSelected, setIsSizeSelected] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null);
 
     let productId = -1;
 
@@ -23,16 +24,23 @@ export function useProductPageLogic() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const foundProduct = itemsAll.find(item => item.id === productId);
+            try {
+                console.log('Fetching data...'); 
+                const foundProduct = itemsAll.find(item => item.id === productId);
 
-            if (foundProduct) {
-                setProduct(foundProduct);
+                if (foundProduct) {
+                    setProduct(foundProduct);
 
-                if (foundProduct.img) {
-                    setMainImage(foundProduct.img);
-                } else if (foundProduct.imgOther && foundProduct.imgOther.length > 0) {
-                    setMainImage(foundProduct.imgOther[0]);
+                    if (foundProduct.img) {
+                        setMainImage(foundProduct.img);
+                    } else if (foundProduct.imgOther && foundProduct.imgOther.length > 0) {
+                        setMainImage(foundProduct.imgOther[0]);
+                    }
+                } else {
+                    setError('Product not found'); // Ustawienie błędu, gdy produkt nie zostanie znaleziony
                 }
+            } catch (error) {
+                setError('Error fetching product data'); // Ustawienie błędu, jeśli wystąpi błąd podczas pobierania danych
             }
         };
 
@@ -45,6 +53,7 @@ export function useProductPageLogic() {
     };
 
     const handleAddToCart = () => {
+        console.log('render HandleAddtoCart...');
         if (!selectedSize) {
             setIsSizeSelected(true);
             return;
@@ -66,7 +75,8 @@ export function useProductPageLogic() {
     };
 
     const renderImages = (mainImage: string | null, product: Product) => {
-        const handleImageClick = (clickedImage: string) => {
+        console.log('renderImages...'); 
+        const handleImageClick = (clickedImage: string) => { 
             setMainImage(clickedImage);
         };
         return (
@@ -95,6 +105,7 @@ export function useProductPageLogic() {
         selectedSize,
         quantity,
         isSizeSelected,
+        error,
         setSelectedSize,
         setMainImage,
         setQuantity,
