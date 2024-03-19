@@ -31,24 +31,8 @@
 .cartItem__quantity{
     min-width: 30rem;
     display: flex;
-    justify-content: space-between;
-}
-.cartItem__btn{
-    padding: 0.5rem 1rem;
-    background-color: var(--color-bg);
-    color: var(--color-secondary);
-    font-size: 1.5em;
-}
-.cartItem__quantityBtns span{
-    margin: 0 1rem;
-    font-weight: 600;
-}
-.cartItem__btnRemove{
-    padding: 0.5rem 2rem;
-    margin: 0 2rem;
-}
-.cartItem__btnRemove:hover{
-    color: var(--color-secondary);
+    justify-content: flex-start;
+    gap: 3rem;
 }
 .cartItem__amountPrice{
     margin: 0.5rem 0 1rem 0;

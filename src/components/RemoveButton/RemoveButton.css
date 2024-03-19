@@ -1,0 +1,10 @@
+.removeButton__btn{
+    padding: 0.5rem 2rem;
+    margin: 0 2rem;
+}
+.removeButton__btn:hover{
+    color: var(--color-secondary);
+}
+.removeButton__title{
+    padding: 1rem 2rem;
+}

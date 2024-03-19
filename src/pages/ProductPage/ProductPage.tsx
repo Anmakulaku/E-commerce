@@ -39,7 +39,7 @@ export function ProductPage() {
         renderImages,
     } = useProductPageLogic();
     
-    console.log('ProductPage render');
+    // console.log('ProductPage render');
 
     if (!product) {
         return <div>Brak identyfikatora produktu</div>;

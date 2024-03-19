@@ -5,7 +5,7 @@ import { useShoppingCart } from '../../context/ShoppingCartContext';
 import { Product } from '../../utilities/services/items.service';
 
 export function useProductPageLogic() {
-    console.log('useProductPageLogic render');
+    // console.log('useProductPageLogic render');
     const { increaseCartQuantity, removeFromCart } = useShoppingCart();
     const { id } = useParams<{ id?: string }>();
 
@@ -25,7 +25,7 @@ export function useProductPageLogic() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                console.log('Fetching data...'); 
+                // console.log('Fetching data...'); 
                 const foundProduct = itemsAll.find(item => item.id === productId);
 
                 if (foundProduct) {
@@ -53,7 +53,7 @@ export function useProductPageLogic() {
     };
 
     const handleAddToCart = () => {
-        console.log('render HandleAddtoCart...');
+        // console.log('render HandleAddtoCart...');
         if (!selectedSize) {
             setIsSizeSelected(true);
             return;
