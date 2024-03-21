@@ -4,6 +4,7 @@ import { Subscribe } from '../../components/Subscribe/Subscribe';
 import './ProductPage.css';
 import { formatCurrency } from '../../utilities/formatCurrency';
 import { useProductPageLogic } from './ProductPageLogic';
+import { useParams } from 'react-router-dom';
 
 function renderSizeButtons(isAccessories: boolean, selectedSize: string | null, handleSizeSelection: (size: string) => void) {
     if (isAccessories) {
@@ -25,6 +26,7 @@ function renderSizeButtons(isAccessories: boolean, selectedSize: string | null, 
 }
 
 export function ProductPage() {
+    const { id } = useParams<{ id: string }>();
     const {
         product,
         mainImage,
@@ -32,12 +34,11 @@ export function ProductPage() {
         quantity,
         isSizeSelected,
         handleSizeSelection,
-        handleAddToCart,
+        addToCart,
         decreaseQuantity,
         increaseQuantity,
-        // removeFromCart,
         renderImages,
-    } = useProductPageLogic();
+    } = useProductPageLogic(id || '');
     
     // console.log('ProductPage render');
 
@@ -69,7 +70,7 @@ export function ProductPage() {
                                     <span>{quantity}</span>
                                     <button className='button productPage__btn' onClick={increaseQuantity}>+</button>
                                 </div>
-                                <button className='button productPage__btnAdd' onClick={handleAddToCart}>
+                                <button className='button productPage__btnAdd' onClick={addToCart}>
                                     <span className='productPage__titleStyle'>Add to Cart</span> 
                                 </button> 
                                 {/* <button className='button productPage__btnAdd' onClick={() => selectedSize && removeFromCart(product.id, selectedSize)}>

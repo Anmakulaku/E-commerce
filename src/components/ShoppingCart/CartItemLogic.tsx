@@ -1,19 +1,20 @@
-import { useEffect, useState } from "react";
-import { Product, getItemById } from "../../utilities/services/items.service";
+import { useEffect, useState, useContext } from "react";
+import { ShoppingCartContext } from "../../context/ShoppingCartContext";
+import { Product } from "../../utilities/types/ProductType";
 
 export function useCartItemLogic(id: number) {
+    const { products } = useContext(ShoppingCartContext);
     const [item, setItem] = useState<Product | null>(null);
 
     useEffect(() => {
         console.log('useCartItemLogic render with id:', id);
-        getItemById(id)
-            .then(item => {
-                setItem(item);
-            })
-            .catch(error => {
-                console.error('Error fetching item:', error);
-            });
-    }, [id]);
+        const foundItem = products.find(product => product.id === id);
+        if (foundItem) {
+            setItem(foundItem);
+        } else {
+            console.error('Item not found');
+        }
+    }, [id, products]);
 
     return item;
 }

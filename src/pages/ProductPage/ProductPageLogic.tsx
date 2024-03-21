@@ -1,14 +1,10 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { itemsAll } from '../../_mocks_/itemsAll';
-import { useShoppingCart } from '../../context/ShoppingCartContext';
-import { Product } from '../../utilities/services/items.service';
+import { useContext, useEffect, useState } from 'react';
+import { Product } from '../../utilities/types/ProductType';
+import { ShoppingCartContext } from '../../context/ShoppingCartContext';
 
-export function useProductPageLogic() {
+export function useProductPageLogic(id: string) {
     // console.log('useProductPageLogic render');
-    const { increaseCartQuantity, removeFromCart } = useShoppingCart();
-    const { id } = useParams<{ id?: string }>();
-
+    const { increaseCartQuantity, products } = useContext(ShoppingCartContext);
     const [selectedSize, setSelectedSize] = useState<string | null>(null);
     const [mainImage, setMainImage] = useState<string | null>(null);
     const [product, setProduct] = useState<Product | null>(null);
@@ -16,50 +12,35 @@ export function useProductPageLogic() {
     const [isSizeSelected, setIsSizeSelected] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
 
-    let productId = -1;
-
-    if (id) {
-        productId = parseInt(id, 10);
-    }
-
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                // console.log('Fetching data...'); 
-                const foundProduct = itemsAll.find(item => item.id === productId);
+        if (!id || products.length === 0) return;
 
-                if (foundProduct) {
-                    setProduct(foundProduct);
+        const foundProduct = products.find(item => item.id.toString() === id);
 
-                    if (foundProduct.img) {
-                        setMainImage(foundProduct.img);
-                    } else if (foundProduct.imgOther && foundProduct.imgOther.length > 0) {
-                        setMainImage(foundProduct.imgOther[0]);
-                    }
-                } else {
-                    setError('Product not found'); // Ustawienie błędu, gdy produkt nie zostanie znaleziony
-                }
-            } catch (error) {
-                setError('Error fetching product data'); // Ustawienie błędu, jeśli wystąpi błąd podczas pobierania danych
+        if (foundProduct) {
+            setProduct(foundProduct);
+            if (foundProduct.img) {
+                setMainImage(foundProduct.img);
+            } else if (foundProduct.imgOther && foundProduct.imgOther.length > 0) {
+                setMainImage(foundProduct.imgOther[0]);
             }
-        };
-
-        fetchData();
-    }, [id, productId]);
+        } else {
+            setError('Product not found');
+        }
+    }, [id, products]);
 
     const handleSizeSelection = (size: string) => {
         setSelectedSize(size);
         setIsSizeSelected(false);
     };
 
-    const handleAddToCart = () => {
-        // console.log('render HandleAddtoCart...');
-        if (!selectedSize) {
+    const addToCart = () => {
+        if (!selectedSize || !product) {
             setIsSizeSelected(true);
             return;
         }
         for (let i = 0; i < quantity; i++) {
-            increaseCartQuantity(productId, selectedSize || '');
+            increaseCartQuantity(product.id, selectedSize || '');
         }
         setQuantity(1);
     };
@@ -105,15 +86,14 @@ export function useProductPageLogic() {
         selectedSize,
         quantity,
         isSizeSelected,
+        addToCart,
         error,
         setSelectedSize,
         setMainImage,
         setQuantity,
         handleSizeSelection,
-        handleAddToCart,
         decreaseQuantity,
         increaseQuantity,
-        removeFromCart,
         renderImages,
     };
 }

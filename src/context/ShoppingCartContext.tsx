@@ -1,16 +1,11 @@
-import { createContext, useContext, ReactNode, useState } from "react";
+import { createContext, useContext, ReactNode, useState, useEffect } from "react";
 import { ShoppingCart } from "../components/ShoppingCart/ShoppingCart";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import { getAllItems } from "../utilities/services/items.service";
+import { Product } from "../utilities/types/ProductType";
+import { CartItem } from "../utilities/types/CartItemType";
 
 type ShoppingCartProviderProps = {
     children: ReactNode
-}
-type CartItem = {
-    id: number
-    quantity: number
-    size?: string
-    name?: string
-    price?: number
 }
 
 type ShoppingCartContext = {
@@ -22,9 +17,12 @@ type ShoppingCartContext = {
     removeFromCart: (id: number, size: string) => void
     addGiftWrap: () => void;
     isGiftWrapSelected: boolean;
+    totalSumWithGiftWrap: number;
     toggleGiftWrap: () => void;
-    cartQuantity: number 
-    cartItems: CartItem[]
+    totalSum: number;
+    cartQuantity: number;
+    cartItems: CartItem[];
+    products: Product[];
 }
 
 export const ShoppingCartContext = createContext({} as ShoppingCartContext);
@@ -37,10 +35,36 @@ export function useShoppingCart() {
     return context;
 }
 
+// LOCAL STORAGE
+export function useLocalStorage <T>(key: string, initialValue: T | (() => T)) {
+    const [value, setValue] = useState<T> (()=> {
+        const jsonValue = localStorage.getItem(key)
+        if(jsonValue != null) return JSON.parse(jsonValue)
+
+        if (typeof initialValue === "function") {
+            return (initialValue as () => T) ()
+        } else {
+            return initialValue
+        }
+    })
+
+    useEffect (() => {
+        localStorage.setItem(key, JSON.stringify(value))
+    }, [key, value])
+
+    return [value, setValue] as [typeof value, typeof setValue]
+}
+
+// SHOPPING CART PROVIDER   
 export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
     const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("shoppingCart", [])
     const [isOpen, setIsOpen] = useState(false)
     const [isGiftWrapSelected, setIsGiftWrapSelected] = useState(false);
+    const [products, setProducts] = useState<Product[]>([]); 
+    const giftWrapPrice = 10;
+
+    const openCart = () => setIsOpen(true);
+    const closeCart = () => setIsOpen(false);
 
     const cartQuantity = cartItems.reduce((quantity, item) => {
         if (item.id !== -1) {
@@ -50,8 +74,11 @@ export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
         }
     }, 0);
 
-    const openCart = () => setIsOpen(true);
-    const closeCart = () => setIsOpen(false);
+    useEffect(() => {
+        getAllItems().then((data) => {
+            setProducts(data);
+        });
+    }, []);
 
     function getItemQuantity(id: number, size: string) {
         const item = cartItems.find(item => item.id === id && item.size === size);
@@ -61,18 +88,14 @@ export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
     function increaseCartQuantity(id: number, size: string) {
         // console.log("Increasing quantity for item with id:", id, "and size:", size)
         setCartItems(currItems => {
-            const existingItem = currItems.find(item => item.id === id && item.size === size);
-    
-            if (existingItem) {
-                return currItems.map(item => {
-                    if (item.id === id && item.size === size) {
-                        return { ...item, quantity: item.quantity + 1 };
-                    } else {
-                        return item;
-                    }
-                });
+            const newItem = { id, size, quantity: 1 } as CartItem;
+            const existingItemIndex = currItems.findIndex(item => item.id === id && item.size === size);
+            if (existingItemIndex !== -1) {
+            const updatedItems = [...currItems];
+            updatedItems[existingItemIndex].quantity++;
+            return updatedItems;
             } else {
-                return [...currItems, { id, size, quantity: 1 }];
+            return [...currItems, newItem];
             }
         });
     }
@@ -81,7 +104,6 @@ export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
         // console.log("Decreasing quantity for item with id:", id, "and size:", size);
     setCartItems(currItems => {
         const existingItem = currItems.find(item => item.id === id && item.size === size);
-
         if (existingItem) {
             if (existingItem.quantity === 1) {
                 return currItems.filter(item => !(item.id === id && item.size === size));
@@ -98,30 +120,49 @@ export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
             return currItems;
         }
     });
-}
+    }
 
-function removeFromCart(id: number, size: string) {
-    // console.log("Removing item with id:", id, "and size:", size);
-    setCartItems(currItems => {
-        return currItems.filter(item => item.id !== id || item.size !== size);
-    });
-}
+    function removeFromCart(id: number, size: string) {
+        // console.log("Removing item with id:", id, "and size:", size);
+        setCartItems(currItems => {
+            return currItems.filter(item => !(item.id === id && item.size === size));
+        });
+    }
+
     function addGiftWrap() {
         console.log("Gift wrap render")
         setCartItems((currItems) => {
-            const giftWrapItem: CartItem = {
-                id: -1, 
-                quantity: 0,
-            };
-
+            const giftWrapItem = { id: -1, quantity: 0 } as CartItem;
             return [...currItems, giftWrapItem];
         });
     }
+
     function toggleGiftWrap() {
         setIsGiftWrapSelected((prev) => !prev);
     }
+
+    const totalSum = cartItems.reduce((total, cartItem) => {
+        const cartProduct = products.find(product => product.id === cartItem.id); // Użyj produktów w koszyku do obliczenia sumy cen
+        return total + (cartProduct?.price || 0) * cartItem.quantity;
+    }, 0);
+    
+    const totalSumWithGiftWrap = isGiftWrapSelected ? totalSum + giftWrapPrice : totalSum;
+
     return (
-        <ShoppingCartContext.Provider value={{ getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart, openCart, closeCart, addGiftWrap, isGiftWrapSelected, toggleGiftWrap, cartItems, cartQuantity}}>
+        <ShoppingCartContext.Provider value={{ 
+            getItemQuantity, 
+            increaseCartQuantity, 
+            decreaseCartQuantity, 
+            removeFromCart, 
+            openCart, 
+            closeCart, 
+            addGiftWrap, 
+            isGiftWrapSelected, toggleGiftWrap, 
+            cartItems, 
+            cartQuantity,
+            products,
+            totalSum,
+            totalSumWithGiftWrap }}>
             {children}
             {isOpen && <ShoppingCart />} 
         </ShoppingCartContext.Provider>

@@ -1,8 +1,6 @@
 import { formatCurrency } from "../../utilities/formatCurrency"
 import "./CartItem.css"
 import { useCartItemLogic } from "./CartItemLogic"
-import QuantityCounter  from '../QuantityCounter/QuantityCounter';
-import RemoveButton from "../RemoveButton/RemoveButton";
 
 type CartItemProps ={
     id: number 
@@ -22,10 +20,6 @@ export function CartItem ({id, size, quantity}: CartItemProps) {
                 <div className="cartItem__text">
                     <h3 className="cartItem__title">{item.name}</h3> 
                     <p className="cartItem__title">Size: {size}</p> 
-                    <div className="cartItem__quantity">
-                        <QuantityCounter itemId={item.id} size={size} />
-                        <RemoveButton itemId={item.id} size={size} />
-                    </div>
                     <div className="cartItem__amountPrice">
                         <p className="cartItem__price">Price: <span>{formatCurrency(item.price)}</span></p>
                         <p className="cartItem__price">Sum: <span>{formatCurrency(item.price*quantity)}</span></p>

@@ -8,7 +8,6 @@
     justify-content: flex-start;
     align-items: center;
     gap: 2rem;
-    border-bottom: 2px solid var(--color-primary);
 }
 .cartItem__itemImg{
     width: 7rem;
