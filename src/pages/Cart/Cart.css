@@ -15,13 +15,38 @@
 }
 .cart__table{
     width: 100%;
+    margin-bottom: 3rem;
 }
 .cart__tableTitles{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--color-primary);
 }
 .cart__tableTitles p {  
     font-size: var(--font-family-titles);
     font-weight: 700;
+}
+.cart__footer{
+    width: 50%;
+    position:relative;
+    right: -50%;
+    
+}
+.cart__giftWrap{
+    padding: 1rem 0;
+    border-bottom: 2px solid var(--color-primary);
+}
+.cart__totalPrice{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 0.5rem 0 0;
+}
+.cart__totalPriceTitle, 
+.cart__totalPrice p{
+    font-family: var(--font-family-titles);
+    font-size: 1.2em;
+    
 }

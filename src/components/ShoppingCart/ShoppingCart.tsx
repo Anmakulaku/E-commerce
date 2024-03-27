@@ -1,13 +1,12 @@
 import { useShoppingCart } from "../../context/ShoppingCartContext";
 import { formatCurrency } from "../../utilities/formatCurrency";
-import { CartItem } from "./CartItem";
+// import { CartItem } from "./CartItem";
 import './ShoppingCart.css';
 import { Link } from "react-router-dom";
-import { useShoppingCartLogic } from "./ShoppingCartLogic";
+import CartItemBox from "./CartItemBox";
 
 export function ShoppingCart() {
-    const { closeCart, cartItems, isGiftWrapSelected, toggleGiftWrap } = useShoppingCart();
-    const { totalSumWithGiftWrap } = useShoppingCartLogic();
+    const { closeCart, cartItems, isGiftWrapSelected, toggleGiftWrap, totalSumWithGiftWrap } = useShoppingCart();
 
     return (
         <div className="shoppingCartOverlay">
@@ -23,7 +22,7 @@ export function ShoppingCart() {
                     <>{console.log("ShoppingCart:", cartItems)}</>
                     {
                     cartItems.map((item, index)=> (
-                        <CartItem key={`${item.id}-${item.size}-${index}`} {...item} id={item.id} quantity={item.quantity} size={item.size || ''} />
+                        <CartItemBox key={`${item.id}-${item.size}-${index}`} {...item} id={item.id} quantity={item.quantity} size={item.size || ''} /> 
                     ))}
                     <div className="shoppingCart__footer">
                         <div className="shoppingCart__totalPrice">

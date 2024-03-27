@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/E-commerce/" element={<RedirectToHome />} />
           <Route path="/" element={<Home />} />
-          <Route path="/store" element={<Store />} />
+          <Route path="/store" element={<Store itemsPerPage={0} />} />
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>

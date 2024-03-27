@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
-import { useShoppingCart } from "../../context/ShoppingCartContext";
-import "./Cart.css";
-import { CartItem } from "../../components/ShoppingCart/CartItem";
+import { useShoppingCart } from "../../context/ShoppingCartContext"
+import { Subscribe } from "../../components/Subscribe/Subscribe";
+import { Footer } from "../../components/Footer/Footer";
+import CartItemBox from "../../components/ShoppingCart/CartItemBox";
+import { formatCurrency } from "../../utilities/formatCurrency";
+import "./Cart.css"
 
 type CartItemProps ={
     id: number 
@@ -10,7 +13,7 @@ type CartItemProps ={
 }
 
 export function Cart() {
-    const { cartItems: contextCartItems, isGiftWrapSelected, toggleGiftWrap } = useShoppingCart();
+    const { cartItems: contextCartItems, isGiftWrapSelected, toggleGiftWrap, totalSumWithGiftWrap } = useShoppingCart();
     const [cartItems, setCartItems] = useState<CartItemProps[]>([]);
     
      // Przy załadowaniu komponentu pobierz dane z localStorage i zaktualizuj stan koszyka
@@ -19,7 +22,7 @@ export function Cart() {
         setCartItems(localStorageCartItems);
     }, []);
 
-    // Aktualizacja danych w localStorage, gdy zmienia się zawartość koszyka w kontekście
+    // Aktualizacja danych w localStorage, gdy zmienia się zawartość koszyka w context
     useEffect(() => {
         localStorage.setItem("shoppingCart", JSON.stringify(contextCartItems));
     }, [contextCartItems]);
@@ -35,16 +38,11 @@ export function Cart() {
                         <p>Quantity</p>
                         <p>Total</p>
                     </div>
-                    <div className="cart__items">
-                    {cartItems.map((item, index) => (
-                        <CartItem key={`${item.id}-${item.size}-${index}`} {...item} id={item.id} quantity={item.quantity} size={item.size || ''} />
+                    {cartItems.map((item, index)=> (
+                        <CartItemBox key={`${item.id}-${item.size}-${index}`} {...item} id={item.id} quantity={item.quantity} size={item.size || ''} /> // zmiana komponentu na CartItemBox
                     ))}
-                    </div>
-                    <div className="shoppingCart__footer">
-                        <div className="shoppingCart__totalPrice">
-                            <span className="shoppingCart__totalPriceTitle">Subtotal</span>
-                        </div>
-                        <div className="shoppingCart__giftWrap">
+                    <div className="cart__footer">
+                        <div className="cart__giftWrap">
                             <input
                                 type="checkbox"
                                 id="giftWrapCheckbox"
@@ -53,8 +51,16 @@ export function Cart() {
                             />
                             <label htmlFor="giftWrapCheckbox">  Add Gift Wrap ($10)</label>
                         </div>
+                        <div className="cart__totalPrice">
+                            <span className="cart__totalPriceTitle">Subtotal</span>
+                            <p>{formatCurrency(totalSumWithGiftWrap)}</p>
+                            
+                        </div>
+                        
                     </div>
                 </div>
+                <Subscribe />
+                <Footer />
             </div>
         </div>
     );
