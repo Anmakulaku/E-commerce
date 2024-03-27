@@ -36,28 +36,36 @@ export function useShoppingCart() {
 }
 
 // LOCAL STORAGE
-export function useLocalStorage <T>(key: string, initialValue: T | (() => T)) {
-    const [value, setValue] = useState<T> (()=> {
-        const jsonValue = localStorage.getItem(key)
-        if(jsonValue != null) return JSON.parse(jsonValue)
-
-        if (typeof initialValue === "function") {
-            return (initialValue as () => T) ()
-        } else {
-            return initialValue
+export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
+    const [value, setValue] = useState<T>(() => {
+        const jsonValue = localStorage.getItem(key);
+        if (jsonValue !== null && jsonValue !== undefined) {
+            try {
+                return JSON.parse(jsonValue);
+            } catch (error) {
+                console.error("Error parsing JSON from localStorage:", error);
+            }
         }
-    })
+        if (typeof initialValue === "function") {
+            return (initialValue as () => T)();
+        } else {
+            return initialValue;
+        }
+    });
 
-    useEffect (() => {
-        localStorage.setItem(key, JSON.stringify(value))
-    }, [key, value])
+    useEffect(() => {
+        localStorage.setItem(key, JSON.stringify(value));
+    }, [key, value]);
 
-    return [value, setValue] as [typeof value, typeof setValue]
+    return [value, setValue] as [typeof value, typeof setValue];
 }
+
+
 
 // SHOPPING CART PROVIDER   
 export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
     const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("shoppingCart", [])
+    console.log("cartItems in ShoppingCartProvider:", cartItems);
     const [isOpen, setIsOpen] = useState(false)
     const [isGiftWrapSelected, setIsGiftWrapSelected] = useState(false);
     const [products, setProducts] = useState<Product[]>([]); 
