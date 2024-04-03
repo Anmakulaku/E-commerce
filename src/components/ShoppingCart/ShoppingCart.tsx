@@ -1,4 +1,4 @@
-import { useShoppingCart } from "../../context/ShoppingCartContext";
+import { useShoppingCart } from "../../context/CartContext";
 import { formatCurrency } from "../../utilities/formatCurrency";
 // import { CartItem } from "./CartItem";
 import './ShoppingCart.css';

@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import { Product } from '../../utilities/types/ProductType';
-import { ShoppingCartContext } from '../../context/ShoppingCartContext';
+import { CartContext } from '../../context/CartContext';
 
 export function useProductPageLogic(id: string) {
     // console.log('useProductPageLogic render');
-    const { increaseCartQuantity, products } = useContext(ShoppingCartContext);
+    const { increaseCartQuantity, products } = useContext(CartContext);
     const [selectedSize, setSelectedSize] = useState<string | null>(null);
     const [mainImage, setMainImage] = useState<string | null>(null);
     const [product, setProduct] = useState<Product | null>(null);

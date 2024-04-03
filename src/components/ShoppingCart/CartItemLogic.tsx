@@ -1,9 +1,9 @@
 import { useEffect, useState, useContext } from "react";
-import { ShoppingCartContext } from "../../context/ShoppingCartContext";
+import { CartContext } from "../../context/CartContext";
 import { Product } from "../../utilities/types/ProductType";
 
 export function useCartItemLogic(id: number) {
-    const { products } = useContext(ShoppingCartContext);
+    const { products } = useContext(CartContext);
     const [item, setItem] = useState<Product | null>(null);
 
     useEffect(() => {

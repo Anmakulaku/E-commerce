@@ -4,11 +4,11 @@ import { getAllItems } from "../utilities/services/items.service";
 import { Product } from "../utilities/types/ProductType";
 import { CartItem } from "../utilities/types/CartItemType";
 
-type ShoppingCartProviderProps = {
+type CartProviderProps = {
     children: ReactNode
 }
 
-type ShoppingCartContext = {
+type CartContext = {
     openCart: () => void
     closeCart: () => void
     getItemQuantity: (id: number, size: string) => number
@@ -25,12 +25,12 @@ type ShoppingCartContext = {
     products: Product[];
 }
 
-export const ShoppingCartContext = createContext({} as ShoppingCartContext);
+export const CartContext = createContext({} as CartContext);
 
 export function useShoppingCart() {
-    const context = useContext(ShoppingCartContext);
+    const context = useContext(CartContext);
     if (!context) {
-        throw new Error("useShoppingCart must be used within a ShoppingCartProvider");
+        throw new Error("useShoppingCart must be used within a CartProvider");
     }
     return context;
 }
@@ -60,16 +60,15 @@ export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
     return [value, setValue] as [typeof value, typeof setValue];
 }
 
-
+export const GIFT_WRAP_PRICE = 10; // CREAMING_SNAKE_CASE
 
 // SHOPPING CART PROVIDER   
-export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
+export function CartProvider ({ children }: CartProviderProps) {
     const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("shoppingCart", [])
-    console.log("cartItems in ShoppingCartProvider:", cartItems);
+    console.log("cartItems in CartProvider:", cartItems);
     const [isOpen, setIsOpen] = useState(false)
     const [isGiftWrapSelected, setIsGiftWrapSelected] = useState(false);
     const [products, setProducts] = useState<Product[]>([]); 
-    const giftWrapPrice = 10;
 
     const openCart = () => setIsOpen(true);
     const closeCart = () => setIsOpen(false);
@@ -154,10 +153,10 @@ export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
         return total + (cartProduct?.price || 0) * cartItem.quantity;
     }, 0);
     
-    const totalSumWithGiftWrap = isGiftWrapSelected ? totalSum + giftWrapPrice : totalSum;
+    const totalSumWithGiftWrap = isGiftWrapSelected ? totalSum + GIFT_WRAP_PRICE : totalSum;
 
     return (
-        <ShoppingCartContext.Provider value={{ 
+        <CartContext.Provider value={{ 
             getItemQuantity, 
             increaseCartQuantity, 
             decreaseCartQuantity, 
@@ -173,6 +172,6 @@ export function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
             totalSumWithGiftWrap }}>
             {children}
             {isOpen && <ShoppingCart />} 
-        </ShoppingCartContext.Provider>
+        </CartContext.Provider>
     )
 }

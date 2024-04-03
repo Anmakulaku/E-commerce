@@ -9,14 +9,12 @@ import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import { useStoreLogic } from './StoreLogic';
 import { useState } from 'react';
 
-interface StoreProps {
-    itemsPerPage: number;
-}
 
-export function Store({ itemsPerPage }: StoreProps) {
+export function Store() {
     const [currentPage, setCurrentPage] = useState(0);
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null);
+    const itemsPerPage = 12;
 
     const { paginatedItems, pageCount } = useStoreLogic({
         selectedCategory,
@@ -86,8 +84,8 @@ const getCategoryPath = () => {
             <div className="store__container">
             <div className="store__categorySelection">
                 <button onClick={handleShowAll} className='story__categoryItems'>Show All</button>
-                <button onClick={() => handleCategoryChange('accessories')} className='story__categoryItems'>Accessories</button>
                 <button onClick={() => handleCategoryChange('clothes')} className='story__categoryItems'>Clothes</button>
+                <button onClick={() => handleCategoryChange('accessories')} className='story__categoryItems'>Accessories</button>
             </div>
             {selectedCategory && (
                 <div className="store__subcategorySelection">

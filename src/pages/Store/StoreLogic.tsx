@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { Product } from '../../utilities/types/ProductType';
-import { ShoppingCartContext } from '../../context/ShoppingCartContext';
+import { CartContext } from '../../context/CartContext';
 
 interface StoreLogicProps {
     selectedCategory: string | null;
@@ -11,7 +11,7 @@ interface StoreLogicProps {
 
 export function useStoreLogic({ selectedCategory, selectedSubcategory, currentPage, itemsPerPage }: StoreLogicProps) {
 
-    const { products } = useContext(ShoppingCartContext);
+    const { products } = useContext(CartContext);
     const [paginatedItems, setPaginatedItems] = useState<Product[]>([]);
     const [pageCount, setPageCount] = useState(0);
 

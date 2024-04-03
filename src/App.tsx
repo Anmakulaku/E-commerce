@@ -5,25 +5,27 @@ import { Store } from './pages/Store/Store'
 import { ProductPage } from './pages/ProductPage/ProductPage'
 import { Navbar } from './components/Navbar/Navbar'
 import { Cart } from './pages/Cart/Cart'
-import { ShoppingCartProvider } from './context/ShoppingCartContext'
+import { CartProvider } from './context/CartContext'
+import Checkout from './pages/Checkout/Checkout'
 
 function App() {
 
   const RedirectToHome = () => <Navigate to="/" replace />;
 
   return (
-    <ShoppingCartProvider>
+    <CartProvider>
       <div className='App'>
         <Navbar />
         <Routes>
           <Route path="/E-commerce/" element={<RedirectToHome />} />
           <Route path="/" element={<Home />} />
-          <Route path="/store" element={<Store itemsPerPage={0} />} />
+          <Route path="/store" element={<Store />} />
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </div>
-    </ShoppingCartProvider>
+    </CartProvider>
   )
 }
 
