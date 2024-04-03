@@ -4,9 +4,14 @@ import { formatCurrency } from "../../utilities/formatCurrency";
 import './ShoppingCart.css';
 import { Link } from "react-router-dom";
 import CartItemBox from "./CartItemBox";
+import { useCartOverlay } from "../../context/OverlayContext";
 
 export function ShoppingCart() {
-    const { closeCart, cartItems, isGiftWrapSelected, toggleGiftWrap, totalSumWithGiftWrap } = useShoppingCart();
+    const { state, actions, meta } = useShoppingCart();
+    const { isGiftWrapSelected, cartItems } = state;
+    const { toggleGiftWrap } = actions;
+    const { totalSumWithGiftWrap } = meta;
+    const { closeCart } = useCartOverlay();
 
     return (
         <div className="shoppingCartOverlay">

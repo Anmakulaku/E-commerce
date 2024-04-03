@@ -1,6 +1,7 @@
+import { useContext } from "react"
 import { formatCurrency } from "../../utilities/formatCurrency"
 import "./CartItem.css"
-import { useCartItemLogic } from "./CartItemLogic"
+import { ProductsContext } from "../../context/ProductContext"
 
 type CartItemProps ={
     id: number 
@@ -8,8 +9,12 @@ type CartItemProps ={
     size: string
 }
 
+const useCart = () =>  useContext(ProductsContext); 
+
 export function CartItem ({id, size, quantity}: CartItemProps) {
-    const item = useCartItemLogic(id);
+    const { products } = useCart();
+
+    const item = products.find((product) => product.id === id);
 
     if (!item) return null;
 

@@ -8,7 +8,8 @@ interface QuantityCounterProps {
 }
 
 const QuantityCounter: React.FC<QuantityCounterProps> = ({ itemId, size }) => {
-    const { increaseCartQuantity, decreaseCartQuantity, getItemQuantity } = useShoppingCart();
+    const { actions} = useShoppingCart();
+    const { increaseCartQuantity, decreaseCartQuantity, getItemQuantity } = actions;
     const quantity = getItemQuantity(itemId, size);
 
     return (

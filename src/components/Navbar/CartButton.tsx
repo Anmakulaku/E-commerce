@@ -1,8 +1,10 @@
 import { useShoppingCart } from '../../context/CartContext';
+import { useCartOverlay } from '../../context/OverlayContext';
 
 function CartButton() {
-    
-    const { openCart, cartQuantity } = useShoppingCart();
+    const { meta } = useShoppingCart();
+    const { cartQuantity } = meta;
+    const { openCart } = useCartOverlay();
 
     const handleClick = () => {
         openCart();

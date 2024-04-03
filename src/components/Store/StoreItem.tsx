@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { formatCurrency } from '../../utilities/formatCurrency';
 import './StoreItem.css';
-import { useStoreItemLogic } from './StoreItemLogic';
+import { useContext } from 'react';
+import { ProductsContext } from '../../context/ProductContext';
 
 interface StoreItemProps {
     id: number;
@@ -10,15 +11,14 @@ interface StoreItemProps {
     img: string;
 }
 
-export default function StoreItem({ id, name, price, img }: StoreItemProps) {
-    const { product, isLoading } = useStoreItemLogic(id);
+const useCart = () =>  useContext(ProductsContext);
 
-    if (isLoading) {
-        return "Loading...";
-    }
-    if (!product) {
-        return "Product not found";
-    }
+export default function StoreItem({ id, name, price, img }: StoreItemProps) {
+    const { products } = useCart();
+
+    const item = products.find((product) => product.id === id);
+
+    if (!item) return null;
 
     return (
         <Link to={`/product/${id}`} className="storeItem__container">

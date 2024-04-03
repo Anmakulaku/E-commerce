@@ -14,7 +14,10 @@ type CartItemProps ={
 }
 
 export function Cart() {
-    const { cartItems: contextCartItems, isGiftWrapSelected, toggleGiftWrap, totalSumWithGiftWrap } = useShoppingCart();
+    const { state, actions, meta} = useShoppingCart();
+    const { cartItems: contextCartItems, isGiftWrapSelected } = state;
+    const { toggleGiftWrap } = actions;
+    const { totalSumWithGiftWrap } = meta;
     const [cartItems, setCartItems] = useState<CartItemProps[]>([]);
     
      // Przy załadowaniu komponentu pobierz dane z localStorage i zaktualizuj stan koszyka

@@ -8,7 +8,8 @@ interface RemoveButtonProps {
 }
 
 const RemoveButton: React.FC<RemoveButtonProps> = ({ itemId, size }) => {
-    const { removeFromCart } = useShoppingCart();
+    const { actions} = useShoppingCart();
+    const { removeFromCart } = actions;
 
     return (
         <button className='button removeButton__btn' onClick={() => removeFromCart(itemId, size)}>

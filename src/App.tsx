@@ -7,12 +7,16 @@ import { Navbar } from './components/Navbar/Navbar'
 import { Cart } from './pages/Cart/Cart'
 import { CartProvider } from './context/CartContext'
 import Checkout from './pages/Checkout/Checkout'
+import { ProductsProvider } from './context/ProductContext'
+import { CartOverlayProvider } from './context/OverlayContext'
 
 function App() {
 
   const RedirectToHome = () => <Navigate to="/" replace />;
 
   return (
+    <ProductsProvider>
+            <CartOverlayProvider>
     <CartProvider>
       <div className='App'>
         <Navbar />
@@ -26,6 +30,8 @@ function App() {
         </Routes>
       </div>
     </CartProvider>
+    </CartOverlayProvider>
+        </ProductsProvider>
   )
 }
 
