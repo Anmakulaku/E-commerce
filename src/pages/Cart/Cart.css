@@ -1,64 +1,62 @@
-.cart{
-    max-width: 1200px;
-    margin: 0 auto;
+.cart {
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.cart__content{
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 0 1rem;
+.cart__content {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0 1rem;
 }
-.cart__title{
-    margin: 3rem 0;
+.cart__title {
+  margin: 3rem 0;
 }
-.cart__table{
-    width: 100%;
-    margin-bottom: 3rem;
+.cart__table {
+  width: 100%;
+  margin-bottom: 3rem;
 }
-.cart__tableTitles{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid var(--color-primary);
+.cart__tableTitles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--color-primary);
 }
-.cart__tableTitles p {  
-    font-size: var(--font-family-titles);
-    font-weight: 700;
+.cart__tableTitles p {
+  font-size: var(--font-family-titles);
+  font-weight: 700;
 }
-.cart__footer{
-    width: 50%;
-    margin-top: 1rem;
-    position: relative;
-    right: -50%;
+.cart__footer {
+  width: 50%;
+  margin-top: 1rem;
+  position: relative;
+  right: -50%;
 }
-.cart__footerContent{
-    display: flex;
-    flex-direction: column;
-
+.cart__footerContent {
+  display: flex;
+  flex-direction: column;
 }
-.cart__giftWrap{
-    padding: 1rem 0;
-    border-bottom: 2px solid var(--color-primary);
+.cart__giftWrap {
+  padding: 1rem 0;
+  border-bottom: 2px solid var(--color-primary);
 }
-.cart__totalPrice{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 1rem 0.5rem 2rem 0;
+.cart__totalPrice {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem 0.5rem 2rem 0;
 }
-.cart__totalPriceTitle, 
-.cart__totalPrice p{
-    font-family: var(--font-family-titles);
-    font-size: 1.2em;
-    
+.cart__totalPriceTitle,
+.cart__totalPrice p {
+  font-family: var(--font-family-titles);
+  font-size: 1.2em;
 }
-.cart__btn{
-    padding: 1rem 2rem;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.cart__btn {
+  padding: 1rem 2rem;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

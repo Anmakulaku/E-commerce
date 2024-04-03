@@ -1,107 +1,107 @@
 .testimonials {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 1rem 1rem 1rem;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1rem 1rem 1rem;
 }
 
 .testimonials__title {
-    font-family: var(--font-family-titles);
-    font-size: 1.8em;
-    line-height: 3.75rem;
+  font-family: var(--font-family-titles);
+  font-size: 1.8em;
+  line-height: 3.75rem;
 }
 
 .testimonials__text {
-    font-size: 1em;
-    margin-bottom: 20px;
-    max-width: 40rem;
-    text-align:center;
-    text-indent: 20px;
+  font-size: 1em;
+  margin-bottom: 20px;
+  max-width: 40rem;
+  text-align: center;
+  text-indent: 20px;
 }
-.testimonials__items{
-    width: auto;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    padding: 3rem;
-    overflow: hidden;
+.testimonials__items {
+  width: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  padding: 3rem;
+  overflow: hidden;
 }
-.testimonials__arrowBox{
-    margin-top: 1rem;
-    width: 7.5rem;
-    height: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: transform 0.3s ease;
+.testimonials__arrowBox {
+  margin-top: 1rem;
+  width: 7.5rem;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease;
 }
-.testimonials__arrowBox :hover{
-    transform: scale(1.1);
+.testimonials__arrowBox :hover {
+  transform: scale(1.1);
 }
-.testimonials__arrow{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2em;
-    aspect-ratio: 1/1;
-    padding: 0.5rem;
-    background-color: var(--color-white);
-    box-shadow: 0px 8px 40px -2px rgba(182, 182, 182, 1);
-    color: var(--color-black);
-    border-radius: 50%;
-    cursor: pointer;
-    user-select: none;
+.testimonials__arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  aspect-ratio: 1/1;
+  padding: 0.5rem;
+  background-color: var(--color-white);
+  box-shadow: 0px 8px 40px -2px rgba(182, 182, 182, 1);
+  color: var(--color-black);
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
 }
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-    .testimonials__title {
-        font-size: 1.5em;
-        line-height: 3rem;
-    }
+  .testimonials__title {
+    font-size: 1.5em;
+    line-height: 3rem;
+  }
 }
 @media screen and (min-width: 481px) and (max-width: 768px) {
-    .testimonials__title {
-        font-size: 1.3em;
-        line-height: 2.5rem;
-    }
-    .testimonials__items{
-        padding: 1.5rem;
-    }
-    .testimonials__text {
-        font-size: 0.8em;
-        text-align: justify;
-        margin-bottom: 0;
-    }
-    .testimonials__arrowBox{
-        margin-top: 0;
-    }
-    .testimonials__arrow{
-        font-size: 1.5em;
-    }
+  .testimonials__title {
+    font-size: 1.3em;
+    line-height: 2.5rem;
+  }
+  .testimonials__items {
+    padding: 1.5rem;
+  }
+  .testimonials__text {
+    font-size: 0.8em;
+    text-align: justify;
+    margin-bottom: 0;
+  }
+  .testimonials__arrowBox {
+    margin-top: 0;
+  }
+  .testimonials__arrow {
+    font-size: 1.5em;
+  }
 }
-@media screen and (max-width: 480px){
-    .testimonials {
-        margin: 0;
-    }
-    .testimonials__items{
-        padding: 2rem;
-    }
-    .testimonials__title {
-        font-size: 1.3em;
-        line-height: 2.5rem;
-    }
-    .testimonials__text {
-        font-size: 0.8em;
-        text-align: justify;
-        margin: 1rem 0;
-    }
-    .testimonials__arrowBox{
-        margin-top: 1rem;
-    }
-    .testimonials__arrow{
-        font-size: 1.5em;
-    }
+@media screen and (max-width: 480px) {
+  .testimonials {
+    margin: 0;
+  }
+  .testimonials__items {
+    padding: 2rem;
+  }
+  .testimonials__title {
+    font-size: 1.3em;
+    line-height: 2.5rem;
+  }
+  .testimonials__text {
+    font-size: 0.8em;
+    text-align: justify;
+    margin: 1rem 0;
+  }
+  .testimonials__arrowBox {
+    margin-top: 1rem;
+  }
+  .testimonials__arrow {
+    font-size: 1.5em;
+  }
 }
