@@ -8,7 +8,6 @@ export function Subscribe() {
   const {
     email,
     emailError,
-    isValidEmail,
     isSubscribed,
     handleInputChange,
     handleSubscribe,
@@ -31,17 +30,20 @@ export function Subscribe() {
           </p>
           <div className='subscribe__buttonBox section__margin'>
             <input
-              className={`subscribe__inputField ${isValidEmail ? '' : 'invalid'}`}
+              type='email'
+              className={`subscribe__inputField ${emailError ? 'invalid' : ''}`}
               placeholder='Enter your email...'
               value={email}
               onChange={handleInputChange}
               onKeyDown={handleEnterKeyPress}
+              required
             />
             {emailError && <p className='error-message'>{emailError}</p>}
             <div className='subscribe__btnBg'>
               <button
                 className='button subscribe__btn'
                 onClick={handleSubscribe}
+                disabled={!!emailError}
               >
                 Subscribe Now
               </button>
@@ -57,7 +59,7 @@ export function Subscribe() {
         </div>
       </div>
       <SubscribeModal
-        isVisible={isSubscribed && isValidEmail}
+        isVisible={isSubscribed}
         onCloseClick={onCloseClick}
       />
     </div>

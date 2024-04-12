@@ -9,28 +9,26 @@ export function useProductPageLogic(id: string) {
   const { actions } = useShoppingCart();
   const { increaseCartQuantity } = actions;
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
-  const [mainImage, setMainImage] = useState<string | null>(null);
-  const [product, setProduct] = useState<Product | null>(null);
-  const [quantity, setQuantity] = useState<number>(1);
   const [isSizeSelected, setIsSizeSelected] = useState<boolean>(false);
+  const [mainImage, setMainImage] = useState<string | null>(null);
+  const [quantity, setQuantity] = useState<number>(1);
   const [error, setError] = useState<string | null>(null);
 
+  const product: Product | null = products.find(item => item.id.toString() === id) || null;
+  
   useEffect(() => {
     if (!id || products.length === 0) return;
 
-    const foundProduct = products.find(item => item.id.toString() === id);
-
-    if (foundProduct) {
-      setProduct(foundProduct);
-      if (foundProduct.img) {
-        setMainImage(foundProduct.img);
-      } else if (foundProduct.imgOther && foundProduct.imgOther.length > 0) {
-        setMainImage(foundProduct.imgOther[0]);
+    if (product) {
+      if (product.img) {
+        setMainImage(product.img);
+      } else if (product.imgOther && product.imgOther.length > 0) {
+        setMainImage(product.imgOther[0]);
       }
     } else {
       setError('Product not found');
     }
-  }, [id, products]);
+  }, [id, product, products]);
 
   const handleSizeSelection = (size: string) => {
     setSelectedSize(size);

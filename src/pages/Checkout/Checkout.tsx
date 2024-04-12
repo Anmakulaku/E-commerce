@@ -26,14 +26,14 @@ const Checkout = () => {
                     <option value='' className='checkout__countryName'>
                       Region / Country
                     </option>
-                    <option value='USA' className='checkout__countryName'>
-                      USA
+                    <option value='Polnad' className='checkout__countryName'>
+                      Poland
                     </option>
-                    <option value='CANADA' className='checkout__countryName'>
-                      Canada
+                    <option value='Slovakia' className='checkout__countryName'>
+                      Slovakia
                     </option>
-                    <option value='BRAZIL' className='checkout__countryName'>
-                      BRAZIL
+                    <option value='CzechRepulbic' className='checkout__countryName'>
+                      Czech Republic
                     </option>
                   </select>
                 </div>
