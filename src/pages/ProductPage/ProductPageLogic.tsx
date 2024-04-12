@@ -6,16 +6,17 @@ import { useShoppingCart } from '../../context/CartContext';
 export function useProductPageLogic(id: string) {
   // console.log('useProductPageLogic render');
   const { products } = useProducts();
-  const { actions } = useShoppingCart();
-  const { increaseCartQuantity } = actions;
+  const { actions, state } = useShoppingCart();
+  const { increaseCartQuantity, setQuantity } = actions;
+  const { quantity } = state;
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [isSizeSelected, setIsSizeSelected] = useState<boolean>(false);
   const [mainImage, setMainImage] = useState<string | null>(null);
-  const [quantity, setQuantity] = useState<number>(1);
   const [error, setError] = useState<string | null>(null);
 
-  const product: Product | null = products.find(item => item.id.toString() === id) || null;
-  
+  const product: Product | null =
+    products.find(item => item.id.toString() === id) || null;
+
   useEffect(() => {
     if (!id || products.length === 0) return;
 

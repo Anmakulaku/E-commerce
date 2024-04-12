@@ -18,7 +18,8 @@ type CartContext = {
   state: {
     isGiftWrapSelected: boolean;
     cartItems: CartItem[];
-    selectedSize: string | null; 
+    selectedSize: string | null;
+    quantity: number;
   };
   actions: {
     getItemQuantity: (id: number, size: string) => number;
@@ -27,7 +28,8 @@ type CartContext = {
     removeFromCart: (id: number, size: string) => void;
     addGiftWrap: () => void;
     toggleGiftWrap: () => void;
-    setSelectedSize: React.Dispatch<React.SetStateAction<string | null>>; 
+    setSelectedSize: React.Dispatch<React.SetStateAction<string | null>>;
+    setQuantity: React.Dispatch<React.SetStateAction<number>>;
   };
   meta: {
     totalSumWithGiftWrap: number;
@@ -81,7 +83,8 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     [],
   );
   const [isGiftWrapSelected, setIsGiftWrapSelected] = useState(false);
-  const [selectedSize, setSelectedSize] = useState<string | null>(null); 
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [quantity, setQuantity] = useState<number>(1);
   const { products } = useProducts();
   const { isOpen } = useCartOverlay();
 
@@ -107,21 +110,22 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   }
 
   function decreaseCartQuantity(id: number, size: string) {
-    const existingItem = cartItems.find(item => item.id === id && item.size === size);
-  
+    const existingItem = cartItems.find(
+      item => item.id === id && item.size === size,
+    );
+
     if (!existingItem) return;
-  
-    const updatedItems = existingItem.quantity === 1
-      ? cartItems.filter(item => !(item.id === id && item.size === size))
-      : cartItems.map(item =>
-          item.id === id && item.size === size
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        );
-  
+
+    const updatedItems =
+      existingItem.quantity === 1
+        ? cartItems.filter(item => !(item.id === id && item.size === size))
+        : cartItems.map(item =>
+            item.id === id && item.size === size
+              ? { ...item, quantity: item.quantity - 1 }
+              : item,
+          );
     setCartItems(updatedItems);
   }
-  
 
   function removeFromCart(id: number, size: string) {
     setCartItems(currItems => {
@@ -153,6 +157,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
           isGiftWrapSelected,
           cartItems,
           selectedSize,
+          quantity,
         },
         actions: {
           getItemQuantity,
@@ -162,6 +167,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
           addGiftWrap,
           toggleGiftWrap,
           setSelectedSize,
+          setQuantity,
         },
         meta: {
           totalSumWithGiftWrap,

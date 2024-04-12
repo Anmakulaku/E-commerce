@@ -19,7 +19,7 @@ export function Footer() {
       </div>
       <div className='footer__copyright'>
         <span>
-          Copyright © 2022 Xpro & 2023 Anmakulaku. All Rights Reseved.
+          Copyright © 2022 Xpro & 2023 Anmakulaku. All Rights Reseved. This is educational project 
         </span>
       </div>
     </div>
