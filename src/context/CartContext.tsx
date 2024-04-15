@@ -113,7 +113,6 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     const existingItem = cartItems.find(
       item => item.id === id && item.size === size,
     );
-
     if (!existingItem) return;
 
     const updatedItems =
@@ -124,6 +123,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
               ? { ...item, quantity: item.quantity - 1 }
               : item,
           );
+
     setCartItems(updatedItems);
   }
 

@@ -1,13 +1,27 @@
 import './Checkout.css';
 import { useState } from 'react';
 
+interface Point {
+  name: string;
+  city: string;
+  street: string;
+}
+
 const Checkout = () => {
   const [paymentMethod, setPaymentMethod] = useState('');
+  const [selectedPoint, setSelectedPoint] = useState<Point | null>(null);
 
   const handlePaymentChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setPaymentMethod(event.target.value);
   };
-  
+
+  const handlePointSelection = (selectedPoint: Point) => {
+    setSelectedPoint(selectedPoint);
+  };
+  const handleChoosePointDelivery = () => {
+    PPWidgetApp.toggleMap({ callback: handlePointSelection });
+  };
+
   return (
     <div className='checkout'>
       <div className='checkout__content'>
@@ -32,7 +46,10 @@ const Checkout = () => {
                     <option value='Slovakia' className='checkout__countryName'>
                       Slovakia
                     </option>
-                    <option value='CzechRepulbic' className='checkout__countryName'>
+                    <option
+                      value='CzechRepulbic'
+                      className='checkout__countryName'
+                    >
                       Czech Republic
                     </option>
                   </select>
@@ -89,6 +106,20 @@ const Checkout = () => {
                   </label>
                 </div>
               </form>
+              <button
+                className='button checkout__button'
+                onClick={handleChoosePointDelivery}
+              >
+                Delivery Point
+              </button>
+              {selectedPoint && (
+                <div className='checkout-pointInfo'>
+                  <p className='checkout-pointInfoTitle'>Wybrany paczkomat: </p>
+                  <p>{selectedPoint.name}</p>
+                  <p>{selectedPoint.city}</p>
+                  <p>{selectedPoint.street}</p>
+                </div>
+              )}
             </section>
             <section className='checkout__payment'>
               <h2>Payment</h2>
@@ -150,11 +181,11 @@ const Checkout = () => {
                 )}
               </div>
               <div className='checkout__formItem checkout__formItem-double'>
-                  <label className='save-info-label'>
-                    <input type='checkbox' className='save-info-checkbox' />
-                    Save This Info for future
-                  </label>
-                </div>
+                <label className='save-info-label'>
+                  <input type='checkbox' className='save-info-checkbox' />
+                  Save This Info for future
+                </label>
+              </div>
             </section>
           </div>
 

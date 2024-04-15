@@ -76,3 +76,16 @@
   grid-template-columns: 1fr;
   gap: 1rem;
 }
+
+.checkout__button {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+.checkout-pointInfo{
+  margin: 1rem auto;
+}
+.checkout-pointInfoTitle {
+  font-weight: 600;
+  margin: 1rem 0;
+}
