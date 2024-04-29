@@ -14,6 +14,7 @@ interface StoreItemProps {
 const useCart = () => useContext(ProductsContext);
 
 export default function StoreItem({ id, name, price, img }: StoreItemProps) {
+  console.log('Item img:', img);
   const { products } = useCart();
 
   const item = products.find(product => product.id === id);
@@ -23,7 +24,7 @@ export default function StoreItem({ id, name, price, img }: StoreItemProps) {
   return (
     <Link to={`/product/${id}`} className='storeItem__container'>
       <div className='storeItem__img'>
-        <img src={img} alt='product-image' />
+        <img src={`http://localhost:3001/images/${item.img}`} alt='product-image' />
       </div>
       <div className='storeItem__text'>
         <h1 className='storeItem__title'>{name}</h1>

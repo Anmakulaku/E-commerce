@@ -20,7 +20,7 @@ export function ShoppingCart() {
           <div className='shoppingCart__header'>
             <h2 className='shoppingCart__title'>Shopping Cart</h2>
             <span className='shoppingCart__shippingInfo'>
-              Free shipping over $150
+              Free shipping over 150 PLN
             </span>
             <button className='shoppingCart__closeButton' onClick={closeCart}>
               &times;
@@ -50,7 +50,7 @@ export function ShoppingCart() {
                 checked={isGiftWrapSelected}
                 onChange={toggleGiftWrap}
               />
-              <label htmlFor='giftWrapCheckbox'> Add Gift Wrap ($10)</label>
+              <label htmlFor='giftWrapCheckbox'> Add Gift Wrap (50 PLN)</label>
             </div>
             <Link
               to='/cart'

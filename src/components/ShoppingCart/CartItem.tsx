@@ -21,7 +21,7 @@ export function CartItem({ id, size, quantity }: CartItemProps) {
   return (
     <div className='cartItem__content'>
       <div className='cartItem__item'>
-        <img className='cartItem__itemImg' src={item.img} alt='product image' />
+        <img className='cartItem__itemImg' src={`http://localhost:3001/images/${item.img}`} alt='product image' />
         <div className='cartItem__text'>
           <h3 className='cartItem__title'>{item.name}</h3>
           <p className='cartItem__title'>Size: {size}</p>

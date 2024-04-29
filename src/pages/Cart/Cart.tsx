@@ -41,7 +41,7 @@ export function Cart() {
                   checked={isGiftWrapSelected}
                   onChange={toggleGiftWrap}
                 />
-                <label htmlFor='giftWrapCheckbox'> Add Gift Wrap ($10)</label>
+                <label htmlFor='giftWrapCheckbox'> Add Gift Wrap (50 PLN)</label>
               </div>
               <div className='cart__totalPrice'>
                 <span className='cart__totalPriceTitle'>Subtotal</span>

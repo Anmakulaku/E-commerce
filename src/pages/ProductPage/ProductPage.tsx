@@ -5,6 +5,7 @@ import './ProductPage.css';
 import { formatCurrency } from '../../utilities/formatCurrency';
 import { useProductPageLogic } from './ProductPageLogic';
 import { useParams } from 'react-router-dom';
+import Images from '../../components/ImagesBox/ImagesBox';
 
 function renderSizeButtons(
   isAccessories: boolean,
@@ -68,7 +69,6 @@ export function ProductPage() {
   const { id } = useParams<{ id: string }>();
   const {
     product,
-    mainImage,
     selectedSize,
     quantity,
     isSizeSelected,
@@ -76,7 +76,6 @@ export function ProductPage() {
     addToCart,
     decreaseQuantity,
     increaseQuantity,
-    renderImages,
   } = useProductPageLogic(id || '');
 
   // console.log('ProductPage render');
@@ -90,9 +89,12 @@ export function ProductPage() {
   return (
     <div className='productPage'>
       <div className='productPage__content'>
-        <div className='productPage__images'>
+      <Images id={product.id}
+          img={product.img}
+          imgOther={product.imgOther} />
+        {/* <div className='productPage__images'>
           {renderImages(mainImage, product)}
-        </div>
+        </div> */}
         <div className='productPage__info'>
           <h2 className='productPage__titleStyle productPage__companyName'>
             FASCO

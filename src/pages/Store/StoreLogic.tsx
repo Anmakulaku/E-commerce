@@ -20,7 +20,7 @@ export function useStoreLogic({
   const [pageCount, setPageCount] = useState(0);
 
   useEffect(() => {
-    if (products.length === 0) return; // SJeśli dane nie są dostepne, nie renderuj dalej
+    if (products.length === 0) return; // Jeśli dane nie są dostepne, nie renderuj dalej
 
     const totalItemsCount = products
       .filter(item => !selectedCategory || item.category === selectedCategory)
@@ -41,7 +41,7 @@ export function useStoreLogic({
         item =>
           !selectedSubcategory || item.subcategory === selectedSubcategory,
       )
-      .sort((a, b) => b.addDate.getTime() - a.addDate.getTime())
+      .sort((a, b) => new Date(b.addDate).getTime() - new Date(a.addDate).getTime())
       .slice(indexOfFirstItem, indexOfLastItem);
 
     setPaginatedItems(sortedItems);

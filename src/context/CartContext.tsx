@@ -38,7 +38,7 @@ type CartContext = {
   };
 };
 
-export const GIFT_WRAP_PRICE = 10;
+export const GIFT_WRAP_PRICE = 5000;
 
 //CART CONTEXT
 export const CartContext = createContext<CartContext | undefined>(undefined);
