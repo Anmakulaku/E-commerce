@@ -20,7 +20,6 @@ function App() {
           <div className='App'>
             <Navbar />
             <Routes>
-              <Route path='/E-commerce/' element={<RedirectToHome />} />
               <Route path='/' element={<Home />} />
               <Route path='/store' element={<Store />} />
               <Route path='/product/:id' element={<ProductPage />} />
