@@ -11,8 +11,6 @@ import { ProductsProvider } from './context/ProductContext';
 import { CartOverlayProvider } from './context/OverlayContext';
 
 function App() {
-  const RedirectToHome = () => <Navigate to='/' replace />;
-
   return (
     <ProductsProvider>
       <CartOverlayProvider>
