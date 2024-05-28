@@ -37,3 +37,4 @@ export const ProductsProvider: React.FC<{ children: ReactNode }> = ({
     </ProductsContext.Provider>
   );
 };
+

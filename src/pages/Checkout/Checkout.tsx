@@ -18,16 +18,12 @@ interface OrderFormData {
   totalCost: number;
   delivery_point: string;
 }
-interface ServerResponse {
-  message: string;
-}
-
 
 const Checkout = () => {
-  const { state, meta } = useShoppingCart();
+  const { state, meta, actions } = useShoppingCart();
   const { cartItems } = state;
   const { totalSumWithGiftWrap } = meta;
-  const [paymentMethod, setPaymentMethod] = useState('');
+  const { clearCart } = actions;
   const [selectedPoint, setSelectedPoint] = useState<Point | null>(null);
   const [formData, setFormData] = useState<OrderFormData>({
     first_name: '',
@@ -42,31 +38,34 @@ const Checkout = () => {
   const totalCost = totalSumWithGiftWrap + SHIPPING_PRICE;
 
   useEffect(() => {
-
     setFormData(prevFormData => ({
       ...prevFormData,
-      totalCost: totalCost
+      totalCost: totalCost,
     }));
   }, [totalCost]);
-  
-
-  const handlePaymentChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setPaymentMethod(event.target.value);
-  };
 
   const handlePointSelection = (selectedPoint: Point) => {
     setSelectedPoint(selectedPoint);
     setFormData({ ...formData, delivery_point: selectedPoint.name });
   };
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
+
   const handleChoosePointDelivery = () => {
-    PPWidgetApp.toggleMap({ callback: handlePointSelection });
+    if (window.PPWidgetApp) {
+      window.PPWidgetApp.toggleMap({ callback: handlePointSelection });
+    } else {
+      console.error('PPWidgetApp is not defined');
+    }
   };
+
   const handleConfirmDelivery = async () => {
     try {
+      console.log('Cart items:', cartItems);
+      console.log('FormData before sending:', formData);
       if (
         !formData.first_name ||
         !formData.last_name ||
@@ -77,20 +76,29 @@ const Checkout = () => {
       ) {
         throw new Error('Please fill in all required fields');
       }
+
+      const dataToSend = { ...formData, cart: cartItems };
+      console.log('Data to send:', dataToSend);
+
+      //wysłanie danych do backendu
       const response = await fetch('http://localhost:3000/orders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(dataToSend),
       });
+      console.log('Server response:', response);
       // Sprawdź, czy odpowiedź serwera jest OK
-      if (!response.ok) {
+      if (!response.ok || !response) {
         throw new Error('Network response was not ok');
       }
+      const redirectUri = await response.text();
+      window.location.href = redirectUri;
       // Pobierz dane z odpowiedzi serwera
-      const data: ServerResponse = await response.json();
-      console.log(data.message);
+      // const data: ServerResponse = await response.json();
+      // console.log(data.message);
+      clearCart();
     } catch (error) {
       console.error('There was an error!', error);
     }
@@ -104,29 +112,7 @@ const Checkout = () => {
           <div className='checkout__info'>
             <section className='checkout__delivery'>
               <h2>Delivery</h2>
-              <div className='checkout__formItem-double'>
-                {/* <select
-                  id='country'
-                  name='country'
-                  className='checkout__inputField'
-                >
-                  <option value='' className='checkout__countryName'>
-                    Region / Country
-                  </option>
-                  <option value='Polnad' className='checkout__countryName'>
-                    Poland
-                  </option>
-                  <option value='Slovakia' className='checkout__countryName'>
-                    Slovakia
-                  </option>
-                  <option
-                    value='CzechRepulbic'
-                    className='checkout__countryName'
-                  >
-                    Czech Republic
-                  </option>
-                </select> */}
-              </div>
+              <div className='checkout__formItem-double'></div>
               <form className='checkout__deliveryForm'>
                 <div className='checkout__formItem'>
                   <input
@@ -209,78 +195,16 @@ const Checkout = () => {
                   <p>{selectedPoint.street}</p>
                 </div>
               )}
+              <h2 className='checkout__payment'>Payment Method:</h2>
+              <div className='checkout__formItem'>
+                <p> PayU</p>
+              </div>
               <button
                 className='button checkout__button'
-                onClick={() => handleConfirmDelivery()}
+                onClick={handleConfirmDelivery}
               >
                 Confirm
               </button>
-            </section>
-            <section className='checkout__payment'>
-              <h2>Payment</h2>
-              <div className='checkout__formItem-double'>
-                <select
-                  id='paymentMethod'
-                  name='paymentMethod'
-                  className='checkout__inputField'
-                  value={paymentMethod}
-                  onChange={handlePaymentChange}
-                >
-                  <option value='' className='checkout__paymentMethod'>
-                    Choose Payment Method
-                  </option>
-                  <option
-                    value='creditCard'
-                    className='checkout__paymentMethod'
-                  >
-                    Credit Card
-                  </option>
-                  <option value='paypal' className='checkout__paymentMethod'>
-                    PayPal
-                  </option>
-                  <option value='afterpay' className='checkout__paymentMethod'>
-                    Afterpay
-                  </option>
-                </select>
-                {paymentMethod === 'creditCard' && (
-                  <div className='creditCardForm'>
-                    <input
-                      type='text'
-                      id='cardNumber'
-                      name='cardNumber'
-                      placeholder='Card Number'
-                      className='checkout__inputField'
-                    />
-                    <input
-                      type='text'
-                      id='expirationDate'
-                      name='expirationDate'
-                      placeholder='Expiration Date'
-                      className='checkout__inputField'
-                    />
-                    <input
-                      type='text'
-                      id='securityCode'
-                      name='securityCode'
-                      placeholder='Security Code'
-                      className='checkout__inputField'
-                    />
-                    <input
-                      type='text'
-                      id='cardHolderName'
-                      name='cardHolderName'
-                      placeholder='Card Holder Name'
-                      className='checkout__inputField'
-                    />
-                  </div>
-                )}
-              </div>
-              <div className='checkout__formItem checkout__formItem-double'>
-                <label className='save-info-label'>
-                  <input type='checkbox' className='save-info-checkbox' />
-                  Save This Info for future
-                </label>
-              </div>
             </section>
           </div>
           <div className='checkout__prices'>

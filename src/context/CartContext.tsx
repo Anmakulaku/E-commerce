@@ -30,6 +30,7 @@ type CartContext = {
     toggleGiftWrap: () => void;
     setSelectedSize: React.Dispatch<React.SetStateAction<string | null>>;
     setQuantity: React.Dispatch<React.SetStateAction<number>>;
+    clearCart: () => void;
   };
   meta: {
     totalSumWithGiftWrap: number;
@@ -140,6 +141,9 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   function toggleGiftWrap() {
     setIsGiftWrapSelected(prev => !prev);
   }
+  function clearCart() {
+    setCartItems([]);
+  }
 
   const totalSum = cartItems.reduce((total, cartItem) => {
     const cartProduct = products.find(product => product.id === cartItem.id);
@@ -168,6 +172,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
           toggleGiftWrap,
           setSelectedSize,
           setQuantity,
+          clearCart, 
         },
         meta: {
           totalSumWithGiftWrap,
