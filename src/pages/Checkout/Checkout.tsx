@@ -77,7 +77,13 @@ const Checkout = () => {
         throw new Error('Please fill in all required fields');
       }
 
-      const dataToSend = { ...formData, cart: cartItems };
+      const dataToSend = {
+        ...formData,
+        cart: cartItems.map(item => ({
+          ...item,
+          size_name: item.size // zmień nazwę pola size na size_name
+        }))
+      };
       console.log('Data to send:', dataToSend);
 
       //wysłanie danych do backendu
