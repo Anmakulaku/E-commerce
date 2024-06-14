@@ -1,68 +1,68 @@
 .storeItem__container {
-    display: flex;
-    flex-direction: column;
-    border: none;
-    margin-bottom: 16px;
-    padding: 0.1rem;
-    text-decoration: none;
-    color: inherit;  
+  display: flex;
+  flex-direction: column;
+  border: none;
+  margin-bottom: 16px;
+  padding: 0.1rem;
+  text-decoration: none;
+  color: inherit;
 }
-.storeItem__container:hover{
-    box-shadow: 0px 2px 40px -20px rgb(176, 177, 185);
-    transform: scale(1.02);
-    transition: all 0.1s ease-in;
-    cursor: pointer;
+.storeItem__container:hover {
+  box-shadow: 0px 2px 40px -20px rgb(176, 177, 185);
+  transform: scale(1.02);
+  transition: all 0.1s ease-in;
+  cursor: pointer;
 }
 
 .storeItem__img {
-    max-width: 17.5rem;
-    aspect-ratio: 1/1.25;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  max-width: 17.5rem;
+  aspect-ratio: 1/1.25;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .storeItem__img img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 .storeItem__text {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    flex-grow: 1;
-    padding: 0.8rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-grow: 1;
+  padding: 0.8rem 0;
 }
 
 .storeItem__title,
 .storeItem__price {
-    word-spacing: 1px;
-    text-decoration: none;
+  word-spacing: 1px;
+  text-decoration: none;
 }
-.storeItem__title{
-    font-size: 1.2em;
+.storeItem__title {
+  font-size: 1.2em;
 }
-.storeItem__price{
-    font-size: 1em;
-    font-weight: 500;
-    margin: 0.5rem 0;
+.storeItem__price {
+  font-size: 1em;
+  font-weight: 500;
+  margin: 0.5rem 0;
 }
 
 .storeItem__price {
-    font-family: var(--font-family);
+  font-family: var(--font-family);
 }
 @media screen and (min-width: 481px) and (max-width: 768px) {
-    .storeItem__img {
-        max-width: 11rem;
-    }
-    .storeItem__title{
-        font-size: 1em;
-    }
-    .storeItem__price{
-        font-size: 0.8em;
-        margin: 0.3rem 0;
-    }
+  .storeItem__img {
+    max-width: 11rem;
+  }
+  .storeItem__title {
+    font-size: 1em;
+  }
+  .storeItem__price {
+    font-size: 0.8em;
+    margin: 0.3rem 0;
+  }
 }

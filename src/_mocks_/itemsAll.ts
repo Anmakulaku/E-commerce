@@ -113,7 +113,7 @@ export const itemsAll= [
         price: 29.99,
         addDate: new Date(2024, 1, 9, 12, 30, 0),
         sizes: [
-            { size: "oneSize", quantity: 15 },
+            { sizeName: "oneSize", value: 15 },
         ]
     },
     {
@@ -127,7 +127,7 @@ export const itemsAll= [
         price: 39.99,
         addDate: new Date(2023, 3, 12, 7, 30, 0),
         sizes: [
-            { size: "oneSize", quantity: 5 },
+            { sizeName: "oneSize", value: 5 },
         ]
     },
     {
@@ -141,7 +141,7 @@ export const itemsAll= [
         price: 49.99,
         addDate: new Date(2023, 3, 12, 7, 35, 0),
         sizes: [
-            { size: "oneSize", quantity: 7 },
+            { sizeName: "oneSize", value: 7 },
         ]
     },
     {
@@ -155,12 +155,12 @@ export const itemsAll= [
         price: 59.99,
         addDate: new Date(2023, 3, 12, 9, 15, 0),
         sizes: [
-            { size: "XS", quantity: 5 },
-            { size: "S", quantity: 5 },
-            { size: "M", quantity: 10 },
-            { size: "L", quantity: 7 },
-            { size: "X", quantity: 10 },
-            { size: "XXL", quantity: 7 },
+            { sizeName: "XS", value: 5 },
+            { sizeName: "S", value: 5 },
+            { sizeName: "M", value: 10 },
+            { sizeName: "L", value: 7 },
+            { sizeName: "X", value: 10 },
+            { sizeName: "XXL", value: 7 },
         ]
     },
     {
@@ -174,12 +174,12 @@ export const itemsAll= [
         price: 49.99, 
         addDate: new Date(2023, 4, 1, 8, 22, 0),
         sizes: [
-            { size: "XS", quantity: 5 },
-            { size: "S", quantity: 5 },
-            { size: "M", quantity: 10 },
-            { size: "L", quantity: 7 },
-            { size: "X", quantity: 10 },
-            { size: "XXL", quantity: 7 },
+            { sizeName: "XS", value: 5 },
+            { sizeName: "S", value: 5 },
+            { sizeName: "M", value: 10 },
+            { sizeName: "L", value: 7 },
+            { sizeName: "X", value: 10 },
+            { sizeName: "XXL", value: 7 },
         ]
     },
     {
@@ -193,12 +193,12 @@ export const itemsAll= [
         price: 49.99,
         addDate: new Date(2023, 11, 10, 16, 3, 0),
         sizes: [
-            { size: "XS", quantity: 5 },
-            { size: "S", quantity: 5 },
-            { size: "M", quantity: 10 },
-            { size: "L", quantity: 7 },
-            { size: "X", quantity: 10 },
-            { size: "XXL", quantity: 7 },
+            { sizeName: "XS", value: 5 },
+            { sizeName: "S", value: 5 },
+            { sizeName: "M", value: 10 },
+            { sizeName: "L", value: 7 },
+            { sizeName: "X", value: 10 },
+            { sizeName: "XXL", value: 7 },
         ]
     },
     {
@@ -212,12 +212,12 @@ export const itemsAll= [
         price: 59.99,
         addDate: new Date(2023, 4, 11, 6, 5, 0),
         sizes: [
-            { size: "XS", quantity: 5 },
-            { size: "S", quantity: 5 },
-            { size: "M", quantity: 10 },
-            { size: "L", quantity: 7 },
-            { size: "X", quantity: 10 },
-            { size: "XXL", quantity: 7 },
+            { sizeName: "XS", value: 5 },
+            { sizeName: "S", value: 5 },
+            { sizeName: "M", value: 10 },
+            { sizeName: "L", value: 7 },
+            { sizeName: "X", value: 10 },
+            { sizeName: "XXL", value: 7 },
         ]
     },
     {
@@ -231,12 +231,12 @@ export const itemsAll= [
         price: 59.99, 
         addDate: new Date(2023, 5, 30, 11, 55, 0),
         sizes: [
-            { size: "XS", quantity: 5 },
-            { size: "S", quantity: 5 },
-            { size: "M", quantity: 10 },
-            { size: "L", quantity: 7 },
-            { size: "X", quantity: 10 },
-            { size: "XXL", quantity: 7 },
+            { sizeName: "XS", value: 5 },
+            { sizeName: "S", value: 5 },
+            { sizeName: "M", value: 10 },
+            { sizeName: "L", value: 7 },
+            { sizeName: "X", value: 10 },
+            { sizeName: "XXL", value: 7 },
         ]
     },
     {
@@ -250,7 +250,7 @@ export const itemsAll= [
         price: 19.99,
         addDate: new Date(2023, 5, 30, 11, 57, 0),
         sizes: [
-            { size: "oneSize", quantity: 15 },
+            { sizeName: "oneSize", value: 15 },
         ]
     },
     {
@@ -264,7 +264,7 @@ export const itemsAll= [
         price: 34.99,
         addDate: new Date(2023, 4, 8, 11, 55, 0),
         sizes: [
-            { size: "oneSize", quantity: 15 },
+            { sizeName: "oneSize", value: 15 },
         ]
     },
     {
@@ -278,7 +278,7 @@ export const itemsAll= [
         price: 46.99,
         addDate: new Date(2023, 11, 3, 6, 5, 0),
         sizes: [
-            { size: "oneSize", quantity: 15 },
+            { sizeName: "oneSize", value: 15 },
         ]
     },
     {
@@ -292,7 +292,7 @@ export const itemsAll= [
         price: 29.99,
         addDate: new Date(2023, 2, 14, 13, 20, 0),
         sizes: [
-            { size: "oneSize", quantity: 15 },
+            { sizeName: "oneSize", value: 15 },
         ]
     },
     {
@@ -306,12 +306,12 @@ export const itemsAll= [
         price: 31.99,
         addDate: new Date(2023, 2, 14, 13, 25, 0),
         sizes: [
-            { size: "XS", quantity: 5 },
-            { size: "S", quantity: 5 },
-            { size: "M", quantity: 10 },
-            { size: "L", quantity: 7 },
-            { size: "X", quantity: 10 },
-            { size: "XXL", quantity: 7 },
+            { sizeName: "XS", value: 5 },
+            { sizeName: "S", value: 5 },
+            { sizeName: "M", value: 10 },
+            { sizeName: "L", value: 7 },
+            { sizeName: "X", value: 10 },
+            { sizeName: "XXL", value: 7 },
         ]
     },
     {
@@ -325,12 +325,12 @@ export const itemsAll= [
         price: 44.99,
         addDate: new Date(2023, 11, 4, 15, 37, 0),
         sizes: [
-            { size: "XS", quantity: 5 },
-            { size: "S", quantity: 5 },
-            { size: "M", quantity: 10 },
-            { size: "L", quantity: 7 },
-            { size: "X", quantity: 10 },
-            { size: "XXL", quantity: 7 },
+            { sizeName: "XS", value: 5 },
+            { sizeName: "S", value: 5 },
+            { sizeName: "M", value: 10 },
+            { sizeName: "L", value: 7 },
+            { sizeName: "X", value: 10 },
+            { sizeName: "XXL", value: 7 },
         ]
     },
     {
@@ -344,12 +344,12 @@ export const itemsAll= [
         price: 69.99,
         addDate: new Date(2023, 7, 9, 16, 0, 0),
         sizes: [
-            { size: "XS", quantity: 5 },
-            { size: "S", quantity: 5 },
-            { size: "M", quantity: 10 },
-            { size: "L", quantity: 7 },
-            { size: "X", quantity: 10 },
-            { size: "XXL", quantity: 7 },
+            { sizeName: "XS", value: 5 },
+            { sizeName: "S", value: 5 },
+            { sizeName: "M", value: 10 },
+            { sizeName: "L", value: 7 },
+            { sizeName: "X", value: 10 },
+            { sizeName: "XXL", value: 7 },
         ]
     },
     {
@@ -363,12 +363,12 @@ export const itemsAll= [
         price: 75.99,
         addDate: new Date(2023, 10, 19, 7, 30, 0),
         sizes: [
-            { size: "XS", quantity: 5 },
-            { size: "S", quantity: 5 },
-            { size: "M", quantity: 10 },
-            { size: "L", quantity: 7 },
-            { size: "X", quantity: 10 },
-            { size: "XXL", quantity: 7 },
+            { sizeName: "XS", value: 5 },
+            { sizeName: "S", value: 5 },
+            { sizeName: "M", value: 10 },
+            { sizeName: "L", value: 7 },
+            { sizeName: "X", value: 10 },
+            { sizeName: "XXL", value: 7 },
         ]
     },
     {
@@ -382,12 +382,12 @@ export const itemsAll= [
         price: 52.99,
         addDate: new Date(2023, 7, 9, 13, 10, 0),
         sizes: [
-            { size: "XS", quantity: 5 },
-            { size: "S", quantity: 5 },
-            { size: "M", quantity: 10 },
-            { size: "L", quantity: 7 },
-            { size: "X", quantity: 10 },
-            { size: "XXL", quantity: 7 },
+            { sizeName: "XS", value: 5 },
+            { sizeName: "S", value: 5 },
+            { sizeName: "M", value: 10 },
+            { sizeName: "L", value: 7 },
+            { sizeName: "X", value: 10 },
+            { sizeName: "XXL", value: 7 },
         ]
     },
     {
@@ -401,12 +401,12 @@ export const itemsAll= [
         price: 52.99,
         addDate: new Date(2023, 9, 19, 9, 13, 0),
         sizes: [
-            { size: "XS", quantity: 5 },
-            { size: "S", quantity: 5 },
-            { size: "M", quantity: 10 },
-            { size: "L", quantity: 7 },
-            { size: "X", quantity: 10 },
-            { size: "XXL", quantity: 7 },
+            { sizeName: "XS", value: 5 },
+            { sizeName: "S", value: 5 },
+            { sizeName: "M", value: 10 },
+            { sizeName: "L", value: 7 },
+            { sizeName: "X", value: 10 },
+            { sizeName: "XXL", value: 7 },
         ]
     },
     {
@@ -420,12 +420,12 @@ export const itemsAll= [
         price: 77.99,
         addDate: new Date(2024, 2, 9, 7, 10, 0),
         sizes: [
-            { size: "XS", quantity: 5 },
-            { size: "S", quantity: 5 },
-            { size: "M", quantity: 10 },
-            { size: "L", quantity: 7 },
-            { size: "X", quantity: 10 },
-            { size: "XXL", quantity: 7 },
+            { sizeName: "XS", value: 5 },
+            { sizeName: "S", value: 5 },
+            { sizeName: "M", value: 10 },
+            { sizeName: "L", value: 7 },
+            { sizeName: "X", value: 10 },
+            { sizeName: "XXL", value: 7 },
         ]
     },
     {
@@ -439,7 +439,7 @@ export const itemsAll= [
         price: 29.99,
         addDate: new Date(2023, 7, 22, 6, 17, 0),
         sizes: [
-            { size: "oneSize", quantity: 15 },
+            { sizeName: "oneSize", value: 15 },
         ]
     },
     {
@@ -453,7 +453,7 @@ export const itemsAll= [
         price: 55.99,
         addDate: new Date(2023, 8, 5, 8, 49, 0),
         sizes: [
-            { size: "oneSize", quantity: 15 },
+            { sizeName: "oneSize", value: 15 },
         ]
     },
     {
@@ -467,12 +467,12 @@ export const itemsAll= [
         price: 23.99,
         addDate: new Date(2023, 6, 24, 7, 10, 0),
         sizes: [
-            { size: "XS", quantity: 5 },
-            { size: "S", quantity: 5 },
-            { size: "M", quantity: 10 },
-            { size: "L", quantity: 7 },
-            { size: "X", quantity: 10 },
-            { size: "XXL", quantity: 7 },
+            { sizeName: "XS", value: 5 },
+            { sizeName: "S", value: 5 },
+            { sizeName: "M", value: 10 },
+            { sizeName: "L", value: 7 },
+            { sizeName: "X", value: 10 },
+            { sizeName: "XXL", value: 7 },
         ]
     },
     {
@@ -486,12 +486,12 @@ export const itemsAll= [
         price: 27.99,
         addDate: new Date(2023, 6, 24, 7, 10, 0),
         sizes: [
-            { size: "XS", quantity: 5 },
-            { size: "S", quantity: 5 },
-            { size: "M", quantity: 10 },
-            { size: "L", quantity: 7 },
-            { size: "X", quantity: 10 },
-            { size: "XXL", quantity: 7 },
+            { sizeName: "XS", value: 5 },
+            { sizeName: "S", value: 5 },
+            { sizeName: "M", value: 10 },
+            { sizeName: "L", value: 7 },
+            { sizeName: "X", value: 10 },
+            { sizeName: "XXL", value: 7 },
         ]
     },
     {
@@ -505,12 +505,12 @@ export const itemsAll= [
         price: 32.99,
         addDate: new Date(2023, 6, 24, 7, 10, 0),
         sizes: [
-            { size: "XS", quantity: 5 },
-            { size: "S", quantity: 5 },
-            { size: "M", quantity: 10 },
-            { size: "L", quantity: 7 },
-            { size: "X", quantity: 10 },
-            { size: "XXL", quantity: 7 },
+            { sizeName: "XS", value: 5 },
+            { sizeName: "S", value: 5 },
+            { sizeName: "M", value: 10 },
+            { sizeName: "L", value: 7 },
+            { sizeName: "X", value: 10 },
+            { sizeName: "XXL", value: 7 },
         ]
     },
     {
@@ -524,12 +524,12 @@ export const itemsAll= [
         price: 37.99,
         addDate: new Date(2023, 6, 24, 7, 10, 0),
         sizes: [
-            { size: "XS", quantity: 5 },
-            { size: "S", quantity: 5 },
-            { size: "M", quantity: 10 },
-            { size: "L", quantity: 7 },
-            { size: "X", quantity: 10 },
-            { size: "XXL", quantity: 7 },
+            { sizeName: "XS", value: 5 },
+            { sizeName: "S", value: 5 },
+            { sizeName: "M", value: 10 },
+            { sizeName: "L", value: 7 },
+            { sizeName: "X", value: 10 },
+            { sizeName: "XXL", value: 7 },
         ]
     },
     {
@@ -543,12 +543,12 @@ export const itemsAll= [
         price: 69.99,
         addDate: new Date(2023, 0, 24, 7, 10, 0),
         sizes: [
-            { size: "XS", quantity: 5 },
-            { size: "S", quantity: 5 },
-            { size: "M", quantity: 10 },
-            { size: "L", quantity: 7 },
-            { size: "X", quantity: 10 },
-            { size: "XXL", quantity: 7 },
+            { sizeName: "XS", value: 5 },
+            { sizeName: "S", value: 5 },
+            { sizeName: "M", value: 10 },
+            { sizeName: "L", value: 7 },
+            { sizeName: "X", value: 10 },
+            { sizeName: "XXL", value: 7 },
         ]
     },
     {
@@ -562,12 +562,12 @@ export const itemsAll= [
         price: 49.99,
         addDate: new Date(2023, 6, 24, 7, 10, 0),
         sizes: [
-            { size: "XS", quantity: 5 },
-            { size: "S", quantity: 5 },
-            { size: "M", quantity: 10 },
-            { size: "L", quantity: 7 },
-            { size: "X", quantity: 10 },
-            { size: "XXL", quantity: 7 },
+            { sizeName: "XS", value: 5 },
+            { sizeName: "S", value: 5 },
+            { sizeName: "M", value: 10 },
+            { sizeName: "L", value: 7 },
+            { sizeName: "X", value: 10 },
+            { sizeName: "XXL", value: 7 },
         ]
     },
     {
@@ -581,12 +581,12 @@ export const itemsAll= [
         price: 62.99,
         addDate: new Date(2023, 6, 24, 7, 10, 0),
         sizes: [
-            { size: "XS", quantity: 5 },
-            { size: "S", quantity: 5 },
-            { size: "M", quantity: 10 },
-            { size: "L", quantity: 7 },
-            { size: "X", quantity: 10 },
-            { size: "XXL", quantity: 7 },
+            { sizeName: "XS", value: 5 },
+            { sizeName: "S", value: 5 },
+            { sizeName: "M", value: 10 },
+            { sizeName: "L", value: 7 },
+            { sizeName: "X", value: 10 },
+            { sizeName: "XXL", value: 7 },
         ]
     },
     {
@@ -600,7 +600,7 @@ export const itemsAll= [
         price: 59.99,
         addDate: new Date(2023, 0, 24, 7, 10, 0),
         sizes: [
-            { size: "oneSize", quantity: 15 },
+            { sizeName: "oneSize", value: 15 },
         ]
     },
     {
@@ -614,7 +614,7 @@ export const itemsAll= [
         price: 89.99,
         addDate: new Date(2023, 6, 22, 7, 10, 0),
         sizes: [
-            { size: "oneSize", quantity: 15 },
+            { sizeName: "oneSize", value: 15 },
         ]
     },
     {
@@ -628,12 +628,12 @@ export const itemsAll= [
         price: 62.99,
         addDate: new Date(2023, 5, 24, 7, 10, 0),
         sizes: [
-            { size: "XS", quantity: 5 },
-            { size: "S", quantity: 5 },
-            { size: "M", quantity: 10 },
-            { size: "L", quantity: 7 },
-            { size: "X", quantity: 10 },
-            { size: "XXL", quantity: 7 },
+            { sizeName: "XS", value: 5 },
+            { sizeName: "S", value: 5 },
+            { sizeName: "M", value: 10 },
+            { sizeName: "L", value: 7 },
+            { sizeName: "X", value: 10 },
+            { sizeName: "XXL", value: 7 },
         ]
     }
 ]
