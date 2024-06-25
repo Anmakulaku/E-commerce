@@ -25,10 +25,24 @@ export const ProductsProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [products, setProducts] = useState<Product[]>([]);
 
+  // useEffect(() => {
+  //   getAllItems().then(data => {
+  //     console.log('Setting products:', data); 
+  //     setProducts(data);
+  //   });
+  // }, []);
   useEffect(() => {
-    getAllItems().then(data => {
-      setProducts(data);
-    });
+    const fetchProducts = async () => {
+      try {
+        const data = await getAllItems();
+        console.log('Fetched items:', data);
+        setProducts(data || []); // Ustawienie pobranych produktów do stanu
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchProducts();
   }, []);
 
   return (

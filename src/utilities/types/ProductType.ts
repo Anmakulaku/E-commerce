@@ -3,8 +3,8 @@ export interface Product {
   gender: string;
   category: string;
   subcategory?: string;
-  img: string;
-  imgOther: string[];
+  image_url: string;
+  imgOther: string;
   name: string;
   price: number;
   addDate: Date;

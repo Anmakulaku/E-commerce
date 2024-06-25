@@ -21,8 +21,8 @@ export function useProductPageLogic(id: string) {
     if (!id || products.length === 0) return;
 
     if (product) {
-      if (product.img) {
-        setMainImage(product.img);
+      if (product.image_url) {
+        setMainImage(product.image_url);
       } else if (product.imgOther && product.imgOther.length > 0) {
         setMainImage(product.imgOther[0]);
       }
@@ -42,7 +42,7 @@ export function useProductPageLogic(id: string) {
       return;
     }
     for (let i = 0; i < quantity; i++) {
-      increaseCartQuantity(product.id, selectedSize || '');
+      increaseCartQuantity(product.id, selectedSize, product.image_url || '');
     }
     setQuantity(1);
   };
@@ -72,7 +72,7 @@ export function useProductPageLogic(id: string) {
           />
         )}
         <div className='productPage__imgOthers'>
-          {[product.img, ...product.imgOther].map((img, index) => (
+          {[product.image_url, ...product.imgOther].map((img, index) => (
             <img
               key={index}
               src={img}

@@ -23,7 +23,7 @@ type CartContext = {
   };
   actions: {
     getItemQuantity: (id: number, size: string) => number;
-    increaseCartQuantity: (id: number, size: string) => void;
+    increaseCartQuantity: (id: number, size: string, image_url: string) => void;
     decreaseCartQuantity: (id: number, size: string) => void;
     removeFromCart: (id: number, size: string) => void;
     addGiftWrap: () => void;
@@ -94,9 +94,9 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     return item ? item.quantity : 0;
   }
 
-  function increaseCartQuantity(id: number, size: string) {
+  function increaseCartQuantity(id: number, size: string, image_url: string) {
     setCartItems(currItems => {
-      const newItem = { id, size, quantity: 1 } as CartItem;
+      const newItem = { id, size, quantity: 1, image_url  } as CartItem;
       const existingItemIndex = currItems.findIndex(
         item => item.id === id && item.size === size,
       );

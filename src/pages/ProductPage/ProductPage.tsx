@@ -89,9 +89,7 @@ export function ProductPage() {
   return (
     <div className='productPage'>
       <div className='productPage__content'>
-      <Images id={product.id}
-          img={product.img}
-          imgOther={product.imgOther} />
+      <Images id={product.id} />
         {/* <div className='productPage__images'>
           {renderImages(mainImage, product)}
         </div> */}

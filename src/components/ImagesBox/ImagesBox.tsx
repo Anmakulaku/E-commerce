@@ -1,43 +1,46 @@
 import { useContext } from 'react';
 import { ProductsContext } from '../../context/ProductContext';
-import './ImagesBox.css'
+import './ImagesBox.css';
 
 interface ImagesProps {
   id: number;
-  img: string;
-  imgOther: string[];
 }
 const useCart = () => useContext(ProductsContext);
 
-export default function Images({ id, imgOther }: ImagesProps) {
+export default function Images({ id }: ImagesProps) {
   const { products } = useCart();
 
   const item = products.find(product => product.id === id);
 
   if (!item) return null;
+
+  // Podział ciągu imgOther na tablicę
+  const imgOtherArray = item.imgOther ? item.imgOther.split(', ') : [];
+
   return (
     <div className='imagesBox__images'>
       <div className='imagesBox__content'>
-        {/* Główny obraz */}
+        {/* Główny obraz  */}
         <div className='imagesBox__imgMainContainer'>
           <img
-            src={`http://localhost:3001/images/${item?.img}`}
+            src={`http://localhost:3000${item.image_url}`}
             alt='product-image'
             className='imagesBox__imgMain'
           />
         </div>
         {/* Dodatkowe obrazy */}
         <div className='imagesBox__imgOthers'>
-          {imgOther &&
-            imgOther.map((imgUrl, index) => (
-              <div key={index} className='imagesBox__imgOtherContainer'>
+          {imgOtherArray.map((imgOther, index) => (
+            <div key={index} className='imagesBox__imgOtherContainer'>
+              {imgOther && (
                 <img
-                  src={`http://localhost:3001/images/${imgUrl}`}
+                  src={`http://localhost:3000${imgOther}`}
                   alt={`Additional Image ${index}`}
                   className='imagesBox__imgOther'
                 />
-              </div>
-            ))}
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </div>

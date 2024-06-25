@@ -8,23 +8,23 @@ interface StoreItemProps {
   id: number;
   name: string;
   price: number;
-  img: string;
+  image_url: string;
 }
 
 const useCart = () => useContext(ProductsContext);
 
-export default function StoreItem({ id, name, price, img }: StoreItemProps) {
-  console.log('Item img:', img);
+export default function StoreItem({ id, name, price, image_url }: StoreItemProps) {
   const { products } = useCart();
 
   const item = products.find(product => product.id === id);
+  console.log('StoreItem data:', item);
 
   if (!item) return null;
 
   return (
     <Link to={`/product/${id}`} className='storeItem__container'>
       <div className='storeItem__img'>
-        <img src={`http://localhost:3001/images/${item.img}`} alt='product-image' />
+        <img src={`http://localhost:3000${image_url}`}  alt='product-image' />
       </div>
       <div className='storeItem__text'>
         <h1 className='storeItem__title'>{name}</h1>
