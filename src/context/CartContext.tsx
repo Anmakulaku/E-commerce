@@ -22,10 +22,10 @@ type CartContext = {
     quantity: number;
   };
   actions: {
-    getItemQuantity: (id: number, size: string) => number;
-    increaseCartQuantity: (id: number, size: string) => void;
-    decreaseCartQuantity: (id: number, size: string) => void;
-    removeFromCart: (id: number, size: string) => void;
+    getItemQuantity: (id: string, size: string) => number;
+    increaseCartQuantity: (id: string, size: string) => void;
+    decreaseCartQuantity: (id: string, size: string) => void;
+    removeFromCart: (id: string, size: string) => void;
     addGiftWrap: () => void;
     toggleGiftWrap: () => void;
     setSelectedSize: React.Dispatch<React.SetStateAction<string | null>>;
@@ -89,28 +89,44 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const { products } = useProducts();
   const { isOpen } = useCartOverlay();
 
-  function getItemQuantity(id: number, size: string) {
+  function getItemQuantity(id: string, size: string) {
     const item = cartItems.find(item => item.id === id && item.size === size);
     return item ? item.quantity : 0;
   }
 
-  function increaseCartQuantity(id: number, size: string) {
+  function increaseCartQuantity(id: string, size: string) {
     setCartItems(currItems => {
-      const newItem = { id, size, quantity: 1 } as CartItem;
       const existingItemIndex = currItems.findIndex(
         item => item.id === id && item.size === size,
       );
+
       if (existingItemIndex !== -1) {
         const updatedItems = [...currItems];
-        updatedItems[existingItemIndex].quantity++;
+        updatedItems[existingItemIndex] = {
+          ...updatedItems[existingItemIndex],
+          quantity: updatedItems[existingItemIndex].quantity + 1,
+        };
         return updatedItems;
       } else {
+        const product = products.find(product => product.id === id);
+
+        if (!product) {
+          console.error('Product not found');
+          return currItems;
+        }
+
+        const newItem: CartItem = {
+          ...product,
+          size,
+          quantity: 1,
+        };
+
         return [...currItems, newItem];
       }
     });
   }
 
-  function decreaseCartQuantity(id: number, size: string) {
+  function decreaseCartQuantity(id: string, size: string) {
     const existingItem = cartItems.find(
       item => item.id === id && item.size === size,
     );
@@ -128,7 +144,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     setCartItems(updatedItems);
   }
 
-  function removeFromCart(id: number, size: string) {
+  function removeFromCart(id: string, size: string) {
     setCartItems(currItems => {
       return currItems.filter(item => !(item.id === id && item.size === size));
     });
@@ -172,7 +188,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
           toggleGiftWrap,
           setSelectedSize,
           setQuantity,
-          clearCart, 
+          clearCart,
         },
         meta: {
           totalSumWithGiftWrap,

@@ -21,7 +21,7 @@ export const getAllItems = async () => {
     return data; // Zwraca wszystkie produkty
   } catch (error) {
     console.error('Error:', error);
-    return null; // Zwraca null w przypadku błędu
+    return []; // Zwraca null w przypadku błędu
   }
 };
 

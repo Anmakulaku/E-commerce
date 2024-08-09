@@ -5,7 +5,7 @@ import { CartItem } from './CartItem';
 import './CartItemBox.css';
 
 interface CartItemBoxProps {
-  id: number;
+  id: string;
   size: string;
   quantity: number;
 }

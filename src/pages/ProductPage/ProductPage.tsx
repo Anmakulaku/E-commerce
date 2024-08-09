@@ -5,7 +5,7 @@ import './ProductPage.css';
 import { formatCurrency } from '../../utilities/formatCurrency';
 import { useProductPageLogic } from './ProductPageLogic';
 import { useParams } from 'react-router-dom';
-import Images from '../../components/ImagesBox/ImagesBox';
+import ImagesBox from '../../components/ImagesBox/ImagesBox';
 
 function renderSizeButtons(
   isAccessories: boolean,
@@ -78,8 +78,6 @@ export function ProductPage() {
     increaseQuantity,
   } = useProductPageLogic(id || '');
 
-  // console.log('ProductPage render');
-
   if (!product) {
     return <div>Brak identyfikatora produktu</div>;
   }
@@ -89,12 +87,7 @@ export function ProductPage() {
   return (
     <div className='productPage'>
       <div className='productPage__content'>
-      <Images id={product.id}
-          img={product.img}
-          imgOther={product.imgOther} />
-        {/* <div className='productPage__images'>
-          {renderImages(mainImage, product)}
-        </div> */}
+        <ImagesBox id={product.id} />
         <div className='productPage__info'>
           <h2 className='productPage__titleStyle productPage__companyName'>
             FASCO
@@ -144,9 +137,6 @@ export function ProductPage() {
                 >
                   <span className='productPage__titleStyle'>Add to Cart</span>
                 </button>
-                {/* <button className='button productPage__btnAdd' onClick={() => selectedSize && removeFromCart(product.id, selectedSize)}>
-                                    <span className='productPage__titleStyle'>Remove</span> 
-                                </button> */}
               </div>
             </div>
           </div>

@@ -158,7 +158,7 @@ export function Store() {
         <h1 className='store__title'>{getCategoryPath()}</h1>
         <div className='store__products'>
           {paginatedItems.map(item => (
-            <StoreItem key={item.id} {...item} img={item.img} />
+            <StoreItem key={item.id} {...item} />
           ))}
         </div>
         <ReactPaginate

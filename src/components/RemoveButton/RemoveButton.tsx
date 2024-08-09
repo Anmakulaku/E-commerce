@@ -3,7 +3,7 @@ import { useShoppingCart } from '../../context/CartContext';
 import './RemoveButton.css';
 
 interface RemoveButtonProps {
-  itemId: number;
+  itemId: string;
   size: string;
 }
 

@@ -3,7 +3,7 @@ import { useShoppingCart } from '../../context/CartContext';
 import './QuantityCounter.css';
 
 interface QuantityCounterProps {
-  itemId: number;
+  itemId: string;
   size: string;
 }
 

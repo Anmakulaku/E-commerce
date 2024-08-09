@@ -4,7 +4,7 @@ import './CartItem.css';
 import { ProductsContext } from '../../context/ProductContext';
 
 type CartItemProps = {
-  id: number;
+  id: string;
   quantity: number;
   size: string;
 };
@@ -22,7 +22,11 @@ export function CartItem({ id, size, quantity }: CartItemProps) {
   return (
     <div className='cartItem__content'>
       <div className='cartItem__item'>
-        <img className='cartItem__itemImg' src={`http://localhost:3001/images/${item.img}`} alt='product image' />
+      <img
+              src={`http://localhost:3000${item.images[0].imageUrl}`} 
+              alt='Product Image'
+              width="150px"
+            />
         <div className='cartItem__text'>
           <h3 className='cartItem__title'>{item.name}</h3>
           <p className='cartItem__title'>Size: {size}</p>

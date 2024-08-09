@@ -16,7 +16,7 @@
 
 .storeItem__img {
   max-width: 17.5rem;
-  aspect-ratio: 1/1.25;
+  aspect-ratio: 1/1.2;
   overflow: hidden;
   display: flex;
   align-items: center;

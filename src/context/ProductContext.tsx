@@ -27,7 +27,9 @@ export const ProductsProvider: React.FC<{ children: ReactNode }> = ({
 
   useEffect(() => {
     getAllItems().then(data => {
-      setProducts(data);
+      if (data) {
+        setProducts(data);
+      }
     });
   }, []);
 

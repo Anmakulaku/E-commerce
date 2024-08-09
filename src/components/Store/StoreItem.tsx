@@ -5,26 +5,32 @@ import { useContext } from 'react';
 import { ProductsContext } from '../../context/ProductContext';
 
 interface StoreItemProps {
-  id: number;
+  id: string;
   name: string;
   price: number;
-  img: string;
 }
 
 const useCart = () => useContext(ProductsContext);
 
-export default function StoreItem({ id, name, price, img }: StoreItemProps) {
-  console.log('Item img:', img);
+export default function StoreItem({ id, name, price }: StoreItemProps) {
   const { products } = useCart();
 
   const item = products.find(product => product.id === id);
 
   if (!item) return null;
 
+  const mainImage = item.images.length > 0 ? item.images[0] : null;
+
   return (
     <Link to={`/product/${id}`} className='storeItem__container'>
       <div className='storeItem__img'>
-        <img src={`http://localhost:3001/images/${item.img}`} alt='product-image' />
+        {mainImage && (
+          <img
+            src={`http://localhost:3000${mainImage.imageUrl}`}
+            alt='Product Image'
+            width='150px'
+          />
+        )}
       </div>
       <div className='storeItem__text'>
         <h1 className='storeItem__title'>{name}</h1>

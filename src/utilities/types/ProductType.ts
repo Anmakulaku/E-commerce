@@ -1,10 +1,14 @@
+export interface Image {
+  imageUrl: string;
+}
+
 export interface Product {
-  id: number;
+  id: string;
   gender: string;
   category: string;
   subcategory?: string;
-  img: string;
-  imgOther: string[];
+  images: Image[];
+  // imgOther: string[];
   name: string;
   price: number;
   addDate: Date;
