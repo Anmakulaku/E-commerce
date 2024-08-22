@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Product } from '../../utilities/types/ProductType';
+import { useMemo } from 'react';
+import { Category } from '../../utilities/types/CategoryType';
 import { useProducts } from '../../context/ProductContext';
 
 interface StoreLogicProps {
@@ -7,6 +7,7 @@ interface StoreLogicProps {
   selectedSubcategory: string | null;
   currentPage: number;
   itemsPerPage: number;
+  categories: Category[];
 }
 
 export function useStoreLogic({
@@ -14,44 +15,42 @@ export function useStoreLogic({
   selectedSubcategory,
   currentPage,
   itemsPerPage,
+  categories,
 }: StoreLogicProps) {
   const { products } = useProducts();
-  const [paginatedItems, setPaginatedItems] = useState<Product[]>([]);
-  const [pageCount, setPageCount] = useState(0);
 
-  useEffect(() => {
-    if (products.length === 0) return; // Jeśli dane nie są dostepne, nie renderuj dalej
+  const filteredProducts = useMemo(() => {
+    console.log('Original products:', products);
+    let filtered = products;
 
-    const totalItemsCount = products
-      .filter(item => !selectedCategory || item.category === selectedCategory)
-      .filter(
-        item =>
-          !selectedSubcategory || item.subcategory === selectedSubcategory,
-      ).length;
-    console.log('Total items count:', totalItemsCount);
-    const itemsPerPage = 12;
-    setPageCount(Math.ceil(totalItemsCount / itemsPerPage));
+    if (selectedCategory) {
+      const category = categories.find(cat => cat.name === selectedCategory);
+      console.log('Selected category:', selectedCategory);
+      console.log('Found category object:', category);
 
-    const indexOfLastItem = (currentPage + 1) * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+      if (category) {
+        filtered = filtered.filter(
+          product => product.category.name === category.name,
+        );
+      }
+      console.log('Filtered products after category:', filtered);
+    }
 
-    const sortedItems = products
-      .filter(item => !selectedCategory || item.category === selectedCategory)
-      .filter(
-        item =>
-          !selectedSubcategory || item.subcategory === selectedSubcategory,
-      )
-      .sort((a, b) => new Date(b.addDate).getTime() - new Date(a.addDate).getTime())
-      .slice(indexOfFirstItem, indexOfLastItem);
+    if (selectedSubcategory) {
+      filtered = filtered.filter(
+        product => product.subcategory?.name === selectedSubcategory,
+      );
+      console.log('Filtered products after subcategory:', filtered);
+    }
 
-    setPaginatedItems(sortedItems);
-  }, [
-    currentPage,
-    itemsPerPage,
-    selectedCategory,
-    selectedSubcategory,
-    products,
-  ]);
+    return filtered;
+  }, [products, selectedCategory, selectedSubcategory, categories]);
+
+  const pageCount = Math.ceil(filteredProducts.length / itemsPerPage);
+  const paginatedItems = useMemo(() => {
+    const start = currentPage * itemsPerPage;
+    return filteredProducts.slice(start, start + itemsPerPage);
+  }, [filteredProducts, currentPage, itemsPerPage]);
 
   return {
     paginatedItems,

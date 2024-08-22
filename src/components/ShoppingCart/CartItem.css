@@ -9,15 +9,10 @@
   align-items: center;
   gap: 2rem;
 }
-.cartItem__itemImg {
-  width: 7rem;
+.cartItem__img {
+  width: 8rem;
   height: auto;
   margin-bottom: 1rem;
-}
-.cartItem__item img {
-  overflow: hidden;
-  display: flex;
-  align-items: center;
 }
 .cartItem__text {
   display: flex;

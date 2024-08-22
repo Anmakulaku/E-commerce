@@ -6,7 +6,7 @@ import {
   useState,
 } from 'react';
 import { Product } from '../utilities/types/ProductType';
-import { getAllItems } from '../utilities/services/items.service';
+import { ProductService } from '../utilities/services/products.service';
 
 type ProductsContextType = {
   products: Product[];
@@ -26,11 +26,16 @@ export const ProductsProvider: React.FC<{ children: ReactNode }> = ({
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    getAllItems().then(data => {
-      if (data) {
-        setProducts(data);
+    const fetchProducts = async () => {
+      try {
+        const products = await ProductService.fetchAllProducts();
+        setProducts(products);
+      } catch (error) {
+        console.error('Failed to fetch products:', error);
       }
-    });
+    };
+
+    fetchProducts();
   }, []);
 
   return (
@@ -39,4 +44,3 @@ export const ProductsProvider: React.FC<{ children: ReactNode }> = ({
     </ProductsContext.Provider>
   );
 };
-

@@ -41,7 +41,7 @@ export default function ImagesBox({ id }: ImagesProps) {
             <img
               src={`http://localhost:3000${mainImage.imageUrl}`}
               alt='Product Main Image'
-              width='150px'
+              className='imagesBox__imgMain'
             />
           </div>
         )}
@@ -54,7 +54,8 @@ export default function ImagesBox({ id }: ImagesProps) {
                 <img
                   src={`http://localhost:3000${image.imageUrl}`}
                   alt={`Additional Image ${index}`}
-                  width='150px'
+                  className='imagesBox__imgOther'
+
                 />
               </div>
             ))}

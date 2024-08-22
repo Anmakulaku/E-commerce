@@ -12,7 +12,7 @@ type CartItemProps = {
 const useCart = () => useContext(ProductsContext);
 
 export function CartItem({ id, size, quantity }: CartItemProps) {
-  console.log(`Item ID: ${id}, Size: ${size}`); 
+  console.log(`Item ID: ${id}, Size: ${size}`);
   const { products } = useCart();
 
   const item = products.find(product => product.id === id);
@@ -22,11 +22,11 @@ export function CartItem({ id, size, quantity }: CartItemProps) {
   return (
     <div className='cartItem__content'>
       <div className='cartItem__item'>
-      <img
-              src={`http://localhost:3000${item.images[0].imageUrl}`} 
-              alt='Product Image'
-              width="150px"
-            />
+        <img
+          src={`http://localhost:3000${item.images[0].imageUrl}`}
+          alt='Product Image'
+          className='cartItem__img'
+        />
         <div className='cartItem__text'>
           <h3 className='cartItem__title'>{item.name}</h3>
           <p className='cartItem__title'>Size: {size}</p>
