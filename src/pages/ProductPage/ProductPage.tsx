@@ -6,13 +6,33 @@ import { formatCurrency } from '../../utilities/formatCurrency';
 import { useProductPageLogic } from './ProductPageLogic';
 import { useParams } from 'react-router-dom';
 import ImagesBox from '../../components/ImagesBox/ImagesBox';
+import { uuid } from '../../utilities/types/ProductType';
+
+const sizeOrderMap: { [key: string]: number } = {
+  xs: 1,
+  s: 2,
+  m: 3,
+  l: 4,
+  xl: 5,
+  xxl: 6,
+};
+
+function sortSizes(sizes: { id: uuid; name: string }[]) {
+  return sizes.sort((a, b) => {
+    const orderA = sizeOrderMap[a.name.toLowerCase()] || 0;
+    const orderB = sizeOrderMap[b.name.toLowerCase()] || 0;
+    return orderA - orderB;
+  });
+}
 
 function renderSizeButtons(
-  isAccessories: boolean,
+  sizes: { id: uuid; name: string }[],
   selectedSize: string | null,
   handleSizeSelection: (size: string) => void,
 ) {
-  if (isAccessories) {
+  const sortedSizes = sortSizes(sizes);
+
+  if (sizes.length === 1 && sizes[0].name.toLocaleLowerCase() == 'one size') {
     return (
       <button
         className={`productPage__sizeLabelsItem ${selectedSize === 'oneSize' && 'selected'}`}
@@ -24,42 +44,15 @@ function renderSizeButtons(
   } else {
     return (
       <div className='productPage__sizeLabels'>
-        <button
-          className={`productPage__sizeLabelsItem ${selectedSize === 'XS' && 'selected'}`}
-          onClick={() => handleSizeSelection('XS')}
-        >
-          XS
-        </button>
-        <button
-          className={`productPage__sizeLabelsItem ${selectedSize === 'S' && 'selected'}`}
-          onClick={() => handleSizeSelection('S')}
-        >
-          S
-        </button>
-        <button
-          className={`productPage__sizeLabelsItem ${selectedSize === 'M' && 'selected'}`}
-          onClick={() => handleSizeSelection('M')}
-        >
-          M
-        </button>
-        <button
-          className={`productPage__sizeLabelsItem ${selectedSize === 'L' && 'selected'}`}
-          onClick={() => handleSizeSelection('L')}
-        >
-          L
-        </button>
-        <button
-          className={`productPage__sizeLabelsItem ${selectedSize === 'XL' && 'selected'}`}
-          onClick={() => handleSizeSelection('XL')}
-        >
-          XL
-        </button>
-        <button
-          className={`productPage__sizeLabelsItem ${selectedSize === 'XXL' && 'selected'}`}
-          onClick={() => handleSizeSelection('XXL')}
-        >
-          XXL
-        </button>
+        {sortedSizes.map(size => (
+          <button
+            key={size.id}
+            className={`productPage__sizeLabelsItem ${selectedSize === size.name && 'selected'}`}
+            onClick={() => handleSizeSelection(size.name)}
+          >
+            {size.name}
+          </button>
+        ))}
       </div>
     );
   }
@@ -81,8 +74,6 @@ export function ProductPage() {
   if (!product) {
     return <div>Brak identyfikatora produktu</div>;
   }
-
-  const isAccessories = product.category === 'accessories';
 
   return (
     <div className='productPage'>
@@ -106,7 +97,7 @@ export function ProductPage() {
               )}
             </span>
             {renderSizeButtons(
-              isAccessories,
+              product.sizes,
               selectedSize,
               handleSizeSelection,
             )}
