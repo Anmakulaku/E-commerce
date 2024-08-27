@@ -7,6 +7,7 @@ import { useProductPageLogic } from './ProductPageLogic';
 import { useParams } from 'react-router-dom';
 import ImagesBox from '../../components/ImagesBox/ImagesBox';
 import { uuid } from '../../utilities/types/ProductType';
+import BackButton from '../../components/BackButton/BackButton';
 
 const sizeOrderMap: { [key: string]: number } = {
   xs: 1,
@@ -59,6 +60,7 @@ function renderSizeButtons(
 }
 
 export function ProductPage() {
+  window.scrollTo(0, 0);
   const { id } = useParams<{ id: string }>();
   const {
     product,
@@ -77,6 +79,7 @@ export function ProductPage() {
 
   return (
     <div className='productPage'>
+      <BackButton />
       <div className='productPage__content'>
         <ImagesBox id={product.id} />
         <div className='productPage__info'>

@@ -30,6 +30,7 @@ export function Store() {
   });
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchCategories = async () => {
       try {
         const rawCategories = await CategoriesService.getCategories();
@@ -53,20 +54,20 @@ export function Store() {
     setSelectedCategory(category);
     setSelectedSubcategory(null); // Resetowanie subkategorii po zmianie kategorii
     setCurrentPage(0); // Resetowanie strony
-    console.log('Category changed to:', category); // Log zmiany kategoriiiiiiiiiiiiiiiiiiiiiiiiiii
+    console.log('Category changed to:', category); // Log zmiany kategori
   };
 
   const handleShowAll = () => {
     setSelectedCategory(null);
     setSelectedSubcategory(null);
     setCurrentPage(0); // Resetowanie strony
-    console.log('Reset to show all products'); // Log resetu do wszystkich produktówwwwwwwwwwwwwwwww
+    console.log('Reset to show all products'); // Log resetu do wszystkich produktów
   };
 
   const handleSubcategoryChange = (subcategory: string) => {
     setSelectedSubcategory(subcategory);
     setCurrentPage(0); // Resetowanie strony
-    console.log('Subcategory changed to:', subcategory); // Log zmiany pppppppppppppodkategorii
+    console.log('Subcategory changed to:', subcategory); // Log zmiany podkategorii
   };
 
   const renderSubcategoryButtons = () => {
