@@ -10,13 +10,13 @@ interface Point {
   street: string;
 }
 interface OrderFormData {
-  first_name: string;
-  last_name: string;
+  firstName: string;
+  lastName: string;
   address: string;
   city: string;
-  postal_code: string;
+  postalCode: string;
   totalCost: number;
-  delivery_point: string;
+  deliveryPoint: string;
 }
 
 const Checkout = () => {
@@ -26,13 +26,13 @@ const Checkout = () => {
   const { clearCart } = actions;
   const [selectedPoint, setSelectedPoint] = useState<Point | null>(null);
   const [formData, setFormData] = useState<OrderFormData>({
-    first_name: '',
-    last_name: '',
+    firstName: '',
+    lastName: '',
     address: '',
     city: '',
-    postal_code: '',
+    postalCode: '',
     totalCost: 0,
-    delivery_point: '',
+    deliveryPoint: '',
   });
   const SHIPPING_PRICE = 1500;
   const totalCost = totalSumWithGiftWrap + SHIPPING_PRICE;
@@ -46,7 +46,7 @@ const Checkout = () => {
 
   const handlePointSelection = (selectedPoint: Point) => {
     setSelectedPoint(selectedPoint);
-    setFormData({ ...formData, delivery_point: selectedPoint.name });
+    setFormData({ ...formData, deliveryPoint: selectedPoint.name });
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,12 +67,12 @@ const Checkout = () => {
       console.log('Cart items:', cartItems);
       console.log('FormData before sending:', formData);
       if (
-        !formData.first_name ||
-        !formData.last_name ||
+        !formData.firstName ||
+        !formData.lastName ||
         !formData.address ||
         !formData.city ||
-        !formData.postal_code ||
-        !formData.delivery_point
+        !formData.postalCode ||
+        !formData.deliveryPoint
       ) {
         throw new Error('Please fill in all required fields');
       }
@@ -80,9 +80,10 @@ const Checkout = () => {
       const dataToSend = {
         ...formData,
         cart: cartItems.map(item => ({
-          ...item,
-          size_name: item.size // zmień nazwę pola size na size_name
-        }))
+          productId: item.id,
+          sizeName: item.size,
+          quantity: item.quantity,
+        })),
       };
       console.log('Data to send:', dataToSend);
 
@@ -95,15 +96,14 @@ const Checkout = () => {
         body: JSON.stringify(dataToSend),
       });
       console.log('Server response:', response);
-      // Sprawdź, czy odpowiedź serwera jest OK
+      //Czy odpowiedź serwera jest OK?
       if (!response.ok || !response) {
         throw new Error('Network response was not ok');
       }
-      const redirectUri = await response.text();
-      window.location.href = redirectUri;
-      // Pobierz dane z odpowiedzi serwera
-      // const data: ServerResponse = await response.json();
-      // console.log(data.message);
+      // dane z odpowiedzi serwera
+      const data = await response.json();
+      console.log('Redirect URL:', data.redirectUrl);
+      window.location.href = data.redirectUrl;
       clearCart();
     } catch (error) {
       console.error('There was an error!', error);
@@ -123,8 +123,8 @@ const Checkout = () => {
                 <div className='checkout__formItem'>
                   <input
                     type='text'
-                    id='first_name'
-                    name='first_name'
+                    id='firstName'
+                    name='firstName'
                     placeholder='First name'
                     className='checkout__inputField'
                     onChange={handleInputChange}
@@ -133,8 +133,8 @@ const Checkout = () => {
                 <div className='checkout__formItem'>
                   <input
                     type='text'
-                    id='last_name'
-                    name='last_name'
+                    id='lastName'
+                    name='lastName'
                     placeholder='Last name'
                     className='checkout__inputField'
                     onChange={handleInputChange}
@@ -163,8 +163,8 @@ const Checkout = () => {
                 <div className='checkout__formItem'>
                   <input
                     type='text'
-                    id='postal_code'
-                    name='postal_code'
+                    id='postalCode'
+                    name='postalCode'
                     placeholder='Postal code'
                     className='checkout__inputField'
                     onChange={handleInputChange}
