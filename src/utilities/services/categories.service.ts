@@ -2,7 +2,7 @@ import { RawCategory, Category } from '../types/CategoryType';
 
 export class CategoriesService {
   static async getCategories(): Promise<RawCategory[]> {
-    const response = await fetch('http://localhost:3000/products/categories');
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/products/categories`);
     if (!response.ok) {
       throw new Error('Failed to fetch categories');
     }

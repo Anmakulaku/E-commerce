@@ -1,6 +1,7 @@
 import { RawProduct, Product } from '../types/ProductType';
 
-const API_URL = 'http://localhost:3000/products/';
+const API_URL = `${import.meta.env.VITE_API_URL}/products/`;
+
 
 export class ProductService {
   static async fetchAllProducts(): Promise<Product[]> {

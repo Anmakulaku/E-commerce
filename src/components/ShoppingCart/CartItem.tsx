@@ -23,7 +23,7 @@ export function CartItem({ id, size, quantity }: CartItemProps) {
     <div className='cartItem__content'>
       <div className='cartItem__item'>
         <img
-          src={`http://localhost:3000${item.images[0].imageUrl}`}
+          src={`${import.meta.env.VITE_API_URL}${item.images[0].imageUrl}`}
           alt='Product Image'
           className='cartItem__img'
         />

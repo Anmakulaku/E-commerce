@@ -25,3 +25,5 @@ _mocks_
 *.njsproj
 *.sln
 *.sw?
+.env
+.env.production

@@ -18,7 +18,7 @@ export default function StoreItem({ id }: StoreItemProps) {
 
   const mainImage = item.images.find(image => image.isMain)?.imageUrl || '';
 
-  const baseUrl = 'http://localhost:3000';
+  const baseUrl = import.meta.env.VITE_API_URL;
 
   return (
     <Link to={`/product/${id}`} className='storeItem__container'>

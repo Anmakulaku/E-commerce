@@ -32,6 +32,8 @@ export default function ImagesBox({ id }: ImagesProps) {
   const additionalImages = getAdditionalImages();
   // const allImages = getAllImages();
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   return (
     <div className='imagesBox__images'>
       <div className='imagesBox__content'>
@@ -39,7 +41,7 @@ export default function ImagesBox({ id }: ImagesProps) {
         {mainImage && (
           <div className='imagesBox__imgMainContainer'>
             <img
-              src={`http://localhost:3000${mainImage.imageUrl}`}
+              src={`${API_URL}${mainImage.imageUrl}`}
               alt='Product Main Image'
               className='imagesBox__imgMain'
             />
@@ -52,7 +54,7 @@ export default function ImagesBox({ id }: ImagesProps) {
             {additionalImages.map((image, index) => (
               <div key={index} className='imagesBox__imgOtherContainer'>
                 <img
-                  src={`http://localhost:3000${image.imageUrl}`}
+                  src={`${API_URL}${image.imageUrl}`}
                   alt={`Additional Image ${index}`}
                   className='imagesBox__imgOther'
 
