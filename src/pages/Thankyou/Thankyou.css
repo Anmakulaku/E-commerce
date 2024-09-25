@@ -1,0 +1,28 @@
+.thankyou {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.thankyou__container {
+  height: 100vh;
+  position: relative;
+}
+.thankyou__content {
+  margin: 3rem;
+  border-radius: 1rem;
+  border: 2px solid var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.thankyou__title {
+  padding: 3rem 1rem;
+}
+
+.thankyou__button{
+margin: 3rem 1rem;
+}
+.thankyou__btn {
+    padding: 1rem 5rem;
+    text-decoration: none;
+}

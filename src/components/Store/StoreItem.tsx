@@ -1,34 +1,45 @@
 import { Link } from 'react-router-dom';
 import { formatCurrency } from '../../utilities/formatCurrency';
 import './StoreItem.css';
-import { useStoreItemLogic } from './StoreItemLogic';
+import { useContext } from 'react';
+import { ProductsContext } from '../../context/ProductContext';
+import { Product } from '../../utilities/types/ProductType';
 
 interface StoreItemProps {
-    id: number;
-    name: string;
-    price: number;
-    img: string;
+  id: string;
 }
 
-export default function StoreItem({ id, name, price, img }: StoreItemProps) {
-    const { product, isLoading } = useStoreItemLogic(id);
+export default function StoreItem({ id }: StoreItemProps) {
+  const { products } = useContext(ProductsContext);
 
-    if (isLoading) {
-        return "Loading...";
-    }
-    if (!product) {
-        return "Product not found";
-    }
+  const item = products.find((product: Product) => product.id === id);
 
-    return (
-        <Link to={`/product/${id}`} className="storeItem__container">
-        <div className="storeItem__img">
-            <img src={img} alt="product-image" />
-        </div>
-        <div className="storeItem__text">
-            <h1 className="storeItem__title">{name}</h1>
-            <span className="storeItem__price">{formatCurrency(price)}</span>
-        </div>
-        </Link>
-    );
+  if (!item) return null;
+
+  const mainImage = item.images.find(image => image.isMain)?.imageUrl || '';
+
+  const baseUrl = import.meta.env.VITE_API_URL;
+
+  return (
+    <Link to={`/product/${id}`} className='storeItem__container'>
+      <div className='storeItem__img'>
+        {mainImage && (
+          <img
+            src={`${baseUrl}${mainImage}`}
+            alt='Product Image'
+            width='150px'
+          />
+        )}
+      </div>
+      <div className='storeItem__text'>
+        <h1 className='storeItem__title'>{item.name}</h1>
+        <span className='storeItem__price'>{formatCurrency(item.price)}</span>
+      </div>
+      {/* <div className='storeItem__category'>
+        <span className='storeItem__subcategory'>{item.category.name}</span>
+        {' - '}
+        <span className='storeItem__category'>{item.subcategory.name}</span>
+      </div> */}
+    </Link>
+  );
 }

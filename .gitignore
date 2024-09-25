@@ -13,6 +13,7 @@ dist-ssr
 *.local
 zas.txt
 Screens
+_mocks_
 
 # Editor directories and files
 .vscode/*
@@ -24,3 +25,5 @@ Screens
 *.njsproj
 *.sln
 *.sw?
+.env
+.env.production
