@@ -30,7 +30,7 @@
 }
 .checkout__delivery h2,
 .checkout__payment h2 {
-  font-size: 2em;
+  font-size: 1.5em;
   margin-bottom: 1rem;
 }
 .checkout__deliveryForm,
@@ -82,10 +82,18 @@
   padding: 1rem;
   margin-top: 2rem;
 }
-.checkout-pointInfo{
+.checkout-pointInfo {
   margin: 1rem auto;
 }
 .checkout-pointInfoTitle {
   font-weight: 600;
   margin: 1rem 0;
+}
+
+@media screen and (max-width: 768px) {
+  .checkout__container {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+  }
+  
 }

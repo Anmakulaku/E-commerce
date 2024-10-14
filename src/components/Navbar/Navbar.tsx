@@ -7,7 +7,9 @@ export function Navbar() {
     <div className='nav section__margin'>
       <div className='nav__container'>
         <div className='nav__logo'>
-          <h1>FASCO</h1>
+          <NavLink to='/'>
+            <h1>FASCO</h1>
+          </NavLink>
         </div>
         <div className='nav__links'>
           <div className='nav__links-items'>

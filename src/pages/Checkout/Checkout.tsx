@@ -115,6 +115,35 @@ const Checkout = () => {
       <div className='checkout__content'>
         <h1 className='checkout__title'>FASCO Checkout</h1>
         <div className='checkout__container'>
+        <div className='checkout__prices'>
+            <div className='checkout__cart'>
+              <h2>Summary</h2>
+              {cartItems.map((item, index) => (
+                <CartItem
+                  key={`${item.id}-${item.size}-${index}`}
+                  {...item}
+                  id={item.id}
+                  quantity={item.quantity}
+                  size={item.size || ''}
+                />
+              ))}
+              <div className='cart__checkoutPrices'>
+                <div className='cart__subtotalPrice'>
+                  <span className='cart__subtotalPriceTitle'>Subtotal</span>
+                  <p>{formatCurrency(totalSumWithGiftWrap)}</p>
+                </div>
+                <div className='cart__shippingPrice'>
+                  <span className='cart__shippingPriceTitle'>Shipping</span>
+                  <p>{formatCurrency(SHIPPING_PRICE)}</p>
+                </div>
+                <div className='cart__totalPrice'>
+                  <span className='cart__totalPriceTitle'>Total</span>
+                  <p id='totalCost'>{formatCurrency(totalCost)}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className='checkout__info'>
             <section className='checkout__delivery'>
               <h2>Delivery</h2>
@@ -213,35 +242,7 @@ const Checkout = () => {
               </button>
             </section>
           </div>
-          <div className='checkout__prices'>
-            <div className='checkout__cart'>
-              <h2>Summary</h2>
-              {cartItems.map((item, index) => (
-                <CartItem
-                  key={`${item.id}-${item.size}-${index}`}
-                  {...item}
-                  id={item.id}
-                  quantity={item.quantity}
-                  size={item.size || ''}
-                />
-              ))}
-              <div className='cart__checkoutPrices'>
-                <div className='cart__subtotalPrice'>
-                  <span className='cart__subtotalPriceTitle'>Subtotal</span>
-                  <p>{formatCurrency(totalSumWithGiftWrap)}</p>
-                </div>
-                <div className='cart__shippingPrice'>
-                  <span className='cart__shippingPriceTitle'>Shipping</span>
-                  <p>{formatCurrency(SHIPPING_PRICE)}</p>
-                </div>
-                <div className='cart__totalPrice'>
-                  <span className='cart__totalPriceTitle'>Total</span>
-                  <p id='totalCost'>{formatCurrency(totalCost)}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
+         
           {/* <div className='checkout__cart'>
             <h2>Shopping Cart</h2>
             <Cart/>

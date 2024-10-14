@@ -6,7 +6,7 @@
   display: grid;
   justify-items: center;
   grid-template-columns: 1fr 1.2fr;
-  margin: 0 2rem 2rem 2rem;
+  margin: 0 2rem 0 2rem;
 }
 .productPage__info {
   max-width: 38rem;
@@ -197,7 +197,7 @@
 }
 @media screen and (max-width: 480px) {
   .productPage {
-    max-width: 30rem;
+    max-width: 20rem;
   }
   .productPage__content {
     display: flex;
@@ -215,7 +215,7 @@
   .productPage__imgMain {
     width: 100%;
     height: auto;
-    margin: 0;
+    margin: 0 auto;
   }
   .productPage__imgOthers {
     display: flex;
