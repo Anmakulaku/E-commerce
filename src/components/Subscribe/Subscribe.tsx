@@ -1,6 +1,8 @@
 import './Subscribe.css';
 import subscribe1 from '../../assets/subscribe1.png';
 import subscribe2 from '../../assets/subscribe2.png';
+import subscribe1webp from '../../assets/subscribe1webp.webp';
+import subscribe2webp from '../../assets/subscribe2webp.webp';
 import { useSubscribeLogic } from './SubscribeLogic';
 import SubscribeModal from './SubscribeModal';
 
@@ -19,7 +21,10 @@ export function Subscribe() {
     <div className='subscribe section__margin'>
       <div className='subscribe__grid'>
         <div className='subscribe__img'>
-          <img src={subscribe1} alt='man photo' className='subscribe__imgMan' />
+        <picture>
+          <source srcSet={subscribe1webp} type="image/webp" />
+          <img src={subscribe1} alt='man photo' className='subscribe__imgMan' loading='lazy'/>
+        </picture>
         </div>
         <div className='subscribe__text'>
           <span className='subscribe__title'>Subscribe To Our Newsletter</span>
@@ -51,11 +56,15 @@ export function Subscribe() {
           </div>
         </div>
         <div className='subscribe__img'>
+        <picture>
+          <source srcSet={subscribe2webp} type="image/webp" />
           <img
             src={subscribe2}
             alt='woman photo'
             className='subscribe__imgWoman'
+            loading='lazy'
           />
+        </picture>
         </div>
       </div>
       <SubscribeModal

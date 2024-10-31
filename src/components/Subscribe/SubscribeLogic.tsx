@@ -17,7 +17,7 @@ export function useSubscribeLogic() {
     } else {
       setEmailError('');
       setIsSubscribed(true);
-      console.log('Subscribed with email:', email);
+      // console.log('Subscribed with email:', email);
       setEmail('');
     }
   };

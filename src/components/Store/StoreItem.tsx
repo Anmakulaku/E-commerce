@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { formatCurrency } from '../../utilities/formatCurrency';
 import './StoreItem.css';
-import { useContext } from 'react';
+import { memo, useContext } from 'react';
 import { ProductsContext } from '../../context/ProductContext';
 import { Product } from '../../utilities/types/ProductType';
 
@@ -9,7 +9,7 @@ interface StoreItemProps {
   id: string;
 }
 
-export default function StoreItem({ id }: StoreItemProps) {
+const StoreItem = memo(({ id }: StoreItemProps) =>{
   const { products } = useContext(ProductsContext);
 
   const item = products.find((product: Product) => product.id === id);
@@ -28,6 +28,7 @@ export default function StoreItem({ id }: StoreItemProps) {
             src={`${baseUrl}${mainImage}`}
             alt='Product Image'
             width='150px'
+            loading='lazy'
           />
         )}
       </div>
@@ -42,4 +43,5 @@ export default function StoreItem({ id }: StoreItemProps) {
       </div> */}
     </Link>
   );
-}
+});
+export default StoreItem;

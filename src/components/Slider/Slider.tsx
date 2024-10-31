@@ -1,5 +1,6 @@
 import './Slider.css';
 import slider1 from '../../assets/slider1.png';
+import slider1webp from '../../assets/slider1webp.webp';
 import highQualityIcon from '../../assets/highQualityicon.svg';
 import warrantyicon from '../../assets/warrantyicon.svg';
 import freeShippingicon from '../../assets/freeShippingicon.svg';
@@ -11,7 +12,14 @@ export function Slider() {
     <div className='slider section__margin'>
       <div className='slider__grid'>
         <div className='slider__imageBox'>
-          <img src={slider1} alt='Peaky Blinders woman' />
+        <picture>
+            <source srcSet={slider1webp} type='image/webp' />
+            <img 
+              src={slider1} 
+              alt='Peaky Blinders woman' 
+              loading='lazy' 
+            />
+          </picture>
           <Link to='/store' className='button slider__btn slider__btnMobile'>
             <span>Shop Now</span>
           </Link>

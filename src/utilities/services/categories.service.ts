@@ -7,7 +7,7 @@ export class CategoriesService {
       throw new Error('Failed to fetch categories');
     }
     const categories: RawCategory[] = await response.json();
-    console.log('Fetched Categories:', categories); //LOOOOOOOOOOOOOGGGGGGGGGGGG
+    // console.log('Fetched Categories:', categories); //LOG
     return categories;
   }
 
@@ -41,13 +41,13 @@ export class CategoriesService {
     const mainCategories = Object.values(categoryMap).filter(
       category => !category.parentId,
     );
-    console.log('Main Categories:', mainCategories);
+    // console.log('Main Categories:', mainCategories);
     // Subkategorie (z rodzicem)
-    const subcategories = Object.values(categoryMap).filter(
-      category => category.parentId,
-    );
-    console.log('Subcategories:', subcategories); 
+    // const subcategories = Object.values(categoryMap).filter(
+    //   category => category.parentId,
+    // );
+    // console.log('Subcategories:', subcategories); 
 
-    return mainCategories;
+    return  mainCategories;
   }
 }

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import * as TestimonialsItems from '../../_mocks_/itemTestimonials';
+import * as TestimonialsItems from '../../utilities/data/itemTestimonials';
 import { TestimonialsItem } from './TestimonialsItem';
 
 export function useTestimonialsLogic() {

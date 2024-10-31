@@ -26,7 +26,6 @@ export function ShoppingCart() {
               &times;
             </button>
           </div>
-          <>{console.log('ShoppingCart:', cartItems)}</>
           {cartItems.map((item, index) => (
             <CartItemBox
               key={`${item.id}-${item.size}-${index}`}

@@ -20,27 +20,27 @@ export function useStoreLogic({
   const { products } = useProducts();
 
   const filteredProducts = useMemo(() => {
-    console.log('Original products:', products);
+    // console.log('Original products:', products);
     let filtered = products;
 
     if (selectedCategory) {
       const category = categories.find(cat => cat.name === selectedCategory);
-      console.log('Selected category:', selectedCategory);
-      console.log('Found category object:', category);
+      // console.log('Selected category:', selectedCategory);
+      // console.log('Found category object:', category);
 
       if (category) {
         filtered = filtered.filter(
           product => product.category.name === category.name,
         );
       }
-      console.log('Filtered products after category:', filtered);
+      // console.log('Filtered products after category:', filtered);
     }
 
     if (selectedSubcategory) {
       filtered = filtered.filter(
         product => product.subcategory?.name === selectedSubcategory,
       );
-      console.log('Filtered products after subcategory:', filtered);
+      // console.log('Filtered products after subcategory:', filtered);
     }
 
     return filtered;

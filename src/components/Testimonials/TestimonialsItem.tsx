@@ -6,12 +6,14 @@ type TestimonialsItemProps = {
   name: string;
   profession: string;
   img: string;
+  webpImg: string;
   isMain: boolean;
 };
 
 export function TestimonialsItem({
   id,
   img,
+  webpImg,
   text,
   name,
   profession,
@@ -22,7 +24,10 @@ export function TestimonialsItem({
       <div key={id} className='testimonialsItem__container'>
         <div className='testimonialsItem__img'>
           <div className='testimonialsItem__imgBg'></div>
-          <img src={img} alt='testimonials image' />
+          <picture>
+            <source srcSet={webpImg} type='image/webp' />
+            <img src={img} alt='testimonials image' />
+          </picture>
         </div>
         <div className='testimonialsItem__infoBox'>
           <p className='testimonialsItem__text'>{text}</p>

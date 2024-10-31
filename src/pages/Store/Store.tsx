@@ -36,7 +36,7 @@ export function Store() {
         const rawCategories = await CategoriesService.getCategories();
         const mappedCategories = CategoriesService.mapCategories(rawCategories);
         setCategories(mappedCategories);
-        console.log('Fetched categories:', mappedCategories);
+        // console.log('Fetched categories:', mappedCategories);
       } catch (error) {
         console.error('Failed to fetch categories:', error);
       }
@@ -54,20 +54,20 @@ export function Store() {
     setSelectedCategory(category);
     setSelectedSubcategory(null); // Resetowanie subkategorii po zmianie kategorii
     setCurrentPage(0); // Resetowanie strony
-    console.log('Category changed to:', category); // Log zmiany kategori
+    // console.log('Category changed to:', category); // Log zmiany kategori
   };
 
   const handleShowAll = () => {
     setSelectedCategory(null);
     setSelectedSubcategory(null);
     setCurrentPage(0); // Resetowanie strony
-    console.log('Reset to show all products'); // Log resetu do wszystkich produktów
+    // console.log('Reset to show all products'); // Log resetu do wszystkich produktów
   };
 
   const handleSubcategoryChange = (subcategory: string) => {
     setSelectedSubcategory(subcategory);
     setCurrentPage(0); // Resetowanie strony
-    console.log('Subcategory changed to:', subcategory); // Log zmiany podkategorii
+    // console.log('Subcategory changed to:', subcategory); // Log zmiany podkategorii
   };
 
   const renderSubcategoryButtons = () => {

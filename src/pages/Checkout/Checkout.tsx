@@ -64,8 +64,8 @@ const Checkout = () => {
 
   const handleConfirmDelivery = async () => {
     try {
-      console.log('Cart items:', cartItems);
-      console.log('FormData before sending:', formData);
+      // console.log('Cart items:', cartItems);
+      // console.log('FormData before sending:', formData);
       if (
         !formData.firstName ||
         !formData.lastName ||
@@ -85,7 +85,7 @@ const Checkout = () => {
           quantity: item.quantity,
         })),
       };
-      console.log('Data to send:', dataToSend);
+      // console.log('Data to send:', dataToSend);
 
       //wysłanie danych do backendu
       const response = await fetch(`${import.meta.env.VITE_API_URL}/orders`, {
@@ -95,14 +95,14 @@ const Checkout = () => {
         },
         body: JSON.stringify(dataToSend),
       });
-      console.log('Server response:', response);
+      // console.log('Server response:', response);
       //Czy odpowiedź serwera jest OK?
       if (!response.ok || !response) {
         throw new Error('Network response was not ok');
       }
       // dane z odpowiedzi serwera
       const data = await response.json();
-      console.log('Redirect URL:', data.redirectUrl);
+      // console.log('Redirect URL:', data.redirectUrl);
       window.location.href = data.redirectUrl;
       clearCart();
     } catch (error) {

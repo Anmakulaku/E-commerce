@@ -12,7 +12,7 @@ type CartItemProps = {
 const useCart = () => useContext(ProductsContext);
 
 export function CartItem({ id, size, quantity }: CartItemProps) {
-  console.log(`Item ID: ${id}, Size: ${size}`);
+  // console.log(`Item ID: ${id}, Size: ${size}`);
   const { products } = useCart();
 
   const item = products.find(product => product.id === id);
