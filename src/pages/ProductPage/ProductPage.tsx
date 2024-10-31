@@ -76,19 +76,18 @@ export function ProductPage() {
   if (!product) {
     return <div>Brak identyfikatora produktu</div>;
   }
-
   return (
-    <div className='productPage'>
+    <article className='productPage'>
       <BackButton />
       <div className='productPage__content'>
         <ImagesBox id={product.id} />
-        <div className='productPage__info'>
-          <h2 className='productPage__titleStyle productPage__companyName'>
+        <section className='productPage__info'>
+          <h1 className='productPage__titleStyle productPage__companyName'>
             FASCO
-          </h2>
-          <span className='productPage__titleStyle productPage__title'>
+          </h1>
+          <h2 className='productPage__titleStyle productPage__title'>
             {product.name}
-          </span>
+          </h2>
           <span className='productPage__titleStyle productPage__price'>
             {formatCurrency(product.price)}
           </span>
@@ -96,7 +95,9 @@ export function ProductPage() {
             <span className='productPage__sizeTitle'>
               Size:{' '}
               {selectedSize && (
-                <div className='productPage__sizeSelected'> {selectedSize}</div>
+                <span className='productPage__sizeSelected'>
+                  {selectedSize}
+                </span>
               )}
             </span>
             {renderSizeButtons(
@@ -108,7 +109,7 @@ export function ProductPage() {
               <p className='productPage__sizeError'>Please, select your size</p>
             )}
             <div className='productPage__quantity'>
-              <div className='productPage__sizeTitle'> Quantity:</div>
+              <span className='productPage__sizeTitle'> Quantity:</span>
               <div className='productPage__quantityContent'>
                 <div className='productPage__changeQuantity'>
                   <button
@@ -134,11 +135,11 @@ export function ProductPage() {
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </div>
       <Slider />
       <Subscribe />
       <Footer />
-    </div>
+    </article>
   );
 }

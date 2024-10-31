@@ -108,7 +108,7 @@ export function Store() {
   };
 
   return (
-    <div className='store'>
+    <main className='store'>
       <div className='store__container'>
         <div className='store__categorySelection'>
           <button onClick={handleShowAll} className='story__categoryItems'>
@@ -130,11 +130,11 @@ export function Store() {
           </div>
         )}
         <h1 className='store__title'>{getCategoryPath()}</h1>
-        <div className='store__products'>
+        <section className='store__products'>
           {paginatedItems.map(product => (
             <StoreItem key={product.id} id={product.id} />
           ))}
-        </div>
+        </section>
         <ReactPaginate
           previousLabel={<MdChevronLeft className='store__pagination-arrow' />}
           nextLabel={<MdChevronRight className='store__pagination-arrow' />}
@@ -151,6 +151,6 @@ export function Store() {
         <Subscribe />
         <Footer />
       </div>
-    </div>
+    </main>
   );
 }

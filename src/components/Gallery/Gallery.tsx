@@ -17,7 +17,7 @@ import gallery7webp from '../../assets/gallery7webp.webp';
 export function Gallery() {
   return (
     <div className='gallery section__margin'>
-      <span className='gallery__title'> Follow Us On Instagram</span>
+      <h2 className='gallery__title'>Follow Us On Instagram</h2>
       <p className='gallery__text'>
         Join our Instagram community! Share your fashion moments, tag your
         photos with the hashtag <span>#FascoStars</span>, follow our profile
@@ -25,33 +25,68 @@ export function Gallery() {
         share your stylish inspirations!
       </p>
       <div className='gallery__box'>
-      <picture>
+        <picture>
           <source srcSet={gallery1webp} type='image/webp' />
-          <img src={gallery1} alt='man in coat' className='gallery__small' loading='lazy' />
+          <img
+            src={gallery1}
+            alt='man in coat'
+            className='gallery__small'
+            loading='lazy'
+          />
         </picture>
         <picture>
           <source srcSet={gallery2webp} type='image/webp' />
-          <img src={gallery2} alt='woman in turtleneck' className='gallery__big' loading='lazy' />
+          <img
+            src={gallery2}
+            alt='woman in turtleneck'
+            className='gallery__big'
+            loading='lazy'
+          />
         </picture>
         <picture>
           <source srcSet={gallery3webp} type='image/webp' />
-          <img src={gallery3} alt='woman in shorts' className='gallery__small' loading='lazy' />
+          <img
+            src={gallery3}
+            alt='woman in shorts'
+            className='gallery__small'
+            loading='lazy'
+          />
         </picture>
         <picture>
           <source srcSet={gallery4webp} type='image/webp' />
-          <img src={gallery4} alt='man in red trousers' className='gallery__big' loading='lazy' />
+          <img
+            src={gallery4}
+            alt='man in red trousers'
+            className='gallery__big'
+            loading='lazy'
+          />
         </picture>
         <picture>
           <source srcSet={gallery5webp} type='image/webp' />
-          <img src={gallery5} alt='woman in blue dress' className='gallery__small' loading='lazy' />
+          <img
+            src={gallery5}
+            alt='woman in blue dress'
+            className='gallery__small'
+            loading='lazy'
+          />
         </picture>
         <picture>
           <source srcSet={gallery6webp} type='image/webp' />
-          <img src={gallery6} alt='man in a jacket' className='gallery__big' loading='lazy' />
+          <img
+            src={gallery6}
+            alt='man in a jacket'
+            className='gallery__big'
+            loading='lazy'
+          />
         </picture>
         <picture>
           <source srcSet={gallery7webp} type='image/webp' />
-          <img src={gallery7} alt='woman in pink dress' className='gallery__small gallery7' loading='lazy' />
+          <img
+            src={gallery7}
+            alt='woman in pink dress'
+            className='gallery__small gallery7'
+            loading='lazy'
+          />
         </picture>
       </div>
     </div>

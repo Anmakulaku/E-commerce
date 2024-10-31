@@ -8,7 +8,7 @@ import { Testimonials } from '../components/Testimonials/Testimonials';
 
 export function Home() {
   return (
-    <div>
+    <main>
       <Header />
       <Brand />
       <Slider />
@@ -16,6 +16,6 @@ export function Home() {
       <Testimonials />
       <Subscribe />
       <Footer />
-    </div>
+    </main>
   );
 }

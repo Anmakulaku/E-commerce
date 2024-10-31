@@ -111,7 +111,7 @@ const Checkout = () => {
   };
 
   return (
-    <div className='checkout'>
+    <section className='checkout'>
       <div className='checkout__content'>
         <h1 className='checkout__title'>FASCO Checkout</h1>
         <div className='checkout__container'>
@@ -249,7 +249,7 @@ const Checkout = () => {
           </div> */}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

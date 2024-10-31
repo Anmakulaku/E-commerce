@@ -9,18 +9,22 @@ import { Link } from 'react-router-dom';
 
 export function Slider() {
   return (
-    <div className='slider section__margin'>
+    <section className='slider section__margin' aria-label='Image Slider'>
       <div className='slider__grid'>
         <div className='slider__imageBox'>
-        <picture>
+          <picture>
             <source srcSet={slider1webp} type='image/webp' />
-            <img 
-              src={slider1} 
-              alt='Peaky Blinders woman' 
-              loading='lazy' 
+            <img
+              src={slider1}
+              alt='Woman styled as Peaky Blinders character'
+              loading='lazy'
             />
           </picture>
-          <Link to='/store' className='button slider__btn slider__btnMobile'>
+          <Link
+            to='/store'
+            className='button slider__btn slider__btnMobile'
+            aria-label='Shop now from the Women Collection'
+          >
             <span>Shop Now</span>
           </Link>
         </div>
@@ -34,36 +38,41 @@ export function Slider() {
             member of the Shelby family. Choose elegance and class to create
             your own distinctive look today!{' '}
           </p>
-          <Link to='/store' className='button slider__btn slider__btnElse'>
+          <Link
+            to='/store'
+            className='button slider__btn slider__btnElse'
+            aria-label='Shop now from the Peaky Blinders Collection'
+          >
             <span>Shop Now</span>
           </Link>
         </div>
       </div>
+
       <div className='features section__margin'>
         <div className='features__content'>
           <div className='features__item'>
-            <img src={highQualityIcon} alt='icon' />
+            <img src={highQualityIcon} alt='High Quality icon' />
             <div className='features__text'>
               <h3 className='features__title'>High Quality</h3>
               <p className='feature__description'>Crafted from top materials</p>
             </div>
           </div>
           <div className='features__item'>
-            <img src={warrantyicon} alt='icon' />
+            <img src={warrantyicon} alt='Warranty Protection icon' />
             <div className='features__text'>
               <h3 className='features__title'>Warranty Protection</h3>
               <p className='feature__description'>Over 2 years</p>
             </div>
           </div>
           <div className='features__item'>
-            <img src={freeShippingicon} alt='icon' />
+            <img src={freeShippingicon} alt='Free Shipping icon' />
             <div className='features__text'>
               <h3 className='features__title'>Free Shipping</h3>
               <p className='feature__description'>Order over 150$</p>
             </div>
           </div>
           <div className='features__item'>
-            <img src={supporticon} alt='icon' />
+            <img src={supporticon} alt='24/7 Support icon' />
             <div className='features__text'>
               <h3 className='features__title'>24/7 Support</h3>
               <p className='feature__description'>Dedicated support</p>
@@ -71,6 +80,6 @@ export function Slider() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

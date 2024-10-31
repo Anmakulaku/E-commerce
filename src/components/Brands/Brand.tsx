@@ -12,7 +12,7 @@ import denimwebp from '../../assets/denimwebp.webp';
 
 export function Brand() {
   return (
-    <div className='brand'>
+    <section className='brand'>
       <div className='brand__container'>
         <div className='brand__item'>
           <picture>
@@ -45,6 +45,6 @@ export function Brand() {
           </picture>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

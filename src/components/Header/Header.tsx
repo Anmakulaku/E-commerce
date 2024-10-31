@@ -21,7 +21,7 @@ export function Header() {
   
   return (
     <>
-      <div className='header'>
+      <header className='header'>
         <div className='header__container'>
           <div className='header__grid'>
             <div className='header__grid-1 header__img-big'>
@@ -68,7 +68,7 @@ export function Header() {
             </div>
           </div>
         </div>
-      </div>
+      </header>
     </>
   );
 }

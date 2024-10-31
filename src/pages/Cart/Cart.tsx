@@ -19,10 +19,10 @@ export function Cart() {
   }, [contextCartItems]);
 
   return (
-    <div className='cart'>
+    <section className='cart'>
       <div className='cart__content'>
         <h1 className='cart__title'>Shopping Cart</h1>
-        <div className='cart__table'>
+        <article className='cart__table'>
           {contextCartItems.map((item, index) => (
             <CartItemBox
               key={`${item.id}-${item.size}-${index}`}
@@ -32,7 +32,7 @@ export function Cart() {
               size={item.size || ''}
             />
           ))}
-          <div className='cart__footer'>
+          <footer className='cart__footer'>
             <div className='cart__footerContent'>
               <div className='cart__giftWrap'>
                 <input
@@ -41,7 +41,10 @@ export function Cart() {
                   checked={isGiftWrapSelected}
                   onChange={toggleGiftWrap}
                 />
-                <label htmlFor='giftWrapCheckbox'> Add Gift Wrap (50 PLN)</label>
+                <label htmlFor='giftWrapCheckbox'>
+                  {' '}
+                  Add Gift Wrap (50 PLN)
+                </label>
               </div>
               <div className='cart__totalPrice'>
                 <span className='cart__totalPriceTitle'>Subtotal</span>
@@ -51,11 +54,11 @@ export function Cart() {
                 <span>Checkout</span>
               </Link>
             </div>
-          </div>
-        </div>
+          </footer>
+        </article>
         <Subscribe />
         <Footer />
       </div>
-    </div>
+    </section>
   );
 }

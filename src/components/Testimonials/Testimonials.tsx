@@ -7,10 +7,14 @@ export function Testimonials() {
     useTestimonialsLogic();
 
   return (
-    <div className='testimonials'>
-      <span className='testimonials__title'>
+    <section
+      className='testimonials'
+      role='region'
+      aria-labelledby='testimonialsTitle'
+    >
+      <h1 id='testimonialsTitle' className='testimonials__title'>
         This Is What Our Customers Say
-      </span>
+      </h1>
       <p className='testimonials__text'>
         Discover reviews from our customers about their experiences with our
         products and customer service. Find out what others have to say about
@@ -21,16 +25,18 @@ export function Testimonials() {
         <div
           className='testimonials__arrow testimonials__prevArrow'
           onClick={prevSlide}
+          aria-label='Previous testimonial'
         >
           <MdKeyboardArrowLeft />
         </div>
         <div
           className='testimonials__arrow testimonials__nextArrow'
           onClick={nextSlide}
+          aria-label='Next testimonial'
         >
           <MdKeyboardArrowRight />
         </div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -42,7 +42,7 @@ export default function ImagesBox({ id }: ImagesProps) {
           <div className='imagesBox__imgMainContainer'>
             <img
               src={`${API_URL}${mainImage.imageUrl}`}
-              alt='Product Main Image'
+              alt='Main Product  Image'
               className='imagesBox__imgMain'
             />
           </div>
@@ -57,7 +57,6 @@ export default function ImagesBox({ id }: ImagesProps) {
                   src={`${API_URL}${image.imageUrl}`}
                   alt={`Additional Image ${index}`}
                   className='imagesBox__imgOther'
-
                 />
               </div>
             ))}
