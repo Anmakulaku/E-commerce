@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Category } from '../../utilities/types/CategoryType';
 import { useProducts } from '../../context/ProductContext';
 
@@ -18,35 +18,33 @@ export function useStoreLogic({
   categories,
 }: StoreLogicProps) {
   const { products } = useProducts();
+  const [loading, setLoading] = useState(true);
 
   const filteredProducts = useMemo(() => {
-    // console.log('Original products:', products);
     let filtered = products;
 
     if (selectedCategory) {
       const category = categories.find(cat => cat.name === selectedCategory);
-      // console.log('Selected category:', selectedCategory);
-      // console.log('Found category object:', category);
-
       if (category) {
-        filtered = filtered.filter(
-          product => product.category.name === category.name,
-        );
+        filtered = filtered.filter(product => product.category.name === category.name);
       }
-      // console.log('Filtered products after category:', filtered);
     }
 
     if (selectedSubcategory) {
-      filtered = filtered.filter(
-        product => product.subcategory?.name === selectedSubcategory,
-      );
-      // console.log('Filtered products after subcategory:', filtered);
+      filtered = filtered.filter(product => product.subcategory?.name === selectedSubcategory);
     }
 
     return filtered;
   }, [products, selectedCategory, selectedSubcategory, categories]);
 
+  useEffect(() => {
+    if (products.length > 0) {
+      setLoading(false);
+    }
+  }, [products]);
+
   const pageCount = Math.ceil(filteredProducts.length / itemsPerPage);
+
   const paginatedItems = useMemo(() => {
     const start = currentPage * itemsPerPage;
     return filteredProducts.slice(start, start + itemsPerPage);
@@ -55,5 +53,6 @@ export function useStoreLogic({
   return {
     paginatedItems,
     pageCount,
+    loading
   };
 }

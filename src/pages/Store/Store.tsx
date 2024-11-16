@@ -10,18 +10,16 @@ import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import { useStoreLogic } from './StoreLogic';
 import { CategoriesService } from '../../utilities/services/categories.service';
 import { Category } from '../../utilities/types/CategoryType';
+import LoadingContainer from '../../components/LoadingContainer/LoadingContainer';
 
 export function Store() {
   const [currentPage, setCurrentPage] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(
-    null,
-  );
+  const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null);
   const [categories, setCategories] = useState<Category[]>([]);
-
+  const [isFullyLoaded, setIsFullyLoaded] = useState(false);
   const itemsPerPage = 12;
-
-  const { paginatedItems, pageCount } = useStoreLogic({
+  const { paginatedItems, pageCount, loading } = useStoreLogic({
     selectedCategory,
     selectedSubcategory,
     currentPage,
@@ -36,9 +34,12 @@ export function Store() {
         const rawCategories = await CategoriesService.getCategories();
         const mappedCategories = CategoriesService.mapCategories(rawCategories);
         setCategories(mappedCategories);
-        // console.log('Fetched categories:', mappedCategories);
+        setTimeout(() => {
+          setIsFullyLoaded(true);
+        }, 600);
       } catch (error) {
         console.error('Failed to fetch categories:', error);
+        setIsFullyLoaded(true); 
       }
     };
 
@@ -52,24 +53,22 @@ export function Store() {
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);
-    setSelectedSubcategory(null); // Resetowanie subkategorii po zmianie kategorii
-    setCurrentPage(0); // Resetowanie strony
-    // console.log('Category changed to:', category); // Log zmiany kategori
+    setSelectedSubcategory(null); 
+    setCurrentPage(0);
   };
 
   const handleShowAll = () => {
     setSelectedCategory(null);
     setSelectedSubcategory(null);
-    setCurrentPage(0); // Resetowanie strony
-    // console.log('Reset to show all products'); // Log resetu do wszystkich produktów
+    setCurrentPage(0);
   };
 
   const handleSubcategoryChange = (subcategory: string) => {
     setSelectedSubcategory(subcategory);
-    setCurrentPage(0); // Resetowanie strony
-    // console.log('Subcategory changed to:', subcategory); // Log zmiany podkategorii
+    setCurrentPage(0);
   };
 
+  // Funkcja renderująca przyciski subkategorii
   const renderSubcategoryButtons = () => {
     const category = categories.find(cat => cat.name === selectedCategory);
 
@@ -130,11 +129,15 @@ export function Store() {
           </div>
         )}
         <h1 className='store__title'>{getCategoryPath()}</h1>
-        <section className='store__products'>
-          {paginatedItems.map(product => (
-            <StoreItem key={product.id} id={product.id} />
-          ))}
-        </section>
+        {loading || !isFullyLoaded ? (
+          <LoadingContainer />
+        ) : (
+          <section className='store__products'>
+            {paginatedItems.map(product => (
+              <StoreItem key={product.id} id={product.id} />
+            ))}
+          </section>
+        )}
         <ReactPaginate
           previousLabel={<MdChevronLeft className='store__pagination-arrow' />}
           nextLabel={<MdChevronRight className='store__pagination-arrow' />}
