@@ -2,7 +2,7 @@ import Skeleton from '../Skeleton/Skeleton';
 import './LoadingContainer.css';
 
 const LoadingContainer = () => {
-  const placeholders = Array.from({ length: 12 }); // Wyświetli 8 boxów
+  const placeholders = Array.from({ length: 12 }); 
 
   return (
     <div className='loadingContainer'>

@@ -28,12 +28,12 @@
   align-items: center;
   justify-content: center;
   min-height: 250px;
-  opacity: 0; /* Początkowo niewidoczny obrazek */
-  transition: opacity 0.2s ease-in-out; /* Płynne przejście na opacity */
+  opacity: 0; 
+  transition: opacity 0.2s ease-in-out; 
 }
-/* Gdy obrazek załaduje się, stanie się widoczny */
+
 .storeItem__img.loaded {
-  opacity: 1; /* Obrazek stanie się widoczny po załadowaniu */
+  opacity: 1; 
 }
 .storeItem__img img {
   width: 100%;
