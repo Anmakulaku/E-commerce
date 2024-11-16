@@ -13,7 +13,6 @@ dist-ssr
 *.local
 zas.txt
 Screens
-_mocks_
 
 # Editor directories and files
 .vscode/*

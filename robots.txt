@@ -1,2 +1,4 @@
 User-agent: *
-Disallow: /admin/   
+Allow: /product/
+Allow: /store/
+Sitemap: https://fasco.a-kucharska.pl/sitemap.xml
