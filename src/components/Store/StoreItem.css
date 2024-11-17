@@ -71,9 +71,10 @@
 .storeItem__price {
   font-family: var(--font-family);
 }
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .storeItem__img {
     max-width: 11rem;
+    min-height: 150px;
   }
   .storeItem__title {
     font-size: 1em;

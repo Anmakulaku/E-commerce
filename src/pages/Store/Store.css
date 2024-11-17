@@ -111,9 +111,12 @@
   }
 }
 @media screen and (max-width: 480px) {
+  .store{
+    margin: 0 0.1rem;
+  }
   .story__categoryItems,
   .story__subcategoryItems {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.8rem;
   }
   .story__categoryItems {
     font-size: 1em;
@@ -131,7 +134,7 @@
     margin-bottom: 0;
   }
   .store__products {
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
   .pagination li a {
     font-size: 0.8em;
