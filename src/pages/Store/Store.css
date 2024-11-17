@@ -92,6 +92,9 @@
   text-decoration: underline;
 }
 @media screen and (min-width: 481px) and (max-width: 768px) {
+  .store{
+    margin: 0 0.4rem;
+  }
   .story__categoryItems,
   .story__subcategoryItems {
     padding: 0.5rem 1rem;
@@ -107,12 +110,12 @@
     margin-bottom: 0;
   }
   .store__products {
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 }
 @media screen and (max-width: 480px) {
   .store{
-    margin: 0 0.1rem;
+    margin: 0 0.4rem;
   }
   .story__categoryItems,
   .story__subcategoryItems {

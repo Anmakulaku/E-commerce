@@ -60,3 +60,9 @@
   justify-content: center;
   align-items: center;
 }
+@media screen and (max-width: 480px) {
+  .cart__footer{
+    width: 100%;
+    right: 0;
+  }
+}
