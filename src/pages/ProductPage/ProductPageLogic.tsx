@@ -1,119 +1,61 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { itemsAll } from '../../_mocks_/itemsAll';
-import { useShoppingCart } from '../../context/ShoppingCartContext';
-import { Product } from '../../utilities/services/items.service';
+import { Product } from '../../utilities/types/ProductType';
+import { useProducts } from '../../context/ProductContext';
+import { useShoppingCart } from '../../context/CartContext';
 
-export function useProductPageLogic() {
-    // console.log('useProductPageLogic render');
-    const { increaseCartQuantity, removeFromCart } = useShoppingCart();
-    const { id } = useParams<{ id?: string }>();
+export function useProductPageLogic(id: string) {
+  const { products } = useProducts();
+  const { actions, state } = useShoppingCart();
+  const { increaseCartQuantity, setQuantity } = actions;
+  const { quantity } = state;
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [isSizeSelected, setIsSizeSelected] = useState<boolean>(false);
 
-    const [selectedSize, setSelectedSize] = useState<string | null>(null);
-    const [mainImage, setMainImage] = useState<string | null>(null);
-    const [product, setProduct] = useState<Product | null>(null);
-    const [quantity, setQuantity] = useState<number>(1);
-    const [isSizeSelected, setIsSizeSelected] = useState<boolean>(false);
-    const [error, setError] = useState<string | null>(null);
+  const product: Product | null =
+    products.find(item => item.id.toString() === id) || null;
 
-    let productId = -1;
+  useEffect(() => {
+    if (!id || products.length === 0) return;
 
-    if (id) {
-        productId = parseInt(id, 10);
+    if (!product) {
+      console.error('Product not found');
     }
+  }, [id, product, products]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                // console.log('Fetching data...'); 
-                const foundProduct = itemsAll.find(item => item.id === productId);
+  const handleSizeSelection = (size: string) => {
+    setSelectedSize(size);
+    setIsSizeSelected(false);
+  };
 
-                if (foundProduct) {
-                    setProduct(foundProduct);
+  const addToCart = () => {
+    if (!selectedSize || !product) {
+      setIsSizeSelected(true);
+      return;
+    }
+    for (let i = 0; i < quantity; i++) {
+      increaseCartQuantity(product.id, selectedSize || '');
+    }
+    setQuantity(1);
+  };
 
-                    if (foundProduct.img) {
-                        setMainImage(foundProduct.img);
-                    } else if (foundProduct.imgOther && foundProduct.imgOther.length > 0) {
-                        setMainImage(foundProduct.imgOther[0]);
-                    }
-                } else {
-                    setError('Product not found'); // Ustawienie błędu, gdy produkt nie zostanie znaleziony
-                }
-            } catch (error) {
-                setError('Error fetching product data'); // Ustawienie błędu, jeśli wystąpi błąd podczas pobierania danych
-            }
-        };
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(prevQuantity => prevQuantity - 1);
+    }
+  };
 
-        fetchData();
-    }, [id, productId]);
+  const increaseQuantity = () => {
+    setQuantity(prevQuantity => prevQuantity + 1);
+  };
 
-    const handleSizeSelection = (size: string) => {
-        setSelectedSize(size);
-        setIsSizeSelected(false);
-    };
-
-    const handleAddToCart = () => {
-        // console.log('render HandleAddtoCart...');
-        if (!selectedSize) {
-            setIsSizeSelected(true);
-            return;
-        }
-        for (let i = 0; i < quantity; i++) {
-            increaseCartQuantity(productId, selectedSize || '');
-        }
-        setQuantity(1);
-    };
-
-    const decreaseQuantity = () => {
-        if (quantity > 1) {
-            setQuantity(prevQuantity => prevQuantity - 1);
-        }
-    };
-
-    const increaseQuantity = () => {
-        setQuantity(prevQuantity => prevQuantity + 1);
-    };
-
-    const renderImages = (mainImage: string | null, product: Product) => {
-        console.log('renderImages...'); 
-        const handleImageClick = (clickedImage: string) => { 
-            setMainImage(clickedImage);
-        };
-        return (
-            <div className='productPage__images'>
-                {mainImage && (
-                    <img src={mainImage} alt={product.name} className="productPage__imgMain" />
-                )}
-                <div className='productPage__imgOthers'>
-                    {[product.img, ...product.imgOther].map((img, index) => (
-                        <img
-                            key={index}
-                            src={img}
-                            alt={index === 0 ? product.name : `${product.name} - Additional Image ${index}`}
-                            onClick={() => handleImageClick(img)}
-                            className={img === mainImage ? 'selected' : ''}
-                        />
-                    ))}
-                </div>
-            </div>
-        );
-    };
-
-    return {
-        product,
-        mainImage,
-        selectedSize,
-        quantity,
-        isSizeSelected,
-        error,
-        setSelectedSize,
-        setMainImage,
-        setQuantity,
-        handleSizeSelection,
-        handleAddToCart,
-        decreaseQuantity,
-        increaseQuantity,
-        removeFromCart,
-        renderImages,
-    };
+  return {
+    product,
+    selectedSize,
+    quantity,
+    isSizeSelected,
+    addToCart,
+    handleSizeSelection,
+    decreaseQuantity,
+    increaseQuantity,
+  };
 }

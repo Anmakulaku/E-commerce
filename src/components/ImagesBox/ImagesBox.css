@@ -1,0 +1,47 @@
+.imagesBox__images {
+  max-width: 36rem;
+  height: auto;
+}
+.imagesBox__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.imagesBox__imgOthers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 30rem;
+  height: auto;
+  gap: 1rem;
+}
+.imagesBox__imgMainContainer {
+  max-width: 30rem;
+  max-height: 40rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.imagesBox__imgMain {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.imagesBox__imgOtherContainer {
+  width: 50%; 
+  overflow: hidden;
+} 
+.imagesBox__imgOther {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+
+
+
