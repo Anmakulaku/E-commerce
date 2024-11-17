@@ -27,7 +27,7 @@ export function Header() {
             <div className='header__grid-1 header__img-big'>
               <picture>
                 <source srcSet={header1webp} type='image/webp' />
-                <img src={header1} alt='img Man On Box' className='img1'loading="lazy"/>
+                <img src={header1} alt='img Man On Box' className='img1'/>
               </picture>
             </div>
             <div className='header__grid-middle'>
@@ -37,7 +37,7 @@ export function Header() {
                   <img
                     src={header2}
                     alt='img Four Women'
-                    className='img2' loading="lazy"
+                    className='img2'
                   />
                 </picture>
               </div>
@@ -55,7 +55,7 @@ export function Header() {
                   <img
                     src={header3}
                     alt='img Two Smiling Women'
-                    className='img3' loading="lazy"
+                    className='img3'
                   />
                 </picture>
               </div>
@@ -63,7 +63,7 @@ export function Header() {
             <div className='header__grid-4 header__img-big'>
               <picture>
                 <source srcSet={header4webp} type='image/webp' />
-                <img src={header4} alt='img Man On Chair' className='img4' loading="lazy"/>
+                <img src={header4} alt='img Man On Chair' className='img4'/>
               </picture>
             </div>
           </div>
