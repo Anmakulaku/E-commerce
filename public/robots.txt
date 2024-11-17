@@ -1,4 +1,3 @@
 User-agent: *
-Allow: /product/
-Allow: /store/
+Allow: /
 Sitemap: https://fasco.a-kucharska.pl/sitemap.xml
