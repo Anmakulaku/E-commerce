@@ -30,10 +30,12 @@ export function TestimonialsItem({
           </picture>
         </div>
         <div className='testimonialsItem__infoBox'>
-          <p className='testimonialsItem__text'>{text}</p>
-          <div className='testimonialsItem__stars'></div>
+          <div className='testimonialsItem__user'>
           <span className='testimonialseItem__name'>{name}</span>
           <span className='testimonialsItem__profession'>{profession}</span>
+          <div className='testimonialsItem__stars'></div>
+          </div>
+          <p className='testimonialsItem__text'>{text}</p>
         </div>
       </div>
     </div>
