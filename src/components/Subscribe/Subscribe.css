@@ -170,9 +170,6 @@
   }
 }
 @media screen and (max-width: 768px) {
-  .subscribe {
-    padding: 1rem;
-  }
   .subscribe__grid {
     grid-template-columns: 1fr 1.5fr;
     align-items: flex-start;
@@ -205,4 +202,13 @@
   .subscribe__btnBg {
     min-height: 5rem;
   }
+}
+@media screen and (max-width: 486px) {
+  .subscribe__imgMan{
+    display: none;
+  }
+  .subscribe__grid {
+    grid-template-columns: 1fr;
+  }
+  
 }

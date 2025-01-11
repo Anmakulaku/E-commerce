@@ -18,7 +18,7 @@ export function Subscribe() {
   } = useSubscribeLogic();
 
   return (
-    <section className='subscribe section__margin'>
+    <section className='subscribe'>
       <div className='subscribe__grid'>
         <div className='subscribe__img'>
           <picture>
