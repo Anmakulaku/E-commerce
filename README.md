@@ -1,23 +1,51 @@
 <img width="100%" alt="E-commerce8" src="https://github.com/Anmakulaku/E-commerce/assets/119726677/6d8647f5-4917-4620-906d-755f35982da9">
 
-# E-commerce
+# E-commerce Project
 
-This is a simple e-commerce website. Designed for easy navigation and a user-friendly interface to give users a pleasant shopping experience. Try it!
+This is an e-commerce application that allows for managing orders, products, and users in the admin panel, as well as enabling users to place orders and make online payments. The application has been designed with performance, security, and easy integration with other services in mind.
 
-Special thanks for the graphic design go to: hamza anza (https://www.figma.com/@hamzaanza) and the creators from Unsplash, especially: Laura Chouette, Lukas Lenzi, charlesdeluvio, Gabrielle Henderson, NikHil, Tamara Bellis, engin akyurt, Redicul Pict, Joshua Rondeau, Napat Saeng, Junior REIS, James Barr, Zahir Namane, Mohamad Khosravi, HamZa NOUASRIA, Mahdi Bafande, Brandon Atchinson, Royal Anwar, Crealism, Khalid Boutchich, Lance Reis, Tyrell James, Clay Elliot, Valentina Jorio, Dekler Ph.
+# What has been created?
 
-# Live
+<ul>
+  <li>Frontend: Built with React and TypeScript, utilizing Context API for state management and React Router DOM for routing.</li>
+  <li>Backend: Node.js with TypeScript, Express.js, and Sequelize ORM, using MySQL as the database.</li>
+  <li>Admin Panel: Dynamic management of orders, products, and users with Material-UI.</li>
+  <li>Security: Implementation of authentication and authorization with JWT.</li>
+  <li>Payments: Integration with PayU for secure online transactions using REST API.</li>
+</ul>
 
-https://anmakulaku.github.io/E-commerce/
+# Key Features:
+
+<ul>
+  <li>Real-time data fetching from the API: The application supports real-time updates of user data and orders.</li>
+  <li>User Panel: Manage orders, purchase history, and user accounts.</li>
+  <li>Production-ready: The app is ready for production with environment variable support via .env file.</li>
+</ul>
 
 # Tech Used
+
 <ul>
   <li>React</li>
   <li>TypeScript</li>
   <li>Vite</li>
-  <li>Vanilla CSS</li>
+  <li>Node.js</li>
+  <li>Express.js</li>
+  <li>Sequelize ORM</li>
+  <li>MySQL</li>
+  <li>Material-UI</li>
   <li>Figma</li>
 </ul>
+
+# Live
+
+https://fasco.a-kucharska.pl/
+
+
+# Special thanks:
+
+Special thanks for the graphic design go to: hamza anza (https://www.figma.com/@hamzaanza) and the creators from Unsplash, especially: Laura Chouette, Lukas Lenzi, charlesdeluvio, Gabrielle Henderson, NikHil, Tamara Bellis, engin akyurt, Redicul Pict, Joshua Rondeau, Napat Saeng, Junior REIS, James Barr, Zahir Namane, Mohamad Khosravi, HamZa NOUASRIA, Mahdi Bafande, Brandon Atchinson, Royal Anwar, Crealism, Khalid Boutchich, Lance Reis, Tyrell James, Clay Elliot, Valentina Jorio, Dekler Ph.
+
+
 
 # Sreenshots
 
