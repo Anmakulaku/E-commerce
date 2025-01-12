@@ -19,16 +19,18 @@ h3 {
 }
 
 .section__margin {
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 
 .section__padding {
   padding: 1rem;
 }
 
-body {
+html, body {
   background-color: var(--color-bg);
   color: var(--color-text);
+  width: 100%;
+  height: 100%;
   overflow-x: hidden;
 }
 .App {
