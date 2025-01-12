@@ -35,7 +35,15 @@ const Checkout = () => {
     deliveryPoint: '',
   });
 
-  const [errorMessages, setErrorMessages] = useState<string[]>([]);
+  const [errorMessages, setErrorMessages] = useState<{
+    firstName?: string;
+    lastName?: string;
+    city?: string;
+    postalCode?: string;
+    deliveryPoint?: string;
+    general?: string;
+  }>({});
+
   const SHIPPING_PRICE = 1500;
   const totalCost = totalSumWithGiftWrap + SHIPPING_PRICE;
 
@@ -66,7 +74,7 @@ const Checkout = () => {
 
   const handleConfirmDelivery = async () => {
     try {
-      const errors: string[] = [];
+      const errors: { [key: string]: string } = {};
 
       // Sprawdzanie, czy wszystkie pola są uzupełnione
       if (
@@ -76,17 +84,36 @@ const Checkout = () => {
         !formData.city ||
         !formData.postalCode
       ) {
-        errors.push('Please fill in all fields');
+        errors['general'] = 'Please fill in all fields';
+      }
+
+      // Regex dla pól imienia, nazwiska i miasta
+      const nameRegex = /^[A-Za-z]+(?:[ '-][A-Za-z]+)*$/;
+
+      if (formData.firstName && !nameRegex.test(formData.firstName)) {
+        errors.firstName = 'Invalid character in first name';
+      }
+
+      if (formData.lastName && !nameRegex.test(formData.lastName)) {
+        errors.lastName = 'Invalid character in last name';
+      }
+
+      if (formData.city && !nameRegex.test(formData.city)) {
+        errors.city = 'Invalid character in city';
+      }
+      // Sprawdzanie formatu kodu pocztowego
+      const postalCodeRegex = /^\d{2}-\d{3}$/;
+      if (formData.postalCode && !postalCodeRegex.test(formData.postalCode)) {
+        errors.postalCode = 'Postal code must be in the format xx-xxx';
       }
 
       // Sprawdzanie, czy punkt dostawy został wybrany
       if (!formData.deliveryPoint) {
-        errors.push('Please, choose delivery point');
+        errors.deliveryPoint = 'Please choose a delivery point';
       }
 
-      // Jeżeli są błędy, ustawiamy je w stanie
-      if (errors.length > 0) {
-        setErrorMessages(errors); 
+      if (Object.keys(errors).length > 0) {
+        setErrorMessages(errors);
         return;
       }
 
@@ -172,6 +199,9 @@ const Checkout = () => {
                     className='checkout__inputField'
                     onChange={handleInputChange}
                   />
+                  {errorMessages.firstName && (
+                    <p className='error'>{errorMessages.firstName}</p>
+                  )}
                 </div>
                 <div className='checkout__formItem'>
                   <input
@@ -182,6 +212,9 @@ const Checkout = () => {
                     className='checkout__inputField'
                     onChange={handleInputChange}
                   />
+                  {errorMessages.lastName && (
+                    <p className='error'>{errorMessages.lastName}</p>
+                  )}
                 </div>
                 <div className='checkout__formItem-double'>
                   <input
@@ -202,6 +235,9 @@ const Checkout = () => {
                     className='checkout__inputField'
                     onChange={handleInputChange}
                   />
+                  {errorMessages.city && (
+                    <p className='error'>{errorMessages.city}</p>
+                  )}
                 </div>
                 <div className='checkout__formItem'>
                   <input
@@ -212,30 +248,31 @@ const Checkout = () => {
                     className='checkout__inputField'
                     onChange={handleInputChange}
                   />
+                  {errorMessages.postalCode && (
+                    <p className='error'>{errorMessages.postalCode}</p>
+                  )}
                 </div>
               </form>
-              {errorMessages.length > 0 && (
-                <div className='checkout__errorMessages'>
-                  {errorMessages.map((message, index) => (
-                    <p key={index} className='error-message'>
-                      {message}
-                    </p>
-                  ))}
-                </div>
-              )}
-
               <div className='checkout__formItem checkout__formItem-double'>
                 <label className='save-info-label'>
                   <input type='checkbox' className='save-info-checkbox' />
                   Save This Info for future
                 </label>
+                {errorMessages.general && (
+                  <p className='error'>{errorMessages.general}</p>
+                )}
               </div>
-              <button
-                className='button checkout__button'
-                onClick={handleChoosePointDelivery}
-              >
-                Delivery Point
-              </button>
+              <div className='checkout-deliveryInfo'>
+                {errorMessages.deliveryPoint && (
+                  <p className='error'>{errorMessages.deliveryPoint}</p>
+                )}
+                <button
+                  className='button checkout__button'
+                  onClick={handleChoosePointDelivery}
+                >
+                  Delivery Point
+                </button>
+              </div>
               {selectedPoint && (
                 <div className='checkout-pointInfo'>
                   <p className='checkout-pointInfoTitle'>Delivery Point: </p>
@@ -248,6 +285,7 @@ const Checkout = () => {
               <div className='checkout__formItem'>
                 <p> PayU</p>
               </div>
+
               <button
                 className='button checkout__button'
                 onClick={handleConfirmDelivery}

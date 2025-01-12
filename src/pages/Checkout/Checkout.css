@@ -44,9 +44,13 @@
 }
 .checkout__formItem {
   grid-column: span 1;
+  position: relative;
+  margin-bottom: 2rem;
 }
 .checkout__formItem-double {
   grid-column: span 2;
+  position: relative;
+  margin-bottom: 1rem;
 }
 .checkout__inputField {
   width: 100%;
@@ -96,14 +100,20 @@
 .checkout-pointInfo {
   margin: 1rem auto;
 }
+.checkout-deliveryInfo{
+  width: 100%;
+  position: relative;
+}
 .checkout-pointInfoTitle {
   font-weight: 600;
   margin: 1rem 0;
 }
 
-.error-message {
+.error {
   color: var(--color-red);
-  margin-top: 10px;
+  margin-top: 5px;
+  font-size: 0.7rem;
+  position: absolute;
 }
 
 @media screen and (max-width: 768px) {
