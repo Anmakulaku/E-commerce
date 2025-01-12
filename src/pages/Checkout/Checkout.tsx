@@ -34,6 +34,8 @@ const Checkout = () => {
     totalCost: 0,
     deliveryPoint: '',
   });
+
+  const [errorMessages, setErrorMessages] = useState<string[]>([]);
   const SHIPPING_PRICE = 1500;
   const totalCost = totalSumWithGiftWrap + SHIPPING_PRICE;
 
@@ -64,17 +66,28 @@ const Checkout = () => {
 
   const handleConfirmDelivery = async () => {
     try {
-      // console.log('Cart items:', cartItems);
-      // console.log('FormData before sending:', formData);
+      const errors: string[] = [];
+
+      // Sprawdzanie, czy wszystkie pola są uzupełnione
       if (
         !formData.firstName ||
         !formData.lastName ||
         !formData.address ||
         !formData.city ||
-        !formData.postalCode ||
-        !formData.deliveryPoint
+        !formData.postalCode
       ) {
-        throw new Error('Please fill in all required fields');
+        errors.push('Please fill in all fields');
+      }
+
+      // Sprawdzanie, czy punkt dostawy został wybrany
+      if (!formData.deliveryPoint) {
+        errors.push('Please, choose delivery point');
+      }
+
+      // Jeżeli są błędy, ustawiamy je w stanie
+      if (errors.length > 0) {
+        setErrorMessages(errors); 
+        return;
       }
 
       const dataToSend = {
@@ -85,6 +98,7 @@ const Checkout = () => {
           quantity: item.quantity,
         })),
       };
+
       // console.log('Data to send:', dataToSend);
 
       //wysłanie danych do backendu
@@ -115,7 +129,7 @@ const Checkout = () => {
       <div className='checkout__content'>
         <h1 className='checkout__title'>FASCO Checkout</h1>
         <div className='checkout__container'>
-        <div className='checkout__prices'>
+          <div className='checkout__prices'>
             <div className='checkout__cart'>
               <h2>Summary</h2>
               {cartItems.map((item, index) => (
@@ -199,17 +213,17 @@ const Checkout = () => {
                     onChange={handleInputChange}
                   />
                 </div>
-                {/* <div className='checkout__formItem'>
-                  <input
-                    type='text'
-                    id='totalCost'
-                    name='totalCost'
-                    placeholder='totalCost'
-                    className='checkout__inputField'
-                    onChange={handleInputChange}
-                  />
-                </div> */}
               </form>
+              {errorMessages.length > 0 && (
+                <div className='checkout__errorMessages'>
+                  {errorMessages.map((message, index) => (
+                    <p key={index} className='error-message'>
+                      {message}
+                    </p>
+                  ))}
+                </div>
+              )}
+
               <div className='checkout__formItem checkout__formItem-double'>
                 <label className='save-info-label'>
                   <input type='checkbox' className='save-info-checkbox' />
@@ -242,11 +256,6 @@ const Checkout = () => {
               </button>
             </section>
           </div>
-         
-          {/* <div className='checkout__cart'>
-            <h2>Shopping Cart</h2>
-            <Cart/>
-          </div> */}
         </div>
       </div>
     </section>
