@@ -1,125 +1,130 @@
 .nav {
-    max-width: 2000px;
-    margin: 0 auto;
-    z-index: 50;
-    background-color: var(--color-bg);
-    position: sticky;
-    top: 0;
+  max-width: 2000px;
+  margin: 0 auto;
+  z-index: 50;
+  background-color: var(--color-bg);
+  position: sticky;
+  top: 0;
 }
 .nav__container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
-.nav__logo{
-    margin-left: 0;
+.nav__logo {
+  margin-left: 0;
+}
+
+.nav__logo a {
+  text-decoration: none;
+  color: var(--color-text);
 }
 .nav__links {
-    margin-right: 0;
-    display: flex;
+  margin-right: 0;
+  display: flex;
 }
 .nav__links-items {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    font-size: 1em;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 1em;
 }
 .nav__links-items a {
-    text-decoration: none;
-    color: var(--color-text);
-    padding: 0 1.5rem;
-    cursor: pointer;
+  text-decoration: none;
+  color: var(--color-text);
+  padding: 0 1.5rem;
+  cursor: pointer;
 }
 .nav__links-items a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
-.nav__signup p{
-    padding: 1rem 2.5rem;
-    color: var(--color-white);
+.nav__signup p {
+  padding: 1rem 2.5rem;
+  color: var(--color-white);
 }
 .nav__cart {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.nav__btn{
-    position: relative;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+.nav__btn {
+  position: relative;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
-.nav__btn:hover{
-    background-color: transparent;
+.nav__btn:hover {
+  background-color: transparent;
 }
 .nav__cartIcon {
-    display: block;
-    fill: var(--color-black);
-    width: 3rem;
-    height: 3rem;
-    margin: 0;
-    padding: 0.2rem;
-    transition: all 0.3s ease;
+  display: block;
+  fill: var(--color-black);
+  width: 3rem;
+  height: 3rem;
+  margin: 0;
+  padding: 0.2rem;
+  transition: all 0.3s ease;
 }
 .nav__cartIcon:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
 .nav__numCircle {
-    position: absolute;
-    top: -0.5rem;
-    right: -0.5rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 50%;
-    background-color: var(--color-red);
-    color: var(--color-white);
-    font-size: 0.9em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease;
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: var(--color-red);
+  color: var(--color-white);
+  font-size: 0.9em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
 }
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-    .nav {
-        max-width: 1000px;
-        padding: 1rem;
-    }
+  .nav {
+    max-width: 1000px;
+    padding: 1rem;
+  }
 }
 @media screen and (min-width: 481px) and (max-width: 768px) {
-    .nav {
-        max-width: 760px;
-        padding: 0.7rem 1rem;
-    }
-    .nav__logo h1{
-        font-size: 1.5em;
-    }
-    .nav__cartIcon {
-        width: 2rem;
-        height: 2rem;
-    }
-    .nav__numCircle {
-        width: 1.2rem;
-        height: 1.2rem;
-        font-size: 0.8em;
-    }
+  .nav {
+    max-width: 760px;
+    padding: 0.7rem 1rem;
+  }
+  .nav__logo h1 {
+    font-size: 1.5em;
+  }
+  .nav__cartIcon {
+    width: 2rem;
+    height: 2rem;
+  }
+  .nav__numCircle {
+    width: 1.2rem;
+    height: 1.2rem;
+    font-size: 0.8em;
+  }
 }
 @media screen and (max-width: 480px) {
-    .nav {
-        max-width: 480px;
-        padding: 0.7rem 0.2rem;
-    }
-    .nav__logo h1{
-        font-size: 1.2em;
-    }
-    .nav__cartIcon {
-        width: 1.8rem;
-        height: 1.8rem;
-    }
-    .nav__numCircle {
-        width: 1rem;
-        height: 1rem;
-        font-size: 0.8em;
-    }
+  .nav {
+    max-width: 480px;
+    padding: 0.7rem 0.2rem;
+  }
+  .nav__logo h1 {
+    font-size: 1.2em;
+  }
+  .nav__cartIcon {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+  .nav__numCircle {
+    width: 1rem;
+    height: 1rem;
+    font-size: 0.8em;
+  }
 }

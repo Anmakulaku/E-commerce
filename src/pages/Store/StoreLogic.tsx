@@ -1,50 +1,58 @@
-import { useEffect, useState } from 'react';
-import { getAllItems, Product } from '../../utilities/services/items.service';
+import { useEffect, useMemo, useState } from 'react';
+import { Category } from '../../utilities/types/CategoryType';
+import { useProducts } from '../../context/ProductContext';
 
 interface StoreLogicProps {
-    selectedCategory: string | null;
-    selectedSubcategory: string | null;
-    currentPage: number;
-    itemsPerPage: number;
+  selectedCategory: string | null;
+  selectedSubcategory: string | null;
+  currentPage: number;
+  itemsPerPage: number;
+  categories: Category[];
 }
 
-export function useStoreLogic({ selectedCategory, selectedSubcategory, currentPage, itemsPerPage }: StoreLogicProps) {
+export function useStoreLogic({
+  selectedCategory,
+  selectedSubcategory,
+  currentPage,
+  itemsPerPage,
+  categories,
+}: StoreLogicProps) {
+  const { products } = useProducts();
+  const [loading, setLoading] = useState(true);
 
-    const [storeItems, setStoreItems] = useState<Product[]>([]);
-    const [paginatedItems, setPaginatedItems] = useState<Product[]>([]);
-    const [pageCount, setPageCount] = useState(0);
+  const filteredProducts = useMemo(() => {
+    let filtered = products;
 
-    useEffect(() => {
-        
-        getAllItems().then((data) => {
-            setStoreItems(data);
-        });
-    }, [selectedCategory, selectedSubcategory]);
+    if (selectedCategory) {
+      const category = categories.find(cat => cat.name === selectedCategory);
+      if (category) {
+        filtered = filtered.filter(product => product.category.name === category.name);
+      }
+    }
 
-    useEffect(() => {
-        if (storeItems.length === 0) return; // Sprawdź, czy storeItems nie jest puste
-        const totalItemsCount = storeItems
-            .filter(item => !selectedCategory || item.category === selectedCategory)
-            .filter(item => !selectedSubcategory || item.subcategory === selectedSubcategory)
-            .length;
-        console.log("Total items count:", totalItemsCount);
-        const itemsPerPage = 12;
-        setPageCount(Math.ceil(totalItemsCount / itemsPerPage));
+    if (selectedSubcategory) {
+      filtered = filtered.filter(product => product.subcategory?.name === selectedSubcategory);
+    }
 
-        const indexOfLastItem = (currentPage + 1) * itemsPerPage;
-        const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    return filtered;
+  }, [products, selectedCategory, selectedSubcategory, categories]);
 
-        const sortedItems = storeItems
-            .filter(item => !selectedCategory || item.category === selectedCategory)
-            .filter(item => !selectedSubcategory || item.subcategory === selectedSubcategory)
-            .sort((a, b) => b.addDate.getTime() - a.addDate.getTime())
-            .slice(indexOfFirstItem, indexOfLastItem);
+  useEffect(() => {
+    if (products.length > 0) {
+      setLoading(false);
+    }
+  }, [products]);
 
-        setPaginatedItems(sortedItems);
-    }, [currentPage, itemsPerPage, selectedCategory, selectedSubcategory, storeItems]);
+  const pageCount = Math.ceil(filteredProducts.length / itemsPerPage);
 
-    return {
-        paginatedItems,
-        pageCount,
-    };
+  const paginatedItems = useMemo(() => {
+    const start = currentPage * itemsPerPage;
+    return filteredProducts.slice(start, start + itemsPerPage);
+  }, [filteredProducts, currentPage, itemsPerPage]);
+
+  return {
+    paginatedItems,
+    pageCount,
+    loading
+  };
 }

@@ -1,0 +1,125 @@
+.checkout {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.checkout__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1rem;
+}
+.checkout__title {
+  margin: 1rem auto;
+}
+.checkout__container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: start;
+  align-items: start;
+  border-top: 2px solid var(--color-primary);
+  padding: 1rem;
+  gap: 1rem;
+}
+.checkout__delivery,
+.checkout__payment {
+  padding: 1rem 0;
+  grid-column: span 1;
+  width: 100%;
+}
+.checkout__delivery h2,
+.checkout__payment h2 {
+  font-size: 1.5em;
+  margin-bottom: 1rem;
+}
+.checkout__deliveryForm,
+.checkout__paymentForm {
+  display: grid;
+  grid-template-rows: repeat(4, auto);
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: stretch;
+  gap: 1rem;
+}
+.checkout__formItem {
+  grid-column: span 1;
+  position: relative;
+  margin-bottom: 2rem;
+}
+.checkout__formItem-double {
+  grid-column: span 2;
+  position: relative;
+  margin-bottom: 1rem;
+}
+.checkout__inputField {
+  width: 100%;
+  padding: 1rem 0.5rem;
+  border: 1px solid var(--color-primary);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  caret-color: var(--color-text);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.checkout__inputField:focus, 
+.checkout__inputField:active {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  outline: none;
+  border: 1px solid var(--color-black); 
+}
+.save-info-checkbox {
+  margin: 1rem 0.5rem;
+  transform: scale(1.2);
+}
+
+.save-info-label {
+  display: flex;
+  align-items: center;
+}
+
+.checkout__cart {
+  padding: 1rem 0;
+  grid-column: span 1;
+}
+
+.creditCardForm {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.checkout__button {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+.checkout-pointInfo {
+  margin: 1rem auto;
+}
+.checkout-deliveryInfo{
+  width: 100%;
+  position: relative;
+}
+.checkout-pointInfoTitle {
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+.error {
+  color: var(--color-red);
+  margin-top: 5px;
+  font-size: 0.7rem;
+  position: absolute;
+}
+
+@media screen and (max-width: 768px) {
+  .checkout__container {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+  }
+  
+}
